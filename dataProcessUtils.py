@@ -7,7 +7,7 @@ from bert_seq2seq.utils import load_bert
 from bert_seq2seq.tokenizer import Tokenizer, load_chinese_base_vocab
 
 
-def strCut(text, length):
+def newsCut(text, length=500):
     """
     字符串分割，将字符串按某一长度进行分割
     :param text: 输入字符串
@@ -43,7 +43,7 @@ def readCorpus(dataPath):
 
             newsText = str(dataRow[2]) + str(dataRow[0])
             newsText.strip()
-            newsText = strCut(newsText, 500)
+            newsText = newsCut(newsText)
 
             for news in newsText:
                 newsList.append(news)
@@ -56,6 +56,9 @@ def readCorpus(dataPath):
 
 
 class Classifier:
+    """
+    新闻分类器，读取预训练好的bert的model，用于预测该赛题的10分类
+    """
     target = ["财经", "房产", "教育", "科技", "军事", "汽车", "体育", "游戏", "娱乐", "其他"]
     cls_model = "./model/ClassifyModel.bin"
     vocab_path = "./model/roberta_wwm_vocab.txt"  # roberta模型字典的位置
@@ -65,47 +68,43 @@ class Classifier:
         # 加载字典
         self.word2idx = load_chinese_base_vocab(self.vocab_path, simplfied=False)
         self.tokenizer = Tokenizer(self.word2idx)
+
         # 定义模型
         self.bert_model = load_bert(self.word2idx, model_name="roberta", model_class="cls", target_size=len(self.target))
         self.bert_model.set_device(self.device)
         self.bert_model.eval()
+
         # 加载训练的模型参数
         self.bert_model.load_all_params(model_path=self.cls_model, device=self.device)
 
-    def predict(self, newsText):
-        with torch.no_grad():
-            text, text_ids = self.tokenizer.encode(newsText)
-            text = torch.tensor(text, device=self.device).view(1, -1)
-            try:
-                res = torch.argmax(self.bert_model(text)).item()
-                return self.target[res]
-                # if (acNum + waNum) % 2000 == 0:
-                #     print()
-                #     print("AC:", acNum)
-                #     print("WA:", waNum)
-            except Exception:
-                traceback.print_exc()
-                return "其他"
+        # 预测一次方便后续加速
+        self.predict("Hello world.")
 
-        # for i in tqdm(range(size)):
-        #     text = sents_src[i]
-        #     ans = sents_tgt[i]
-        #
-        #     totalNum[ans] += 1
-        #
-        #     with torch.no_grad():
-        #         text, text_ids = tokenizer.encode(text)
-        #         text = torch.tensor(text, device=device).view(1, -1)
-        #         try:
-        #             res = torch.argmax(bert_model(text)).item()
-        #             if res == ans:
-        #                 acNum[ans] += 1
-        #             else:
-        #                 waNum[ans] += 1
-        #                 waDesNum[res] += 1
-        #             # if (acNum + waNum) % 2000 == 0:
-        #             #     print()
-        #             #     print("AC:", acNum)
-        #             #     print("WA:", waNum)
-        #         except:
-        #             traceback.print_exc()
+    def predict(self, newsTextOri):
+        newsTextList = newsCut(newsTextOri)
+        other = 9
+        resCountList = [0 for i in range(10)]
+
+        for newsText in newsTextList:
+            with torch.no_grad():
+                newsTextPresentedInBert, newsTextIds = self.tokenizer.encode(newsText)
+                newsTextPresentedInBert = torch.tensor(newsTextPresentedInBert, device=self.device).view(1, -1)
+                try:
+                    preRes = torch.argmax(self.bert_model(newsTextPresentedInBert)).item()
+                    resCountList[preRes] += 1
+                except Exception:
+                    resCountList[other] += 1
+
+        maxCount = 0
+        maxNum = 0
+        res = 0
+        for i in range(10):
+            resCount = resCountList[i]
+            if resCount > maxCount:
+                res = i
+                resCount = maxCount
+                maxNum = 1
+            elif resCount == maxCount:
+                maxNum += 1
+
+        return self.target[res]

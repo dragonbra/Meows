@@ -6,7 +6,7 @@ import time
 if __name__ == "__main__":
     st = time.time()
     classifier = Classifier()
-    print( (time.time() - st) / 1000 )
+    print(time.time() - st)
 
     while True:
         text = input("news: ")
