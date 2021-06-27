@@ -835,13 +835,13 @@ QTabBar::tab:selected{
 }</string>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="WordCloudTab">
         <attribute name="title">
          <string>词云</string>
         </attribute>
-        <widget class="QWidget" name="widget_6" native="true">
+        <widget class="MatplotlibWidget" name="WordCloudWidget" native="true">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -850,13 +850,16 @@ QTabBar::tab:selected{
            <height>491</height>
           </rect>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(250, 238, 255);</string>
+         </property>
         </widget>
        </widget>
        <widget class="QWidget" name="WordCountTab">
         <attribute name="title">
          <string>统计</string>
         </attribute>
-        <widget class="QWidget" name="widget_5" native="true">
+        <widget class="MatplotlibWidget" name="WordCountWidget" native="true">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -864,6 +867,9 @@ QTabBar::tab:selected{
            <width>561</width>
            <height>491</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(250, 238, 255);</string>
          </property>
         </widget>
        </widget>
@@ -1002,7 +1008,7 @@ QTabBar::tab:selected{
         </property>
        </item>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -1106,6 +1112,14 @@ p, li { white-space: pre-wrap; }
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MatplotlibWidget</class>
+   <extends>QWidget</extends>
+   <header>matplotlibwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

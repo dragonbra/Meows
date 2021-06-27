@@ -500,6 +500,126 @@ class Ui_MainWindow(object):
         self.widget = QtWidgets.QWidget(self.tab_4)
         self.widget.setGeometry(QtCore.QRect(0, 0, 871, 491))
         self.widget.setObjectName("widget")
+        self.tabWidget_2 = QtWidgets.QTabWidget(self.widget)
+        self.tabWidget_2.setGeometry(QtCore.QRect(310, 0, 561, 491))
+        self.tabWidget_2.setStyleSheet("QTabWidget::pane{\n"
+"}\n"
+"QTabWidget::tab-bar{\n"
+"    alignment:left;\n"
+"}\n"
+"QTabBar::tab{\n"
+"    min-width:60px;\n"
+"    min-height:16px;\n"
+"    font:13pt \'微软雅黑\';\n"
+"    background:white;\n"
+"    color:rgb(170, 170, 127);\n"
+"}\n"
+"QTabBar::tab:hover{\n"
+"    color:white;\n"
+"    background:rgb(170, 170, 127);\n"
+"}\n"
+"QTabBar::tab:selected{\n"
+"    border-color:white;\n"
+"    background:rgb(170, 170, 127);\n"
+"    color:white;\n"
+"}")
+        self.tabWidget_2.setObjectName("tabWidget_2")
+        self.WordCloudTab = QtWidgets.QWidget()
+        self.WordCloudTab.setObjectName("WordCloudTab")
+        self.WordCloudWidget = MatplotlibWidget(self.WordCloudTab)
+        self.WordCloudWidget.setGeometry(QtCore.QRect(0, 0, 561, 491))
+        self.WordCloudWidget.setStyleSheet("background-color: rgb(250, 238, 255);")
+        self.WordCloudWidget.setObjectName("WordCloudWidget")
+        self.tabWidget_2.addTab(self.WordCloudTab, "")
+        self.WordCountTab = QtWidgets.QWidget()
+        self.WordCountTab.setObjectName("WordCountTab")
+        self.WordCountWidget = MatplotlibWidget(self.WordCountTab)
+        self.WordCountWidget.setGeometry(QtCore.QRect(0, 0, 561, 491))
+        self.WordCountWidget.setStyleSheet("background-color: rgb(250, 238, 255);")
+        self.WordCountWidget.setObjectName("WordCountWidget")
+        self.tabWidget_2.addTab(self.WordCountTab, "")
+        self.label_3 = QtWidgets.QLabel(self.widget)
+        self.label_3.setGeometry(QtCore.QRect(20, 50, 71, 41))
+        self.label_3.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"    font: 14px;\n"
+"}")
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.widget)
+        self.label_4.setGeometry(QtCore.QRect(20, 130, 71, 41))
+        self.label_4.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"    font: 14px;\n"
+"}")
+        self.label_4.setObjectName("label_4")
+        self.wordCloudBox = QtWidgets.QComboBox(self.widget)
+        self.wordCloudBox.setGeometry(QtCore.QRect(110, 60, 151, 31))
+        self.wordCloudBox.setObjectName("wordCloudBox")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
+        self.wordSizeBox = QtWidgets.QComboBox(self.widget)
+        self.wordSizeBox.setGeometry(QtCore.QRect(110, 140, 151, 31))
+        self.wordSizeBox.setObjectName("wordSizeBox")
+        self.wordSizeBox.addItem("")
+        self.wordSizeBox.addItem("")
+        self.wordSizeBox.addItem("")
+        self.wordSizeBox.addItem("")
+        self.layoutWidget2 = QtWidgets.QWidget(self.widget)
+        self.layoutWidget2.setGeometry(QtCore.QRect(30, 200, 231, 61))
+        self.layoutWidget2.setObjectName("layoutWidget2")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.layoutWidget2)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.wordDrawButton = QtWidgets.QPushButton(self.layoutWidget2)
+        self.wordDrawButton.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.wordDrawButton.setObjectName("wordDrawButton")
+        self.horizontalLayout_3.addWidget(self.wordDrawButton)
+        self.wordSaveButton = QtWidgets.QPushButton(self.layoutWidget2)
+        self.wordSaveButton.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.wordSaveButton.setObjectName("wordSaveButton")
+        self.horizontalLayout_3.addWidget(self.wordSaveButton)
         self.tabWidget.addTab(self.tab_4, "")
         self.tab_5 = QtWidgets.QWidget()
         self.tab_5.setObjectName("tab_5")
@@ -520,7 +640,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget_2.setCurrentIndex(1)
         self.exitButton.clicked.connect(MainWindow.close)
         self.clearButton.clicked.connect(self.singleNewslineEdit.clear)
         self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
@@ -567,6 +688,26 @@ class Ui_MainWindow(object):
         item = self.sqliteTable.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "新闻内容"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.WordCloudTab), _translate("MainWindow", "词云"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.WordCountTab), _translate("MainWindow", "统计"))
+        self.label_3.setText(_translate("MainWindow", "选择词源"))
+        self.label_4.setText(_translate("MainWindow", "选择形状"))
+        self.wordCloudBox.setItemText(0, _translate("MainWindow", "财经"))
+        self.wordCloudBox.setItemText(1, _translate("MainWindow", "房产"))
+        self.wordCloudBox.setItemText(2, _translate("MainWindow", "教育"))
+        self.wordCloudBox.setItemText(3, _translate("MainWindow", "科技"))
+        self.wordCloudBox.setItemText(4, _translate("MainWindow", "军事"))
+        self.wordCloudBox.setItemText(5, _translate("MainWindow", "汽车"))
+        self.wordCloudBox.setItemText(6, _translate("MainWindow", "体育"))
+        self.wordCloudBox.setItemText(7, _translate("MainWindow", "游戏"))
+        self.wordCloudBox.setItemText(8, _translate("MainWindow", "娱乐"))
+        self.wordCloudBox.setItemText(9, _translate("MainWindow", "其他"))
+        self.wordSizeBox.setItemText(0, _translate("MainWindow", "猫"))
+        self.wordSizeBox.setItemText(1, _translate("MainWindow", "可达鸭"))
+        self.wordSizeBox.setItemText(2, _translate("MainWindow", "伊布"))
+        self.wordSizeBox.setItemText(3, _translate("MainWindow", "皮卡丘"))
+        self.wordDrawButton.setText(_translate("MainWindow", "绘制"))
+        self.wordSaveButton.setText(_translate("MainWindow", "保存"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "数据分析"))
         self.introductionBroswer.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -574,3 +715,4 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:26pt;\">简介</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("MainWindow", "关于我们"))
+from matplotlibwidget import MatplotlibWidget

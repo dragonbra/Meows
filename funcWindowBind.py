@@ -1,12 +1,13 @@
 import time
 
 import pandas as pd
+from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from news import Ui_MainWindow
 import sys
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 import tqdm
 import dataProcUtils
 import dataBaseUtils
@@ -39,6 +40,8 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.multiPredictButton.clicked.connect(self.multiNewsPredict)
 
         self.multiSaveButton.clicked.connect(self.multiNewsSave)
+
+        self.wordDrawButton.clicked.connect(self.wordCloudDraw)
 
     def singleGetNewsFromFile(self):
         filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.defaultFilePath, "单新闻文件(*.txt)")
@@ -149,6 +152,57 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         except Exception as e:
             pass
+
+    def wordCloudinit(self):
+        self.tc = True
+        self.swf= True
+        self.pscale = 2
+        self.number=200
+        self.pheight=1000
+        self.pwidth =1000
+        self.pstopwords=""
+        self.pcontour_width=0
+        self.prelative_scaling=0.5
+        self.pcolormap = "viridis"
+        sfont = "宋体"
+
+        if sfont == "宋体":
+            self.font_path = "simsun.ttc"
+
+        list = [('tc', self.tc),
+                ('scale', self.pscale),
+                ('font_path',self.font_path),
+                ('number',self.number),
+                ('width',self.pwidth),
+                ('height',self.pheight),
+                ('stopwords',self.pstopwords),
+                ('contour_width',self.pcontour_width),
+                ('colormap',self.pcolormap),
+                ('relative_scaling',self.prelative_scaling),
+                ('swf',self.swf)]
+
+        self.para = dict(list) #将列表转化为字典
+        print(len(self.para))
+
+    def wordCloudDraw(self):
+        self.wordCloudinit()
+        self.txtfile = "D:/NewsClassifier/月光.txt"
+        self.imgfile = "D:/NewsClassifier/wordSizeImages/皮卡丘.png"
+
+        if self.swf==1: #如果按照词频来绘制
+            try:
+                self.WordCountWidget.mpl.wordfreqplot(self.txtfile)
+                self.tabWidget_2.setCurrentIndex(1)
+            except Exception as e:
+                print(e)
+                return
+
+
+        #self.mpl  是MyMplCanvas() 对象
+        print(self.para)
+
+        self.WordCloudWidget.mpl.wordcloud_plot(self.txtfile,self.imgfile,self.para)
+        #self.mytips.setPlainText("正在生成图像，请稍等...")
 
 
 if __name__ == '__main__':
