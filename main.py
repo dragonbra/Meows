@@ -1,18 +1,10 @@
-import dataProcessUtils
-from dataProcessUtils import Classifier
-import torch
-import time
+from PyQt5 import QtWidgets
+from funcWindowBind import funcWindow
+import sys
+import dataBaseUtils
 
-if __name__ == "__main__":
-    st = time.time()
-    classifier = Classifier()
-    print(time.time() - st)
-
-    while True:
-        text = input("news: ")
-        if text == "q":
-            break
-        res = classifier.predict(text)
-        print(res)
-
-        continue
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    mainWindow = funcWindow()
+    mainWindow.show()
+    sys.exit(app.exec_())

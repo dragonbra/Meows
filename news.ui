@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>927</width>
+    <height>622</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>871</width>
+      <height>550</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>661</width>
+      <height>500</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget::pane{
+}
+QTabWidget::tab-bar{
+    alignment:left;
+}
+QTabBar::tab{
+	color:white;
+	background:rgb(0, 170, 255);
+	min-width:150px;
+	min-height:50px;
+	font:13pt '微软雅黑';
+}
+QTabBar::tab:hover{
+	color:rgb(0, 170, 255);
+	background:rgb(255, 255, 255, 100);
+}
+QTabBar::tab:selected{
+	border-color:rgb(0, 170, 255);
+	background:white;
+	color:rgb(0, 170, 255);
+}</string>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="usesScrollButtons">
+     <bool>false</bool>
+    </property>
+    <property name="documentMode">
+     <bool>false</bool>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="tab_1">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <attribute name="title">
+      <string>单条预测</string>
+     </attribute>
+     <widget class="QWidget" name="widget_1" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>871</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <widget class="QTextEdit" name="singleNewsPaperEdit">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>110</y>
+         <width>521</width>
+         <height>301</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit {
+	background-color: white;
+	border-width: 2px;
+	border-color: #3D74BB;
+	border-style: solid;
+}</string>
+       </property>
+       <property name="lineWrapMode">
+        <enum>QTextEdit::WidgetWidth</enum>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="singleFileButton">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>30</y>
+         <width>111</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+       </property>
+       <property name="text">
+        <string>从文件导入</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="predictButton2">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>220</y>
+         <width>61</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+       </property>
+       <property name="text">
+        <string>-&gt;</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>420</y>
+         <width>791</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="clearButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>清除全部内容</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="predictButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>新闻文本预测</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="exitButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>退出程序</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QTextBrowser" name="singleResultBroswer">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>160</y>
+         <width>161</width>
+         <height>161</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>10</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	border: 2px solid blue;
+    border-radius: 4px;
+    padding: 2px;
+}</string>
+       </property>
+       <property name="text">
+        <string>新闻标题</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>90</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	border: 2px solid blue;
+    border-radius: 4px;
+    padding: 2px;
+}</string>
+       </property>
+       <property name="text">
+        <string>新闻内容</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="singleNewslineEdit">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>30</y>
+         <width>401</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>多条预测</string>
+     </attribute>
+     <widget class="QWidget" name="widget_4" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>871</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <widget class="QTextBrowser" name="mulitynewsBroswer">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>621</width>
+         <height>331</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+      </widget>
+      <widget class="QTextBrowser" name="mulityResultBroswer">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>30</y>
+         <width>131</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>420</y>
+         <width>621</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="mulityFileButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 10em;
+	min-height: 2em;
+
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>导入文本</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="mulityPredictButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 10em;
+	min-height: 2em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>批量预测</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="downloadButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    min-width: 10em;
+	min-height: 2em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+          </property>
+          <property name="text">
+           <string>下载结果</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QProgressBar" name="loadingLine">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>390</y>
+         <width>621</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>数据查看</string>
+     </attribute>
+     <widget class="QWidget" name="widget_3" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>871</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <widget class="QTextBrowser" name="searchResultBroswer">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>791</width>
+         <height>401</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="searchButton">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>20</y>
+         <width>71</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+       </property>
+       <property name="text">
+        <string>搜索</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="searchlineEdit">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>201</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>数据分析</string>
+     </attribute>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>871</width>
+        <height>491</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>关于我们</string>
+     </attribute>
+     <widget class="QWidget" name="widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>871</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <widget class="QTextBrowser" name="introductionBroswer">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>661</width>
+         <height>381</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;</string>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;简介&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>clearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>singleNewsPaperEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>185</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>184</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>singleNewslineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>545</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>singleResultBroswer</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>770</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>721</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>15</x>
+     <y>35</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

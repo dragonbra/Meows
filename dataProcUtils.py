@@ -18,6 +18,10 @@ def newsCut(text, length=500):
     return textList
 
 
+def newsMerge(newsTitle, newsContent):
+    return newsTitle + "。" + newsContent
+
+
 def readCorpus(dataPath):
     """
     从excel文件中读取数据集
@@ -28,7 +32,7 @@ def readCorpus(dataPath):
     :param dataPath: 数据集所在路径，应该为.csv结尾
     :return: 两个列表，第一个为新闻内容的列表，第二个为新闻内容对应的分类，下标对应
     """
-    targetDict = {"财经":0, "房产":1, "教育":2, "科技":3, "军事":4, "汽车":5, "体育":6, "游戏":7, "娱乐":8, "其他":9}
+    targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
     newsList = []
     newsClassList = []
 
@@ -70,7 +74,8 @@ class Classifier:
         self.tokenizer = Tokenizer(self.word2idx)
 
         # 定义模型
-        self.bert_model = load_bert(self.word2idx, model_name="roberta", model_class="cls", target_size=len(self.target))
+        self.bert_model = load_bert(self.word2idx, model_name="roberta", model_class="cls",
+                                    target_size=len(self.target))
         self.bert_model.set_device(self.device)
         self.bert_model.eval()
 
