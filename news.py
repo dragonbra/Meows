@@ -202,22 +202,8 @@ class Ui_MainWindow(object):
         self.tab_2.setObjectName("tab_2")
         self.widget_4 = QtWidgets.QWidget(self.tab_2)
         self.widget_4.setGeometry(QtCore.QRect(0, 0, 871, 491))
-        self.widget_4.setStyleSheet("")
+        self.widget_4.setStyleSheet("table:center;")
         self.widget_4.setObjectName("widget_4")
-        self.mulitynewsBroswer = QtWidgets.QTextBrowser(self.widget_4)
-        self.mulitynewsBroswer.setGeometry(QtCore.QRect(30, 30, 621, 331))
-        self.mulitynewsBroswer.setStyleSheet("background-color: white;\n"
-"border-width: 2px;\n"
-"border-color: #3D74BB;\n"
-"border-style: solid;")
-        self.mulitynewsBroswer.setObjectName("mulitynewsBroswer")
-        self.mulityResultBroswer = QtWidgets.QTextBrowser(self.widget_4)
-        self.mulityResultBroswer.setGeometry(QtCore.QRect(680, 30, 131, 451))
-        self.mulityResultBroswer.setStyleSheet("background-color: white;\n"
-"border-width: 2px;\n"
-"border-color: #3D74BB;\n"
-"border-style: solid;")
-        self.mulityResultBroswer.setObjectName("mulityResultBroswer")
         self.layoutWidget1 = QtWidgets.QWidget(self.widget_4)
         self.layoutWidget1.setGeometry(QtCore.QRect(30, 420, 621, 91))
         self.layoutWidget1.setObjectName("layoutWidget1")
@@ -287,10 +273,24 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.downloadButton)
         self.loadingLine = QtWidgets.QProgressBar(self.widget_4)
         self.loadingLine.setGeometry(QtCore.QRect(30, 390, 621, 31))
+        self.loadingLine.setStyleSheet("QProgressBar{\n"
+"   border: 2px solid #2196F3;/*边框以及边框颜色*/\n"
+"    border-radius: 5px;\n"
+"    background-color: #E0E0E0;\n"
+"\n"
+"}\n"
+"QProgressBar::chunk{\n"
+" background-color: #2196F3;\n"
+"    width: 10px; /*区块宽度*/\n"
+"    margin: 0.5px;\n"
+"\n"
+"}\n"
+"")
         self.loadingLine.setProperty("value", 24)
+        self.loadingLine.setTextVisible(False)
         self.loadingLine.setObjectName("loadingLine")
         self.label_3 = QtWidgets.QLabel(self.widget_4)
-        self.label_3.setGeometry(QtCore.QRect(710, 10, 61, 20))
+        self.label_3.setGeometry(QtCore.QRect(720, 10, 61, 20))
         self.label_3.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -307,19 +307,119 @@ class Ui_MainWindow(object):
 "    padding: 2px;\n"
 "}")
         self.label_4.setObjectName("label_4")
+        self.mulityNewsTable = QtWidgets.QTableWidget(self.widget_4)
+        self.mulityNewsTable.setGeometry(QtCore.QRect(30, 30, 621, 331))
+        self.mulityNewsTable.setStyleSheet("/*\n"
+"tabelwidget*/\n"
+"QTableWidget{\n"
+"border:1px solid #242424;\n"
+"gridline-color:#242424;\n"
+"\n"
+"    background-color: white;\n"
+"    border-width: 2px;\n"
+"    border-color: #3D74BB;\n"
+"    border-style: solid;\n"
+"}\n"
+"\n"
+"/*选中item*/\n"
+"QTableWidget::item:selected{\n"
+"color:rgb(255, 255, 255);\n"
+"background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));\n"
+"}\n"
+"\n"
+"/*\n"
+"悬浮item*/\n"
+"QTableWidget::item:hover{\n"
+"background:rgb(0, 170, 255);\n"
+"}\n"
+"/*表头*/\n"
+"QHeaderView::section{\n"
+"text-align:center;\n"
+"font: 14px;\n"
+"padding:3px;\n"
+"margin:0px;\n"
+"border:1px solid #242424;\n"
+"border-left-width:0;\n"
+"}\n"
+"\n"
+"")
+        self.mulityNewsTable.setObjectName("mulityNewsTable")
+        self.mulityNewsTable.setColumnCount(2)
+        self.mulityNewsTable.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.mulityNewsTable.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.mulityNewsTable.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.mulityNewsTable.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.mulityNewsTable.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.mulityNewsTable.setItem(0, 1, item)
+        self.mulityNewsTable.horizontalHeader().setDefaultSectionSize(275)
+        self.mulityResultsTable = QtWidgets.QTableWidget(self.widget_4)
+        self.mulityResultsTable.setGeometry(QtCore.QRect(660, 30, 181, 451))
+        self.mulityResultsTable.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.mulityResultsTable.setStyleSheet("/*\n"
+"tabelwidget*/\n"
+"QTableWidget{\n"
+"border:1px solid #242424;\n"
+"gridline-color:#242424;\n"
+"\n"
+"    background-color: white;\n"
+"    border-width: 2px;\n"
+"    border-color: #3D74BB;\n"
+"    border-style: solid;\n"
+"}\n"
+"\n"
+"/*选中item*/\n"
+"QTableWidget::item:selected{\n"
+"color:rgb(255, 255, 255);\n"
+"background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));\n"
+"}\n"
+"\n"
+"/*\n"
+"悬浮item*/\n"
+"QTableWidget::item:hover{\n"
+"background:rgb(0, 170, 255);\n"
+"}\n"
+"/*表头*/\n"
+"QHeaderView::section{\n"
+"text-align:center;\n"
+"font: 14px;\n"
+"padding:3px;\n"
+"margin:0px;\n"
+"border:1px solid #242424;\n"
+"border-left-width:0;\n"
+"}\n"
+"\n"
+"")
+        self.mulityResultsTable.setObjectName("mulityResultsTable")
+        self.mulityResultsTable.setColumnCount(1)
+        self.mulityResultsTable.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.mulityResultsTable.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.mulityResultsTable.setHorizontalHeaderItem(0, item)
+        self.mulityResultsTable.horizontalHeader().setDefaultSectionSize(150)
         self.tabWidget.addTab(self.tab_2, "")
         self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
         self.widget_3 = QtWidgets.QWidget(self.tab_3)
         self.widget_3.setGeometry(QtCore.QRect(0, 0, 871, 491))
         self.widget_3.setObjectName("widget_3")
-        self.searchResultBroswer = QtWidgets.QTextBrowser(self.widget_3)
-        self.searchResultBroswer.setGeometry(QtCore.QRect(30, 70, 791, 401))
-        self.searchResultBroswer.setStyleSheet("background-color: white;\n"
-"border-width: 2px;\n"
-"border-color: #3D74BB;\n"
-"border-style: solid;")
-        self.searchResultBroswer.setObjectName("searchResultBroswer")
         self.searchButton = QtWidgets.QPushButton(self.widget_3)
         self.searchButton.setGeometry(QtCore.QRect(250, 20, 71, 41))
         self.searchButton.setStyleSheet("QPushButton {\n"
@@ -345,6 +445,73 @@ class Ui_MainWindow(object):
 "border-color: #3D74BB;\n"
 "border-style: solid;")
         self.searchlineEdit.setObjectName("searchlineEdit")
+        self.sqliteTable = QtWidgets.QTableWidget(self.widget_3)
+        self.sqliteTable.setGeometry(QtCore.QRect(30, 70, 821, 391))
+        self.sqliteTable.setStyleSheet("/*\n"
+"tabelwidget*/\n"
+"QTableWidget{\n"
+"border:1px solid #242424;\n"
+"gridline-color:#242424;\n"
+"\n"
+"    background-color: white;\n"
+"    border-width: 2px;\n"
+"    border-color: #3D74BB;\n"
+"    border-style: solid;\n"
+"}\n"
+"\n"
+"/*选中item*/\n"
+"QTableWidget::item:selected{\n"
+"color:rgb(255, 255, 255);\n"
+"background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));\n"
+"}\n"
+"\n"
+"/*\n"
+"悬浮item*/\n"
+"QTableWidget::item:hover{\n"
+"background:rgb(0, 170, 255);\n"
+"}\n"
+"/*表头*/\n"
+"QHeaderView::section{\n"
+"text-align:center;\n"
+"font: 14px;\n"
+"padding:3px;\n"
+"margin:0px;\n"
+"border:1px solid #242424;\n"
+"border-left-width:0;\n"
+"}\n"
+"\n"
+"")
+        self.sqliteTable.setObjectName("sqliteTable")
+        self.sqliteTable.setColumnCount(4)
+        self.sqliteTable.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.sqliteTable.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.sqliteTable.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.sqliteTable.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.sqliteTable.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.sqliteTable.setHorizontalHeaderItem(3, item)
+        self.sqliteTable.horizontalHeader().setCascadingSectionResizes(False)
+        self.sqliteTable.horizontalHeader().setDefaultSectionSize(198)
         self.tabWidget.addTab(self.tab_3, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
@@ -390,8 +557,31 @@ class Ui_MainWindow(object):
         self.downloadButton.setText(_translate("MainWindow", "下载结果"))
         self.label_3.setText(_translate("MainWindow", "识别结果"))
         self.label_4.setText(_translate("MainWindow", "新闻列表"))
+        item = self.mulityNewsTable.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.mulityNewsTable.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "新闻标题"))
+        item = self.mulityNewsTable.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "新闻内容"))
+        __sortingEnabled = self.mulityNewsTable.isSortingEnabled()
+        self.mulityNewsTable.setSortingEnabled(False)
+        self.mulityNewsTable.setSortingEnabled(__sortingEnabled)
+        item = self.mulityResultsTable.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.mulityResultsTable.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "预测结果"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "多条预测"))
         self.searchButton.setText(_translate("MainWindow", "搜索"))
+        item = self.sqliteTable.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.sqliteTable.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "预测分类"))
+        item = self.sqliteTable.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "分所属类"))
+        item = self.sqliteTable.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "新闻标题"))
+        item = self.sqliteTable.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "新闻内容"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "数据分析"))
         self.introductionBroswer.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
