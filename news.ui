@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>927</width>
-    <height>622</height>
+    <width>941</width>
+    <height>658</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@ QTabBar::tab:selected{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="usesScrollButtons">
      <bool>false</bool>
@@ -284,6 +284,7 @@ border-style: solid;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
+	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
@@ -304,6 +305,7 @@ border-style: solid;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
+	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
@@ -483,6 +485,48 @@ QPushButton::pressed {
         <number>24</number>
        </property>
       </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>710</x>
+         <y>10</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	color:#3D74BB;
+	border: 2px solid blue;
+    border-radius: 4px;
+    padding: 2px;
+}</string>
+       </property>
+       <property name="text">
+        <string>识别结果</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>10</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	color:#3D74BB;
+	border: 2px solid blue;
+    border-radius: 4px;
+    padding: 2px;
+}</string>
+       </property>
+       <property name="text">
+        <string>新闻列表</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
@@ -620,70 +664,5 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>clearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>singleNewsPaperEdit</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>185</x>
-     <y>531</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>184</x>
-     <y>275</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>clearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>singleNewslineEdit</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>125</x>
-     <y>545</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>136</x>
-     <y>146</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>clearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>singleResultBroswer</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>312</x>
-     <y>546</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>770</x>
-     <y>330</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>exitButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>721</x>
-     <y>535</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>15</x>
-     <y>35</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

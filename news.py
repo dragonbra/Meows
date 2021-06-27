@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(927, 622)
+        MainWindow.resize(941, 658)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -175,6 +175,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.widget_1)
         self.label.setGeometry(QtCore.QRect(40, 10, 61, 20))
         self.label.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
 "    border-radius: 4px;\n"
 "    padding: 2px;\n"
@@ -183,6 +184,7 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.widget_1)
         self.label_2.setGeometry(QtCore.QRect(40, 90, 61, 20))
         self.label_2.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
 "    border-radius: 4px;\n"
 "    padding: 2px;\n"
@@ -287,6 +289,24 @@ class Ui_MainWindow(object):
         self.loadingLine.setGeometry(QtCore.QRect(30, 390, 621, 31))
         self.loadingLine.setProperty("value", 24)
         self.loadingLine.setObjectName("loadingLine")
+        self.label_3 = QtWidgets.QLabel(self.widget_4)
+        self.label_3.setGeometry(QtCore.QRect(710, 10, 61, 20))
+        self.label_3.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"}")
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.widget_4)
+        self.label_4.setGeometry(QtCore.QRect(300, 10, 61, 20))
+        self.label_4.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"}")
+        self.label_4.setObjectName("label_4")
         self.tabWidget.addTab(self.tab_2, "")
         self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
@@ -351,11 +371,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
-        self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
-        self.clearButton.clicked.connect(self.singleNewslineEdit.clear)
-        self.clearButton.clicked.connect(self.singleResultBroswer.clear)
-        self.exitButton.clicked.connect(MainWindow.close)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -372,6 +388,8 @@ class Ui_MainWindow(object):
         self.mulityFileButton.setText(_translate("MainWindow", "导入文本"))
         self.mulityPredictButton.setText(_translate("MainWindow", "批量预测"))
         self.downloadButton.setText(_translate("MainWindow", "下载结果"))
+        self.label_3.setText(_translate("MainWindow", "识别结果"))
+        self.label_4.setText(_translate("MainWindow", "新闻列表"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "多条预测"))
         self.searchButton.setText(_translate("MainWindow", "搜索"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
