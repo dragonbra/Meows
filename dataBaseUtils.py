@@ -15,7 +15,6 @@ class DataBase:
         dbConn = sqlite3.connect(self.DATABASE)
         dbCursor = dbConn.cursor()
         self.DATAROWS = dbCursor.execute("SELECT count(*) FROM newsClassified;").fetchone()[0]
-        print("现在表中数据数量", self.DATAROWS)
         dbConn.close()
 
     def dataBaseInit(self):
@@ -40,14 +39,13 @@ class DataBase:
         try:
             self.getDATAROWS()
             rowInsert = "INSERT INTO newsClassified (id, predictChannel, channelName, title, content) \
-                        VALUES (" + str(
-                self.DATAROWS + 1) + ", '" + predictChannel + "', '" + channelName + "', '" + title + "', '" + content + "')"
+                        VALUES (" + str(self.DATAROWS + 1) + ", '" + predictChannel + "', '" + channelName + "', '" + title + "', '" + content + "')"
             dbCursor.execute(rowInsert)
+            print("第 " + str(self.DATAROWS + 1) + " 条新闻已入库！", predictChannel + ": " + title)
             dbConn.commit()
-            print(rowInsert)
 
         except Exception as e:
-            print(e)
+            print("该新闻入库失败，原因是:", e)
 
         dbConn.close()
 

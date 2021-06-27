@@ -19,44 +19,54 @@ def newsCut(text, length=500):
 
 
 def newsMerge(newsTitle, newsContent):
-    return newsTitle + "。" + newsContent
+    return newsTitle + newsContent
 
 
-def readCorpus(dataPath):
+def channelNameWordToNum(channelNameList):
+    targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
+    size = len(channelNameList)
+    for index in range(size):
+        channelNameList[index] = targetDict[channelNameList[index]]
+    return channelNameList
+
+
+def readCorpus(filePath):
     """
     从excel文件中读取数据集
     数据集格式为：
     第一列 content 新闻文本
     第二列 channelName 新闻分类频道
     第三列 title 新闻标题
-    :param dataPath: 数据集所在路径，应该为.csv结尾
+    :param filePath: 数据集所在路径，应该为.csv结尾
     :return: 两个列表，第一个为新闻内容的列表，第二个为新闻内容对应的分类，下标对应
     """
-    targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
-    newsList = []
-    newsClassList = []
+    channelNameList = []
+    newsTitleList = []
+    newsContentList = []
 
-    dataFile = pd.read_excel(dataPath)
-    tables = dataFile.values
-    for dataRow in tables:
-        # dataRow[0] = content
-        # dataRow[1] = channelName
-        # dataRow[2] = title
-        try:
-            newsClass = targetDict[dataRow[1]]  # 将标签转化为对应的数字label
+    try:
+        dataFile = pd.read_excel(filePath)
+        dataTable = dataFile.values
+        for dataRow in dataTable:
+            # dataRow[0] = content
+            # dataRow[1] = channelName
+            # dataRow[2] = title
+            try:
+                newsContent = dataRow[0]
+                channelName = dataRow[1]  # 将标签转化为对应的数字label
+                newsTitle = dataRow[2]
 
-            newsText = str(dataRow[2]) + str(dataRow[0])
-            newsText.strip()
-            newsText = newsCut(newsText)
+                newsContentList.append(newsContent)
+                channelNameList.append(channelName)
+                newsTitleList.append(newsTitle)
 
-            for news in newsText:
-                newsList.append(news)
-                newsClassList.append(newsClass)
+            except Exception:
+                continue
 
-        except Exception:
-            continue
+    except Exception:
+        pass
 
-    return newsList, newsClassList
+    return channelNameList, newsTitleList, newsContentList
 
 
 class Classifier:

@@ -173,7 +173,7 @@ class Ui_MainWindow(object):
 "border-style: solid;")
         self.singleResultBroswer.setObjectName("singleResultBroswer")
         self.label = QtWidgets.QLabel(self.widget_1)
-        self.label.setGeometry(QtCore.QRect(40, 10, 61, 20))
+        self.label.setGeometry(QtCore.QRect(40, 10, 62, 20))
         self.label.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -182,7 +182,7 @@ class Ui_MainWindow(object):
 "}")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widget_1)
-        self.label_2.setGeometry(QtCore.QRect(40, 90, 61, 20))
+        self.label_2.setGeometry(QtCore.QRect(40, 90, 62, 20))
         self.label_2.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -210,8 +210,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.mulityFileButton = QtWidgets.QPushButton(self.layoutWidget1)
-        self.mulityFileButton.setStyleSheet("QPushButton {\n"
+        self.multiFileButton = QtWidgets.QPushButton(self.layoutWidget1)
+        self.multiFileButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
 "    border-style: outset;\n"
@@ -229,10 +229,10 @@ class Ui_MainWindow(object):
 "    color:rgb(0, 170, 255);\n"
 "    border-style: inset;\n"
 "}")
-        self.mulityFileButton.setObjectName("mulityFileButton")
-        self.horizontalLayout_2.addWidget(self.mulityFileButton)
-        self.mulityPredictButton = QtWidgets.QPushButton(self.layoutWidget1)
-        self.mulityPredictButton.setStyleSheet("QPushButton {\n"
+        self.multiFileButton.setObjectName("multiFileButton")
+        self.horizontalLayout_2.addWidget(self.multiFileButton)
+        self.multiPredictButton = QtWidgets.QPushButton(self.layoutWidget1)
+        self.multiPredictButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
 "    border-style: outset;\n"
@@ -249,10 +249,10 @@ class Ui_MainWindow(object):
 "    color:rgb(0, 170, 255);\n"
 "    border-style: inset;\n"
 "}")
-        self.mulityPredictButton.setObjectName("mulityPredictButton")
-        self.horizontalLayout_2.addWidget(self.mulityPredictButton)
-        self.downloadButton = QtWidgets.QPushButton(self.layoutWidget1)
-        self.downloadButton.setStyleSheet("QPushButton {\n"
+        self.multiPredictButton.setObjectName("multiPredictButton")
+        self.horizontalLayout_2.addWidget(self.multiPredictButton)
+        self.multiSaveButton = QtWidgets.QPushButton(self.layoutWidget1)
+        self.multiSaveButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
 "    border-style: outset;\n"
@@ -269,11 +269,11 @@ class Ui_MainWindow(object):
 "    color:rgb(0, 170, 255);\n"
 "    border-style: inset;\n"
 "}")
-        self.downloadButton.setObjectName("downloadButton")
-        self.horizontalLayout_2.addWidget(self.downloadButton)
-        self.loadingLine = QtWidgets.QProgressBar(self.widget_4)
-        self.loadingLine.setGeometry(QtCore.QRect(30, 390, 621, 31))
-        self.loadingLine.setStyleSheet("QProgressBar{\n"
+        self.multiSaveButton.setObjectName("multiSaveButton")
+        self.horizontalLayout_2.addWidget(self.multiSaveButton)
+        self.multiLoadingLine = QtWidgets.QProgressBar(self.widget_4)
+        self.multiLoadingLine.setGeometry(QtCore.QRect(30, 390, 621, 31))
+        self.multiLoadingLine.setStyleSheet("QProgressBar{\n"
 "   border: 2px solid #2196F3;/*边框以及边框颜色*/\n"
 "    border-radius: 5px;\n"
 "    background-color: #E0E0E0;\n"
@@ -286,30 +286,12 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        self.loadingLine.setProperty("value", 24)
-        self.loadingLine.setTextVisible(False)
-        self.loadingLine.setObjectName("loadingLine")
-        self.label_3 = QtWidgets.QLabel(self.widget_4)
-        self.label_3.setGeometry(QtCore.QRect(720, 10, 61, 20))
-        self.label_3.setStyleSheet("QLabel{\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"}")
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(self.widget_4)
-        self.label_4.setGeometry(QtCore.QRect(300, 10, 61, 20))
-        self.label_4.setStyleSheet("QLabel{\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"}")
-        self.label_4.setObjectName("label_4")
-        self.mulityNewsTable = QtWidgets.QTableWidget(self.widget_4)
-        self.mulityNewsTable.setGeometry(QtCore.QRect(30, 30, 621, 331))
-        self.mulityNewsTable.setStyleSheet("/*\n"
+        self.multiLoadingLine.setProperty("value", 24)
+        self.multiLoadingLine.setTextVisible(False)
+        self.multiLoadingLine.setObjectName("multiLoadingLine")
+        self.multiNewsTable = QtWidgets.QTableWidget(self.widget_4)
+        self.multiNewsTable.setGeometry(QtCore.QRect(30, 30, 621, 331))
+        self.multiNewsTable.setStyleSheet("/*\n"
 "tabelwidget*/\n"
 "QTableWidget{\n"
 "border:1px solid #242424;\n"
@@ -343,32 +325,32 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.mulityNewsTable.setObjectName("mulityNewsTable")
-        self.mulityNewsTable.setColumnCount(2)
-        self.mulityNewsTable.setRowCount(1)
+        self.multiNewsTable.setObjectName("multiNewsTable")
+        self.multiNewsTable.setColumnCount(2)
+        self.multiNewsTable.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
-        self.mulityNewsTable.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        item.setFont(font)
-        self.mulityNewsTable.setHorizontalHeaderItem(0, item)
+        self.multiNewsTable.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         item.setFont(font)
-        self.mulityNewsTable.setHorizontalHeaderItem(1, item)
+        self.multiNewsTable.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.mulityNewsTable.setItem(0, 0, item)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.multiNewsTable.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.mulityNewsTable.setItem(0, 1, item)
-        self.mulityNewsTable.horizontalHeader().setDefaultSectionSize(275)
-        self.mulityResultsTable = QtWidgets.QTableWidget(self.widget_4)
-        self.mulityResultsTable.setGeometry(QtCore.QRect(660, 30, 181, 451))
-        self.mulityResultsTable.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mulityResultsTable.setStyleSheet("/*\n"
+        self.multiNewsTable.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.multiNewsTable.setItem(0, 1, item)
+        self.multiNewsTable.horizontalHeader().setDefaultSectionSize(275)
+        self.multiResultsTable = QtWidgets.QTableWidget(self.widget_4)
+        self.multiResultsTable.setGeometry(QtCore.QRect(680, 30, 171, 451))
+        self.multiResultsTable.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.multiResultsTable.setStyleSheet("/*\n"
 "tabelwidget*/\n"
 "QTableWidget{\n"
 "border:1px solid #242424;\n"
@@ -402,18 +384,18 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.mulityResultsTable.setObjectName("mulityResultsTable")
-        self.mulityResultsTable.setColumnCount(1)
-        self.mulityResultsTable.setRowCount(1)
+        self.multiResultsTable.setObjectName("multiResultsTable")
+        self.multiResultsTable.setColumnCount(1)
+        self.multiResultsTable.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
-        self.mulityResultsTable.setVerticalHeaderItem(0, item)
+        self.multiResultsTable.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         item.setFont(font)
-        self.mulityResultsTable.setHorizontalHeaderItem(0, item)
-        self.mulityResultsTable.horizontalHeader().setDefaultSectionSize(150)
+        self.multiResultsTable.setHorizontalHeaderItem(0, item)
+        self.multiResultsTable.horizontalHeader().setDefaultSectionSize(150)
         self.tabWidget.addTab(self.tab_2, "")
         self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
@@ -538,7 +520,11 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
+        self.exitButton.clicked.connect(MainWindow.close)
+        self.clearButton.clicked.connect(self.singleNewslineEdit.clear)
+        self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
+        self.clearButton.clicked.connect(self.singleResultBroswer.clear)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -552,23 +538,21 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "新闻标题"))
         self.label_2.setText(_translate("MainWindow", "新闻内容"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), _translate("MainWindow", "单条预测"))
-        self.mulityFileButton.setText(_translate("MainWindow", "导入文本"))
-        self.mulityPredictButton.setText(_translate("MainWindow", "批量预测"))
-        self.downloadButton.setText(_translate("MainWindow", "下载结果"))
-        self.label_3.setText(_translate("MainWindow", "识别结果"))
-        self.label_4.setText(_translate("MainWindow", "新闻列表"))
-        item = self.mulityNewsTable.verticalHeaderItem(0)
+        self.multiFileButton.setText(_translate("MainWindow", "导入文本"))
+        self.multiPredictButton.setText(_translate("MainWindow", "批量预测"))
+        self.multiSaveButton.setText(_translate("MainWindow", "导出结果"))
+        item = self.multiNewsTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
-        item = self.mulityNewsTable.horizontalHeaderItem(0)
+        item = self.multiNewsTable.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "新闻标题"))
-        item = self.mulityNewsTable.horizontalHeaderItem(1)
+        item = self.multiNewsTable.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "新闻内容"))
-        __sortingEnabled = self.mulityNewsTable.isSortingEnabled()
-        self.mulityNewsTable.setSortingEnabled(False)
-        self.mulityNewsTable.setSortingEnabled(__sortingEnabled)
-        item = self.mulityResultsTable.verticalHeaderItem(0)
+        __sortingEnabled = self.multiNewsTable.isSortingEnabled()
+        self.multiNewsTable.setSortingEnabled(False)
+        self.multiNewsTable.setSortingEnabled(__sortingEnabled)
+        item = self.multiResultsTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
-        item = self.mulityResultsTable.horizontalHeaderItem(0)
+        item = self.multiResultsTable.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "预测结果"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "多条预测"))
         self.searchButton.setText(_translate("MainWindow", "搜索"))
@@ -577,7 +561,7 @@ class Ui_MainWindow(object):
         item = self.sqliteTable.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "预测分类"))
         item = self.sqliteTable.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "分所属类"))
+        item.setText(_translate("MainWindow", "源分类"))
         item = self.sqliteTable.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "新闻标题"))
         item = self.sqliteTable.horizontalHeaderItem(3)
