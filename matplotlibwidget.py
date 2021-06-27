@@ -2,8 +2,6 @@ import sys
 import os.path
 import random
 import matplotlib
-
-matplotlib.use("Qt5Agg")
 from PyQt5 import QtCore
 import PyQt5.sip
 from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QSizePolicy, QWidget
@@ -19,13 +17,16 @@ from wordcloud import wordcloud, ImageColorGenerator
 import imageio
 import numpy as np
 
-#计算方法类，没有创建fig对象，便于统一
+
+# matplotlib.use("Qt5Agg")
+
+# 计算方法类，没有创建fig对象，便于统一
 class barchart():
     # def __init__(self, parent=None):
     #
 
-    def wordfreq(self,content): #content open().read() 得到的文件
-        #分离出感兴趣的名词，放在 lst_words 里
+    def wordfreq(self, content):  # content open().read() 得到的文件
+        # 分离出感兴趣的名词，放在 lst_words 里
         lst_words = []
         for x in psg.cut(content):
             # 保留名词、人名、地名，长度至少两个字
@@ -39,29 +40,28 @@ class barchart():
                 word_frequency[word] = 1
 
         word_sort = sorted(word_frequency.items(), key=lambda x: x[1], reverse=True)
-        return word_sort  #得到词频列表
+        return word_sort  # 得到词频列表
 
-    def wordfreqsum(self,txtfile):
-        #txtfile = "./text/我的孤独是一座花园.txt"
+    def wordfreqsum(self, txtfile):
+        # txtfile = "./text/我的孤独是一座花园.txt"
         (filepath, tempfilename) = os.path.split(txtfile)
         (filename, extension) = os.path.splitext(tempfilename)
 
-        self.title=filename
+        self.title = filename
         txt = open(txtfile, encoding='UTF-8').read()
-        wf=self.wordfreq(txt)
+        wf = self.wordfreq(txt)
 
-        #提取前十个频率
+        # 提取前十个频率
         # wf=wf[0:10]
 
-        self.wfreq=dict(wf) #创建一个字典对象dict(wf)
+        self.wfreq = dict(wf)  # 创建一个字典对象dict(wf)
 
-
-        self.labels=[]
-        self.nums=[]
-        for i in range(0,10):
-
+        self.labels = []
+        self.nums = []
+        for i in range(0, 10):
             self.nums.append(wf[i][1])
             self.labels.append(wf[i][0])
+
 
 class MyMplCanvas(FigureCanvas):
     """FigureCanvas的最终的父类其实是QWidget。"""
@@ -87,7 +87,7 @@ class MyMplCanvas(FigureCanvas):
                                    QSizePolicy.Expanding)
         FigureCanvas.updateGeometry(self)
 
-    def autolabel(self,rects):
+    def autolabel(self, rects):
         """Attach a text label above each bar in *rects*, displaying its height."""
         for rect in rects:
             height = rect.get_height()
@@ -97,13 +97,12 @@ class MyMplCanvas(FigureCanvas):
                                textcoords="offset points",
                                ha='center', va='bottom')
 
-    def plotchart(self,labels,nums,title):
+    def plotchart(self, labels, nums, title):
         x = np.arange(len(labels))  # the label locations
         width = 0.35  # the width of the bars
-        rects1 = self.axes.bar(x - width / 2, nums, width, label=title,color='teal')
+        rects1 = self.axes.bar(x - width / 2, nums, width, label=title, color='teal')
 
         self.autolabel(rects1)
-
 
         # Add some text for labels, title and custom x-axis tick labels, etc.
         self.axes.set_ylabel('词频')
@@ -115,28 +114,24 @@ class MyMplCanvas(FigureCanvas):
 
         self.draw()
 
-    def wordfreqplot(self,txtfile):
-        #txtfile = "./月光.txt"
+    def wordfreqplot(self, txtfile):
+        # txtfile = "./月光.txt"
 
-        self.bct=barchart()
+        self.bct = barchart()
         print("456")
         self.bct.wordfreqsum(txtfile)
-        #取参数
-        labels=self.bct.labels
-        nums=self.bct.nums
-        title=self.bct.title
-        self.wfreq=self.bct.wfreq #词频字典
+        # 取参数
+        labels = self.bct.labels
+        nums = self.bct.nums
+        title = self.bct.title
+        self.wfreq = self.bct.wfreq  # 词频字典
         print("22222")
-        self.plotchart(labels,nums,title)
+        self.plotchart(labels, nums, title)
         print(self.wfreq)
-        #当函数调用完，self.bct 对象就被清除了吗,为什么这个参数没有共享，似乎因为他们来自不同的对象
-        #虽然是同一个类属性，但是由不同对象创建
-        #self.statistics.mpl.wordfreqplot(self.txtfile)
-        #self.customwidget.mpl.wordcloud_plot(self.txtfile,self.imgfile,self.para)
-
-
-
-
+        # 当函数调用完，self.bct 对象就被清除了吗,为什么这个参数没有共享，似乎因为他们来自不同的对象
+        # 虽然是同一个类属性，但是由不同对象创建
+        # self.statistics.mpl.wordfreqplot(self.txtfile)
+        # self.customwidget.mpl.wordcloud_plot(self.txtfile,self.imgfile,self.para)
 
     def wordcloud_plot(self, txtfile, imgfile, para):
 
@@ -153,7 +148,6 @@ class MyMplCanvas(FigureCanvas):
 
         # 设定参数
 
-
         self.wc = wordcloud.WordCloud(width=para["width"],
                                       height=para['height'],
                                       background_color='white',
@@ -166,16 +160,14 @@ class MyMplCanvas(FigureCanvas):
                                       relative_scaling=para['relative_scaling'],
                                       colormap=para['colormap'])  # matplotlib colormap
 
-        if para['swf'] ==0:
+        if para['swf'] == 0:
             self.wc.generate(string)  # 先生成对象，然后考虑着色
         else:
 
             print(self.wfreq)
             self.wc.generate_from_frequencies(self.wfreq)
 
-
-
-        #清除原来的图像
+        # 清除原来的图像
         self.axes.clear()
 
         if para['tc'] == 0:
@@ -193,7 +185,6 @@ class MyMplCanvas(FigureCanvas):
         self.axes.imshow(background)
 
     def static_plot(self):
-
 
         t = arange(0.0, 3.0, 0.01)
         s = sin(2 * pi * t)
@@ -214,7 +205,6 @@ class MatplotlibWidget(QWidget):  # 这个类将导入UI文件
         self.mpl_ntb = NavigationToolbar(self.mpl, self)  # 添加完整的 toolbar
         self.layout_mpl.addWidget(self.mpl)
         self.layout_mpl.addWidget(self.mpl_ntb)
-
 
 
 if __name__ == '__main__':

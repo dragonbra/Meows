@@ -49,11 +49,12 @@ class DataBase:
 
         dbConn.close()
 
-    def dataQuery(self):
+    def dataQuery(self, keyword=""):
         dbConn = sqlite3.connect(self.DATABASE)
         dbCursor = dbConn.cursor()
 
-        dataQuery = "SELECT * from " + self.TABLENAME
+        dataQuery = "SELECT * FROM " + self.TABLENAME + " WHERE predictChannel LIKE '%" + keyword + "%' OR channelName LIKE '%" + keyword + "%' \
+                     OR title LIKE '%" + keyword + "%' OR content LIKE '%" + keyword + "%'"
         dataList = dbCursor.execute(dataQuery).fetchall()
 
         dbConn.close()
@@ -74,4 +75,3 @@ if __name__ == '__main__':
     db = DataBase()
     db.dataBaseInit()
     db.dataClear()
-    db.dataQuery()

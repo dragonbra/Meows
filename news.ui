@@ -14,13 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="mainTabWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>30</y>
       <width>871</width>
-      <height>550</height>
+      <height>591</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -56,7 +56,7 @@ QTabBar::tab:selected{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>false</bool>
@@ -140,10 +140,10 @@ QPushButton::pressed {
       <widget class="QPushButton" name="predictButton2">
        <property name="geometry">
         <rect>
-         <x>580</x>
-         <y>220</y>
+         <x>585</x>
+         <y>300</y>
          <width>61</width>
-         <height>51</height>
+         <height>61</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -261,7 +261,7 @@ QPushButton::pressed {
        <property name="geometry">
         <rect>
          <x>670</x>
-         <y>160</y>
+         <y>250</y>
          <width>161</width>
          <height>161</height>
         </rect>
@@ -278,9 +278,27 @@ border-style: solid;</string>
         <rect>
          <x>40</x>
          <y>10</y>
-         <width>62</width>
-         <height>20</height>
+         <width>76</width>
+         <height>23</height>
         </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>62</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="tabletTracking">
+        <bool>false</bool>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
@@ -288,7 +306,11 @@ border-style: solid;</string>
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
+	ScaledContents: true;
 }</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
        </property>
        <property name="text">
         <string>新闻标题</string>
@@ -299,8 +321,8 @@ border-style: solid;</string>
         <rect>
          <x>40</x>
          <y>90</y>
-         <width>62</width>
-         <height>20</height>
+         <width>76</width>
+         <height>23</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -329,6 +351,22 @@ border-style: solid;</string>
 border-width: 2px;
 border-color: #3D74BB;
 border-style: solid;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="singleLogoLabel">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>30</y>
+         <width>131</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 170, 0)</string>
+       </property>
+       <property name="text">
+        <string>LOGO</string>
        </property>
       </widget>
      </widget>
@@ -465,7 +503,7 @@ QProgressBar::chunk{
 </string>
        </property>
        <property name="value">
-        <number>24</number>
+        <number>0</number>
        </property>
        <property name="textVisible">
         <bool>false</bool>
@@ -479,6 +517,12 @@ QProgressBar::chunk{
          <width>621</width>
          <height>331</height>
         </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="styleSheet">
         <string notr="true">/*
@@ -499,8 +543,7 @@ color:rgb(255, 255, 255);
 background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));
 }
 
-/*
-悬浮item*/
+/*悬浮item*/
 QTableWidget::item:hover{
 background:rgb(0, 170, 255);
 }
@@ -516,8 +559,11 @@ border-left-width:0;
 
 </string>
        </property>
+       <property name="showGrid">
+        <bool>true</bool>
+       </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>275</number>
+        <number>200</number>
        </attribute>
        <row>
         <property name="text">
@@ -605,8 +651,11 @@ border-left-width:0;
 
 </string>
        </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>150</number>
+        <number>72</number>
        </attribute>
        <row>
         <property name="text">
@@ -615,7 +664,18 @@ border-left-width:0;
        </row>
        <column>
         <property name="text">
-         <string>预测结果</string>
+         <string>预测分类</string>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>原分类</string>
         </property>
         <property name="font">
          <font>
@@ -670,7 +730,7 @@ QPushButton::pressed {
         <string>搜索</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="searchlineEdit">
+      <widget class="QLineEdit" name="searchLineEdit">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -686,7 +746,7 @@ border-color: #3D74BB;
 border-style: solid;</string>
        </property>
       </widget>
-      <widget class="QTableWidget" name="sqliteTable">
+      <widget class="QTableWidget" name="searchDBTable">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -714,8 +774,7 @@ color:rgb(255, 255, 255);
 background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));
 }
 
-/*
-悬浮item*/
+/*悬浮item*/
 QTableWidget::item:hover{
 background:rgb(0, 170, 255);
 }
@@ -755,7 +814,7 @@ border-left-width:0;
        </column>
        <column>
         <property name="text">
-         <string>源分类</string>
+         <string>原分类</string>
         </property>
         <property name="font">
          <font>
@@ -797,18 +856,18 @@ border-left-width:0;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>10</y>
         <width>871</width>
-        <height>491</height>
+        <height>561</height>
        </rect>
       </property>
-      <widget class="QTabWidget" name="tabWidget_2">
+      <widget class="QTabWidget" name="wordCloudTabWidget">
        <property name="geometry">
         <rect>
-         <x>310</x>
-         <y>0</y>
-         <width>561</width>
-         <height>491</height>
+         <x>320</x>
+         <y>10</y>
+         <width>531</width>
+         <height>501</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -818,24 +877,24 @@ QTabWidget::tab-bar{
     alignment:left;
 }
 QTabBar::tab{
-	min-width:60px;
-	min-height:16px;
+	min-width:80px;
+	min-height:30px;
 	font:13pt '微软雅黑';
-	background:white;
-	color:rgb(170, 170, 127);
+	background: rgb(255, 170, 0);
+	color: white;
 }
 QTabBar::tab:hover{
-	color:white;
-	background:rgb(170, 170, 127);
+	color:rgb(255, 170, 0);
+	background: white;
 }
 QTabBar::tab:selected{
-	border-color:white;
-	background:rgb(170, 170, 127);
-	color:white;
+	border-color: rgb(255, 170, 0);
+	background: white;
+	color: rgb(255, 170, 0);
 }</string>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="WordCloudTab">
         <attribute name="title">
@@ -851,7 +910,7 @@ QTabBar::tab:selected{
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(250, 238, 255);</string>
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </widget>
@@ -869,7 +928,7 @@ QTabBar::tab:selected{
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(250, 238, 255);</string>
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </widget>
@@ -878,7 +937,7 @@ QTabBar::tab:selected{
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>50</y>
+         <y>40</y>
          <width>71</width>
          <height>41</height>
         </rect>
@@ -900,7 +959,7 @@ QTabBar::tab:selected{
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>130</y>
+         <y>120</y>
          <width>71</width>
          <height>41</height>
         </rect>
@@ -922,11 +981,16 @@ QTabBar::tab:selected{
        <property name="geometry">
         <rect>
          <x>110</x>
-         <y>60</y>
+         <y>50</y>
          <width>151</width>
          <height>31</height>
         </rect>
        </property>
+       <item>
+        <property name="text">
+         <string>所有</string>
+        </property>
+       </item>
        <item>
         <property name="text">
          <string>财经</string>
@@ -982,11 +1046,16 @@ QTabBar::tab:selected{
        <property name="geometry">
         <rect>
          <x>110</x>
-         <y>140</y>
+         <y>130</y>
          <width>151</width>
          <height>31</height>
         </rect>
        </property>
+       <item>
+        <property name="text">
+         <string>皮卡丘</string>
+        </property>
+       </item>
        <item>
         <property name="text">
          <string>猫</string>
@@ -1000,11 +1069,6 @@ QTabBar::tab:selected{
        <item>
         <property name="text">
          <string>伊布</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>皮卡丘</string>
         </property>
        </item>
       </widget>
@@ -1083,17 +1147,18 @@ QPushButton::pressed {
         <height>491</height>
        </rect>
       </property>
-      <widget class="QTextBrowser" name="introductionBroswer">
+      <widget class="QTextBrowser" name="introTextBrowser">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>20</y>
-         <width>661</width>
-         <height>381</height>
+         <y>30</y>
+         <width>611</width>
+         <height>161</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: white;
+font: 25 16pt &quot;微软雅黑 Light&quot;;
 border-width: 2px;
 border-color: #3D74BB;
 border-style: solid;</string>
@@ -1102,8 +1167,27 @@ border-style: solid;</string>
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:26pt;&quot;&gt;简介&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'微软雅黑 Light'; font-size:16pt; font-weight:24; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;这里是Meows团队~&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;又是元气满满的一天呢！&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Meow_1&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;4 a.m.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="introLogoLabel">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>30</y>
+         <width>131</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 170, 0)</string>
+       </property>
+       <property name="text">
+        <string>LOGO</string>
        </property>
       </widget>
      </widget>

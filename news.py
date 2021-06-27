@@ -17,10 +17,10 @@ class Ui_MainWindow(object):
         MainWindow.resize(941, 658)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(30, 30, 871, 550))
-        self.tabWidget.setMinimumSize(QtCore.QSize(661, 500))
-        self.tabWidget.setStyleSheet("QTabWidget::pane{\n"
+        self.mainTabWidget = QtWidgets.QTabWidget(self.centralwidget)
+        self.mainTabWidget.setGeometry(QtCore.QRect(30, 30, 871, 591))
+        self.mainTabWidget.setMinimumSize(QtCore.QSize(661, 500))
+        self.mainTabWidget.setStyleSheet("QTabWidget::pane{\n"
 "}\n"
 "QTabWidget::tab-bar{\n"
 "    alignment:left;\n"
@@ -41,11 +41,11 @@ class Ui_MainWindow(object):
 "    background:white;\n"
 "    color:rgb(0, 170, 255);\n"
 "}")
-        self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
-        self.tabWidget.setUsesScrollButtons(False)
-        self.tabWidget.setDocumentMode(False)
-        self.tabWidget.setTabsClosable(False)
-        self.tabWidget.setObjectName("tabWidget")
+        self.mainTabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.mainTabWidget.setUsesScrollButtons(False)
+        self.mainTabWidget.setDocumentMode(False)
+        self.mainTabWidget.setTabsClosable(False)
+        self.mainTabWidget.setObjectName("mainTabWidget")
         self.tab_1 = QtWidgets.QWidget()
         self.tab_1.setStyleSheet("")
         self.tab_1.setObjectName("tab_1")
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
 "}")
         self.singleFileButton.setObjectName("singleFileButton")
         self.predictButton2 = QtWidgets.QPushButton(self.widget_1)
-        self.predictButton2.setGeometry(QtCore.QRect(580, 220, 61, 51))
+        self.predictButton2.setGeometry(QtCore.QRect(585, 300, 61, 61))
         self.predictButton2.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -166,23 +166,33 @@ class Ui_MainWindow(object):
         self.exitButton.setObjectName("exitButton")
         self.horizontalLayout.addWidget(self.exitButton)
         self.singleResultBroswer = QtWidgets.QTextBrowser(self.widget_1)
-        self.singleResultBroswer.setGeometry(QtCore.QRect(670, 160, 161, 161))
+        self.singleResultBroswer.setGeometry(QtCore.QRect(670, 250, 161, 161))
         self.singleResultBroswer.setStyleSheet("background-color: white;\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
 "border-style: solid;")
         self.singleResultBroswer.setObjectName("singleResultBroswer")
         self.label = QtWidgets.QLabel(self.widget_1)
-        self.label.setGeometry(QtCore.QRect(40, 10, 62, 20))
+        self.label.setGeometry(QtCore.QRect(40, 10, 76, 23))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setMinimumSize(QtCore.QSize(62, 0))
+        self.label.setTabletTracking(False)
+        self.label.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.label.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
 "    border-radius: 4px;\n"
 "    padding: 2px;\n"
+"    ScaledContents: true;\n"
 "}")
+        self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widget_1)
-        self.label_2.setGeometry(QtCore.QRect(40, 90, 62, 20))
+        self.label_2.setGeometry(QtCore.QRect(40, 90, 76, 23))
         self.label_2.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -197,7 +207,11 @@ class Ui_MainWindow(object):
 "border-color: #3D74BB;\n"
 "border-style: solid;")
         self.singleNewslineEdit.setObjectName("singleNewslineEdit")
-        self.tabWidget.addTab(self.tab_1, "")
+        self.singleLogoLabel = QtWidgets.QLabel(self.widget_1)
+        self.singleLogoLabel.setGeometry(QtCore.QRect(700, 30, 131, 131))
+        self.singleLogoLabel.setStyleSheet("background-color:rgb(255, 170, 0)")
+        self.singleLogoLabel.setObjectName("singleLogoLabel")
+        self.mainTabWidget.addTab(self.tab_1, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.widget_4 = QtWidgets.QWidget(self.tab_2)
@@ -286,11 +300,16 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "")
-        self.multiLoadingLine.setProperty("value", 24)
+        self.multiLoadingLine.setProperty("value", 0)
         self.multiLoadingLine.setTextVisible(False)
         self.multiLoadingLine.setObjectName("multiLoadingLine")
         self.multiNewsTable = QtWidgets.QTableWidget(self.widget_4)
         self.multiNewsTable.setGeometry(QtCore.QRect(30, 30, 621, 331))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.multiNewsTable.sizePolicy().hasHeightForWidth())
+        self.multiNewsTable.setSizePolicy(sizePolicy)
         self.multiNewsTable.setStyleSheet("/*\n"
 "tabelwidget*/\n"
 "QTableWidget{\n"
@@ -309,8 +328,7 @@ class Ui_MainWindow(object):
 "background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));\n"
 "}\n"
 "\n"
-"/*\n"
-"悬浮item*/\n"
+"/*悬浮item*/\n"
 "QTableWidget::item:hover{\n"
 "background:rgb(0, 170, 255);\n"
 "}\n"
@@ -325,6 +343,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
+        self.multiNewsTable.setShowGrid(True)
         self.multiNewsTable.setObjectName("multiNewsTable")
         self.multiNewsTable.setColumnCount(2)
         self.multiNewsTable.setRowCount(1)
@@ -346,7 +365,7 @@ class Ui_MainWindow(object):
         self.multiNewsTable.setItem(0, 0, item)
         item = QtWidgets.QTableWidgetItem()
         self.multiNewsTable.setItem(0, 1, item)
-        self.multiNewsTable.horizontalHeader().setDefaultSectionSize(275)
+        self.multiNewsTable.horizontalHeader().setDefaultSectionSize(200)
         self.multiResultsTable = QtWidgets.QTableWidget(self.widget_4)
         self.multiResultsTable.setGeometry(QtCore.QRect(680, 30, 171, 451))
         self.multiResultsTable.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -385,7 +404,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.multiResultsTable.setObjectName("multiResultsTable")
-        self.multiResultsTable.setColumnCount(1)
+        self.multiResultsTable.setColumnCount(2)
         self.multiResultsTable.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
         self.multiResultsTable.setVerticalHeaderItem(0, item)
@@ -395,8 +414,15 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         item.setFont(font)
         self.multiResultsTable.setHorizontalHeaderItem(0, item)
-        self.multiResultsTable.horizontalHeader().setDefaultSectionSize(150)
-        self.tabWidget.addTab(self.tab_2, "")
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.multiResultsTable.setHorizontalHeaderItem(1, item)
+        self.multiResultsTable.horizontalHeader().setCascadingSectionResizes(False)
+        self.multiResultsTable.horizontalHeader().setDefaultSectionSize(72)
+        self.mainTabWidget.addTab(self.tab_2, "")
         self.tab_3 = QtWidgets.QWidget()
         self.tab_3.setObjectName("tab_3")
         self.widget_3 = QtWidgets.QWidget(self.tab_3)
@@ -420,16 +446,16 @@ class Ui_MainWindow(object):
 "    border-style: inset;\n"
 "}")
         self.searchButton.setObjectName("searchButton")
-        self.searchlineEdit = QtWidgets.QLineEdit(self.widget_3)
-        self.searchlineEdit.setGeometry(QtCore.QRect(30, 20, 201, 41))
-        self.searchlineEdit.setStyleSheet("background-color: white;\n"
+        self.searchLineEdit = QtWidgets.QLineEdit(self.widget_3)
+        self.searchLineEdit.setGeometry(QtCore.QRect(30, 20, 201, 41))
+        self.searchLineEdit.setStyleSheet("background-color: white;\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
 "border-style: solid;")
-        self.searchlineEdit.setObjectName("searchlineEdit")
-        self.sqliteTable = QtWidgets.QTableWidget(self.widget_3)
-        self.sqliteTable.setGeometry(QtCore.QRect(30, 70, 821, 391))
-        self.sqliteTable.setStyleSheet("/*\n"
+        self.searchLineEdit.setObjectName("searchLineEdit")
+        self.searchDBTable = QtWidgets.QTableWidget(self.widget_3)
+        self.searchDBTable.setGeometry(QtCore.QRect(30, 70, 821, 391))
+        self.searchDBTable.setStyleSheet("/*\n"
 "tabelwidget*/\n"
 "QTableWidget{\n"
 "border:1px solid #242424;\n"
@@ -447,8 +473,7 @@ class Ui_MainWindow(object):
 "background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 rgb(0, 170, 255));\n"
 "}\n"
 "\n"
-"/*\n"
-"悬浮item*/\n"
+"/*悬浮item*/\n"
 "QTableWidget::item:hover{\n"
 "background:rgb(0, 170, 255);\n"
 "}\n"
@@ -463,83 +488,83 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.sqliteTable.setObjectName("sqliteTable")
-        self.sqliteTable.setColumnCount(4)
-        self.sqliteTable.setRowCount(1)
+        self.searchDBTable.setObjectName("searchDBTable")
+        self.searchDBTable.setColumnCount(4)
+        self.searchDBTable.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
-        self.sqliteTable.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        item.setFont(font)
-        self.sqliteTable.setHorizontalHeaderItem(0, item)
+        self.searchDBTable.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         item.setFont(font)
-        self.sqliteTable.setHorizontalHeaderItem(1, item)
+        self.searchDBTable.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         item.setFont(font)
-        self.sqliteTable.setHorizontalHeaderItem(2, item)
+        self.searchDBTable.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         item.setFont(font)
-        self.sqliteTable.setHorizontalHeaderItem(3, item)
-        self.sqliteTable.horizontalHeader().setCascadingSectionResizes(False)
-        self.sqliteTable.horizontalHeader().setDefaultSectionSize(198)
-        self.tabWidget.addTab(self.tab_3, "")
+        self.searchDBTable.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.searchDBTable.setHorizontalHeaderItem(3, item)
+        self.searchDBTable.horizontalHeader().setCascadingSectionResizes(False)
+        self.searchDBTable.horizontalHeader().setDefaultSectionSize(198)
+        self.mainTabWidget.addTab(self.tab_3, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
         self.widget = QtWidgets.QWidget(self.tab_4)
-        self.widget.setGeometry(QtCore.QRect(0, 0, 871, 491))
+        self.widget.setGeometry(QtCore.QRect(0, 10, 871, 561))
         self.widget.setObjectName("widget")
-        self.tabWidget_2 = QtWidgets.QTabWidget(self.widget)
-        self.tabWidget_2.setGeometry(QtCore.QRect(310, 0, 561, 491))
-        self.tabWidget_2.setStyleSheet("QTabWidget::pane{\n"
+        self.wordCloudTabWidget = QtWidgets.QTabWidget(self.widget)
+        self.wordCloudTabWidget.setGeometry(QtCore.QRect(320, 10, 531, 501))
+        self.wordCloudTabWidget.setStyleSheet("QTabWidget::pane{\n"
 "}\n"
 "QTabWidget::tab-bar{\n"
 "    alignment:left;\n"
 "}\n"
 "QTabBar::tab{\n"
-"    min-width:60px;\n"
-"    min-height:16px;\n"
+"    min-width:80px;\n"
+"    min-height:30px;\n"
 "    font:13pt \'微软雅黑\';\n"
-"    background:white;\n"
-"    color:rgb(170, 170, 127);\n"
+"    background: rgb(255, 170, 0);\n"
+"    color: white;\n"
 "}\n"
 "QTabBar::tab:hover{\n"
-"    color:white;\n"
-"    background:rgb(170, 170, 127);\n"
+"    color:rgb(255, 170, 0);\n"
+"    background: white;\n"
 "}\n"
 "QTabBar::tab:selected{\n"
-"    border-color:white;\n"
-"    background:rgb(170, 170, 127);\n"
-"    color:white;\n"
+"    border-color: rgb(255, 170, 0);\n"
+"    background: white;\n"
+"    color: rgb(255, 170, 0);\n"
 "}")
-        self.tabWidget_2.setObjectName("tabWidget_2")
+        self.wordCloudTabWidget.setObjectName("wordCloudTabWidget")
         self.WordCloudTab = QtWidgets.QWidget()
         self.WordCloudTab.setObjectName("WordCloudTab")
         self.WordCloudWidget = MatplotlibWidget(self.WordCloudTab)
         self.WordCloudWidget.setGeometry(QtCore.QRect(0, 0, 561, 491))
-        self.WordCloudWidget.setStyleSheet("background-color: rgb(250, 238, 255);")
+        self.WordCloudWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.WordCloudWidget.setObjectName("WordCloudWidget")
-        self.tabWidget_2.addTab(self.WordCloudTab, "")
+        self.wordCloudTabWidget.addTab(self.WordCloudTab, "")
         self.WordCountTab = QtWidgets.QWidget()
         self.WordCountTab.setObjectName("WordCountTab")
         self.WordCountWidget = MatplotlibWidget(self.WordCountTab)
         self.WordCountWidget.setGeometry(QtCore.QRect(0, 0, 561, 491))
-        self.WordCountWidget.setStyleSheet("background-color: rgb(250, 238, 255);")
+        self.WordCountWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.WordCountWidget.setObjectName("WordCountWidget")
-        self.tabWidget_2.addTab(self.WordCountTab, "")
+        self.wordCloudTabWidget.addTab(self.WordCountTab, "")
         self.label_3 = QtWidgets.QLabel(self.widget)
-        self.label_3.setGeometry(QtCore.QRect(20, 50, 71, 41))
+        self.label_3.setGeometry(QtCore.QRect(20, 40, 71, 41))
         self.label_3.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -549,7 +574,7 @@ class Ui_MainWindow(object):
 "}")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.widget)
-        self.label_4.setGeometry(QtCore.QRect(20, 130, 71, 41))
+        self.label_4.setGeometry(QtCore.QRect(20, 120, 71, 41))
         self.label_4.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -559,7 +584,7 @@ class Ui_MainWindow(object):
 "}")
         self.label_4.setObjectName("label_4")
         self.wordCloudBox = QtWidgets.QComboBox(self.widget)
-        self.wordCloudBox.setGeometry(QtCore.QRect(110, 60, 151, 31))
+        self.wordCloudBox.setGeometry(QtCore.QRect(110, 50, 151, 31))
         self.wordCloudBox.setObjectName("wordCloudBox")
         self.wordCloudBox.addItem("")
         self.wordCloudBox.addItem("")
@@ -571,8 +596,9 @@ class Ui_MainWindow(object):
         self.wordCloudBox.addItem("")
         self.wordCloudBox.addItem("")
         self.wordCloudBox.addItem("")
+        self.wordCloudBox.addItem("")
         self.wordSizeBox = QtWidgets.QComboBox(self.widget)
-        self.wordSizeBox.setGeometry(QtCore.QRect(110, 140, 151, 31))
+        self.wordSizeBox.setGeometry(QtCore.QRect(110, 130, 151, 31))
         self.wordSizeBox.setObjectName("wordSizeBox")
         self.wordSizeBox.addItem("")
         self.wordSizeBox.addItem("")
@@ -620,28 +646,33 @@ class Ui_MainWindow(object):
 "}")
         self.wordSaveButton.setObjectName("wordSaveButton")
         self.horizontalLayout_3.addWidget(self.wordSaveButton)
-        self.tabWidget.addTab(self.tab_4, "")
+        self.mainTabWidget.addTab(self.tab_4, "")
         self.tab_5 = QtWidgets.QWidget()
         self.tab_5.setObjectName("tab_5")
         self.widget_2 = QtWidgets.QWidget(self.tab_5)
         self.widget_2.setGeometry(QtCore.QRect(0, 0, 871, 491))
         self.widget_2.setObjectName("widget_2")
-        self.introductionBroswer = QtWidgets.QTextBrowser(self.widget_2)
-        self.introductionBroswer.setGeometry(QtCore.QRect(20, 20, 661, 381))
-        self.introductionBroswer.setStyleSheet("background-color: white;\n"
+        self.introTextBrowser = QtWidgets.QTextBrowser(self.widget_2)
+        self.introTextBrowser.setGeometry(QtCore.QRect(20, 30, 611, 161))
+        self.introTextBrowser.setStyleSheet("background-color: white;\n"
+"font: 25 16pt \"微软雅黑 Light\";\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
 "border-style: solid;")
-        self.introductionBroswer.setObjectName("introductionBroswer")
-        self.tabWidget.addTab(self.tab_5, "")
+        self.introTextBrowser.setObjectName("introTextBrowser")
+        self.introLogoLabel = QtWidgets.QLabel(self.widget_2)
+        self.introLogoLabel.setGeometry(QtCore.QRect(700, 30, 131, 131))
+        self.introLogoLabel.setStyleSheet("background-color: rgb(255, 170, 0)")
+        self.introLogoLabel.setObjectName("introLogoLabel")
+        self.mainTabWidget.addTab(self.tab_5, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(1)
+        self.mainTabWidget.setCurrentIndex(0)
+        self.wordCloudTabWidget.setCurrentIndex(0)
         self.exitButton.clicked.connect(MainWindow.close)
         self.clearButton.clicked.connect(self.singleNewslineEdit.clear)
         self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
@@ -658,7 +689,8 @@ class Ui_MainWindow(object):
         self.exitButton.setText(_translate("MainWindow", "退出程序"))
         self.label.setText(_translate("MainWindow", "新闻标题"))
         self.label_2.setText(_translate("MainWindow", "新闻内容"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), _translate("MainWindow", "单条预测"))
+        self.singleLogoLabel.setText(_translate("MainWindow", "LOGO"))
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_1), _translate("MainWindow", "单条预测"))
         self.multiFileButton.setText(_translate("MainWindow", "导入文本"))
         self.multiPredictButton.setText(_translate("MainWindow", "批量预测"))
         self.multiSaveButton.setText(_translate("MainWindow", "导出结果"))
@@ -674,45 +706,52 @@ class Ui_MainWindow(object):
         item = self.multiResultsTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.multiResultsTable.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "预测结果"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "多条预测"))
-        self.searchButton.setText(_translate("MainWindow", "搜索"))
-        item = self.sqliteTable.verticalHeaderItem(0)
-        item.setText(_translate("MainWindow", "1"))
-        item = self.sqliteTable.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "预测分类"))
-        item = self.sqliteTable.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "源分类"))
-        item = self.sqliteTable.horizontalHeaderItem(2)
+        item = self.multiResultsTable.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "原分类"))
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_2), _translate("MainWindow", "多条预测"))
+        self.searchButton.setText(_translate("MainWindow", "搜索"))
+        item = self.searchDBTable.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.searchDBTable.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "预测分类"))
+        item = self.searchDBTable.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "原分类"))
+        item = self.searchDBTable.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "新闻标题"))
-        item = self.sqliteTable.horizontalHeaderItem(3)
+        item = self.searchDBTable.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "新闻内容"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.WordCloudTab), _translate("MainWindow", "词云"))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.WordCountTab), _translate("MainWindow", "统计"))
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
+        self.wordCloudTabWidget.setTabText(self.wordCloudTabWidget.indexOf(self.WordCloudTab), _translate("MainWindow", "词云"))
+        self.wordCloudTabWidget.setTabText(self.wordCloudTabWidget.indexOf(self.WordCountTab), _translate("MainWindow", "统计"))
         self.label_3.setText(_translate("MainWindow", "选择词源"))
         self.label_4.setText(_translate("MainWindow", "选择形状"))
-        self.wordCloudBox.setItemText(0, _translate("MainWindow", "财经"))
-        self.wordCloudBox.setItemText(1, _translate("MainWindow", "房产"))
-        self.wordCloudBox.setItemText(2, _translate("MainWindow", "教育"))
-        self.wordCloudBox.setItemText(3, _translate("MainWindow", "科技"))
-        self.wordCloudBox.setItemText(4, _translate("MainWindow", "军事"))
-        self.wordCloudBox.setItemText(5, _translate("MainWindow", "汽车"))
-        self.wordCloudBox.setItemText(6, _translate("MainWindow", "体育"))
-        self.wordCloudBox.setItemText(7, _translate("MainWindow", "游戏"))
-        self.wordCloudBox.setItemText(8, _translate("MainWindow", "娱乐"))
-        self.wordCloudBox.setItemText(9, _translate("MainWindow", "其他"))
-        self.wordSizeBox.setItemText(0, _translate("MainWindow", "猫"))
-        self.wordSizeBox.setItemText(1, _translate("MainWindow", "可达鸭"))
-        self.wordSizeBox.setItemText(2, _translate("MainWindow", "伊布"))
-        self.wordSizeBox.setItemText(3, _translate("MainWindow", "皮卡丘"))
+        self.wordCloudBox.setItemText(0, _translate("MainWindow", "所有"))
+        self.wordCloudBox.setItemText(1, _translate("MainWindow", "财经"))
+        self.wordCloudBox.setItemText(2, _translate("MainWindow", "房产"))
+        self.wordCloudBox.setItemText(3, _translate("MainWindow", "教育"))
+        self.wordCloudBox.setItemText(4, _translate("MainWindow", "科技"))
+        self.wordCloudBox.setItemText(5, _translate("MainWindow", "军事"))
+        self.wordCloudBox.setItemText(6, _translate("MainWindow", "汽车"))
+        self.wordCloudBox.setItemText(7, _translate("MainWindow", "体育"))
+        self.wordCloudBox.setItemText(8, _translate("MainWindow", "游戏"))
+        self.wordCloudBox.setItemText(9, _translate("MainWindow", "娱乐"))
+        self.wordCloudBox.setItemText(10, _translate("MainWindow", "其他"))
+        self.wordSizeBox.setItemText(0, _translate("MainWindow", "皮卡丘"))
+        self.wordSizeBox.setItemText(1, _translate("MainWindow", "猫"))
+        self.wordSizeBox.setItemText(2, _translate("MainWindow", "可达鸭"))
+        self.wordSizeBox.setItemText(3, _translate("MainWindow", "伊布"))
         self.wordDrawButton.setText(_translate("MainWindow", "绘制"))
         self.wordSaveButton.setText(_translate("MainWindow", "保存"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "数据分析"))
-        self.introductionBroswer.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_4), _translate("MainWindow", "数据分析"))
+        self.introTextBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:26pt;\">简介</span></p></body></html>"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("MainWindow", "关于我们"))
+"</style></head><body style=\" font-family:\'微软雅黑 Light\'; font-size:16pt; font-weight:24; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">这里是Meows团队~</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">又是元气满满的一天呢！</p>\n"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Meow_1</p>\n"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4 a.m.</p></body></html>"))
+        self.introLogoLabel.setText(_translate("MainWindow", "LOGO"))
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_5), _translate("MainWindow", "关于我们"))
 from matplotlibwidget import MatplotlibWidget

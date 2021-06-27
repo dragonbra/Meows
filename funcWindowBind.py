@@ -1,13 +1,12 @@
 import time
 
 import pandas as pd
-from PyQt5.QtWidgets import *
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from news import Ui_MainWindow
 import sys
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 import tqdm
 import dataProcUtils
 import dataBaseUtils
@@ -21,27 +20,39 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         st = time.time()
         self.classifier = Classifier()
-        print(time.time() - st)
+        print("加载模型花费:%.2f" % (time.time() - st), "秒")
 
         self.db = dataBaseUtils.DataBase()
         self.defaultFilePath = "./example/"
+        self.LOGOPATH = "./data/logo.jpg"
 
         # singlePredict Widget's Functions
         self.singleFileButton.clicked.connect(self.singleGetNewsFromFile)
-
+        logoImg = QtGui.QImage(self.LOGOPATH).scaled(self.singleLogoLabel.width(), self.singleLogoLabel.height())
+        self.singleLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
         self.predictButton.clicked.connect(self.singleNewsPredict)
         self.predictButton2.clicked.connect(self.singleNewsPredict)
 
         # multiPredict Widget's Function
         self.multiNewsSize = 0
-        self.multiNewsTable.setColumnWidth(0, 300)
-        self.multiNewsTable.setColumnWidth(1, 500)
+        self.multiNewsTable.setColumnWidth(0, 200)
+        self.multiNewsTable.setColumnWidth(1, 400)
         self.multiFileButton.clicked.connect(self.multiGetNewsFromFile)
         self.multiPredictButton.clicked.connect(self.multiNewsPredict)
-
         self.multiSaveButton.clicked.connect(self.multiNewsSave)
 
+        # searchDB Widget's Function
+        self.searchDBTable.setColumnWidth(0, 75)
+        self.searchDBTable.setColumnWidth(1, 75)
+        self.searchDBTable.setColumnWidth(2, 200)
+        self.searchDBTable.setColumnWidth(3, 400)
+        self.searchButton.clicked.connect(self.searchDBtoTable)
+
+        # wordCloud Widget's Function
         self.wordDrawButton.clicked.connect(self.wordCloudDraw)
+
+        # intro Widget's Function
+        self.introLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
 
     def singleGetNewsFromFile(self):
         filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.defaultFilePath, "单新闻文件(*.txt)")
@@ -74,14 +85,12 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.db.dataInsert(predictChannel=predictChannel, channelName="", title=newsTitle, content=newsContent)
 
     def multiNewsInsertTableWidget(self, index, channelName, newsTitle, newsContent):
-        # TODO
         # Insert news into table widget in multiNewsWidget
         if index != 0:
             self.multiNewsTable.insertRow(index)
-        self.multiNewsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(newsTitle))
-        self.multiNewsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(newsContent))
+        self.multiNewsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(str(newsTitle)))
+        self.multiNewsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(newsContent)))
         # QApplication.processEvents()
-        pass
 
     def multiGetNewsFromFile(self):
         self.multiNewsTable.setRowCount(1)
@@ -89,13 +98,10 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.multiResultsTable.setRowCount(1)
         self.multiResultsTable.clearContents()
 
-        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.defaultFilePath, "多新闻文件(*.csv, *.xls, *.xlsx)")
-
-        print(filePath)
-        print(len(filePath))
+        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.defaultFilePath,
+                                                                   "多新闻文件(*.csv, *.xls, *.xlsx)")
         if len(filePath) == 0:
             pass
-
         else:
             try:
                 self.channelNameList, self.newsTitleList, self.newsContentList = dataProcUtils.readCorpus(filePath)
@@ -107,12 +113,19 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     self.multiNewsInsertTableWidget(index, channelName, newsTitle, newsContent)
 
             except Exception as e:
+                print(e)
                 pass
+        print(filePath, "has been loaded!")
+        print(str(self.channelNameList[0]))
 
     def multiNewsPredict(self):
         if self.multiNewsSize == 0:
             return
+        self.multiLoadingLine.setRange(0, self.multiNewsSize - 1)
         for index in range(self.multiNewsSize):
+            channelName = self.channelNameList[index]
+            if str(channelName) == "nan":
+                channelName = "(空)"
             newsTitle = self.multiNewsTable.item(index, 0).text()
             newsContent = self.multiNewsTable.item(index, 1).text()
             newsTextOri = str.strip(dataProcUtils.newsMerge(newsTitle, newsContent))
@@ -121,16 +134,22 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.multiResultsTable.insertRow(index)
 
             if len(newsTextOri) == 0:
-                self.multiResultsTable.setItem(index, 0, "空")
+                self.multiResultsTable.setItem(index, 0, "(空)")
+                self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
             else:
                 predictChannel = self.classifier.predict(newsTextOri)
                 self.multiResultsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(predictChannel))
+                self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
+                self.db.dataInsert(predictChannel, channelName, newsTitle, newsContent)
 
+            self.multiNewsTable.selectRow(index)
+            self.multiResultsTable.selectRow(index)
+            self.multiLoadingLine.setValue(index)
             QApplication.processEvents()
 
     def multiNewsSave(self):
-        filePath, fileType = QtWidgets.QFileDialog.getSaveFileName(self, "导出结果", self.defaultFilePath, ".csv文件(*.csv)")
-
+        filePath, fileType = QtWidgets.QFileDialog.getSaveFileName(self, "导出结果", self.defaultFilePath + "result.csv",
+                                                                   ".csv文件(*.csv)")
         try:
             newsTitleList = []
             newsContentList = []
@@ -147,22 +166,56 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
             output_excel = {'content': newsContentList, 'channelName': channelNameList, 'title': newsTitleList}
             output = pd.DataFrame(output_excel)
-            print(filePath)
             output.to_csv(filePath, index=False, encoding="gb18030", header=None)
+            print(filePath, "Succeeded!")
 
         except Exception as e:
             pass
 
+    def searchDBInsertTableWidget(self, index, predictChannel, channelName, newsTitle, newsContent):
+        # Insert news into table widget in multiNewsWidget
+        if index != 0:
+            self.searchDBTable.insertRow(index)
+        self.searchDBTable.setItem(index, 0, QtWidgets.QTableWidgetItem(str(predictChannel)))
+        self.searchDBTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
+        self.searchDBTable.setItem(index, 2, QtWidgets.QTableWidgetItem(str(newsTitle)))
+        self.searchDBTable.setItem(index, 3, QtWidgets.QTableWidgetItem(str(newsContent)))
+
+        colorStr = "cyan"
+        if str(channelName) != "(空)" and len(str(channelName)) != 0:
+            if predictChannel == channelName:
+                colorStr = "lightgreen"
+            else:
+                colorStr = "#ff6565"
+        self.searchDBTable.item(index, 0).setBackground(QtGui.QColor(colorStr))
+        # QApplication.processEvents()
+
+    def searchDBtoTable(self):
+        self.searchDBTable.setRowCount(1)
+        self.searchDBTable.clearContents()
+
+        keyword = self.searchLineEdit.text()
+        dataList = self.db.dataQuery(keyword)
+        dataListSize = len(dataList)
+
+        for index in range(dataListSize):
+            dataRow = dataList[index]
+            predictChannel = dataRow[1]
+            channelName = dataRow[2]
+            newsTitle = dataRow[3]
+            newsContent = dataRow[4]
+            self.searchDBInsertTableWidget(index, predictChannel, channelName, newsTitle, newsContent)
+
     def wordCloudinit(self):
         self.tc = True
-        self.swf= True
+        self.swf = True
         self.pscale = 2
-        self.number=200
-        self.pheight=1000
-        self.pwidth =1000
-        self.pstopwords=""
-        self.pcontour_width=0
-        self.prelative_scaling=0.5
+        self.number = 200
+        self.pheight = 1000
+        self.pwidth = 1000
+        self.pstopwords = ""
+        self.pcontour_width = 0
+        self.prelative_scaling = 0.5
         self.pcolormap = "viridis"
         sfont = "宋体"
 
@@ -171,38 +224,38 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         list = [('tc', self.tc),
                 ('scale', self.pscale),
-                ('font_path',self.font_path),
-                ('number',self.number),
-                ('width',self.pwidth),
-                ('height',self.pheight),
-                ('stopwords',self.pstopwords),
-                ('contour_width',self.pcontour_width),
-                ('colormap',self.pcolormap),
-                ('relative_scaling',self.prelative_scaling),
-                ('swf',self.swf)]
+                ('font_path', self.font_path),
+                ('number', self.number),
+                ('width', self.pwidth),
+                ('height', self.pheight),
+                ('stopwords', self.pstopwords),
+                ('contour_width', self.pcontour_width),
+                ('colormap', self.pcolormap),
+                ('relative_scaling', self.prelative_scaling),
+                ('swf', self.swf)]
 
-        self.para = dict(list) #将列表转化为字典
+        self.para = dict(list)  # 将列表转化为字典
         print(len(self.para))
 
     def wordCloudDraw(self):
         self.wordCloudinit()
-        self.txtfile = "D:/NewsClassifier/月光.txt"
-        self.imgfile = "D:/NewsClassifier/wordSizeImages/皮卡丘.png"
+        self.txtfile = "./月光.txt"
+        self.imgfile = "./wordSizeImages/皮卡丘.png"
 
-        if self.swf==1: #如果按照词频来绘制
+        if self.swf == 1:  # 如果按照词频来绘制
             try:
                 self.WordCountWidget.mpl.wordfreqplot(self.txtfile)
-                self.tabWidget_2.setCurrentIndex(1)
+                self.wordCloudTabWidget.setCurrentIndex(1)
             except Exception as e:
                 print(e)
                 return
 
-
-        #self.mpl  是MyMplCanvas() 对象
+        # self.mpl  是MyMplCanvas() 对象
         print(self.para)
 
-        self.WordCloudWidget.mpl.wordcloud_plot(self.txtfile,self.imgfile,self.para)
-        #self.mytips.setPlainText("正在生成图像，请稍等...")
+        self.WordCloudWidget.mpl.wordcloud_plot(self.txtfile, self.imgfile, self.para)
+        self.wordCloudTabWidget.setCurrentIndex(0)
+        # self.mytips.setPlainText("正在生成图像，请稍等...")
 
 
 if __name__ == '__main__':

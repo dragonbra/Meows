@@ -45,7 +45,7 @@ def readCorpus(filePath):
     newsContentList = []
 
     try:
-        dataFile = pd.read_excel(filePath)
+        dataFile = pd.read_excel(filePath, header=None)
         dataTable = dataFile.values
         for dataRow in dataTable:
             # dataRow[0] = content
@@ -53,17 +53,19 @@ def readCorpus(filePath):
             # dataRow[2] = title
             try:
                 newsContent = dataRow[0]
-                channelName = dataRow[1]  # 将标签转化为对应的数字label
+                channelName = dataRow[1]
                 newsTitle = dataRow[2]
 
                 newsContentList.append(newsContent)
                 channelNameList.append(channelName)
                 newsTitleList.append(newsTitle)
 
-            except Exception:
+            except Exception as e:
+                print(e)
                 continue
 
-    except Exception:
+    except Exception as e:
+        print(e)
         pass
 
     return channelNameList, newsTitleList, newsContentList
@@ -76,9 +78,11 @@ class Classifier:
     target = ["财经", "房产", "教育", "科技", "军事", "汽车", "体育", "游戏", "娱乐", "其他"]
     cls_model = "./model/ClassifyModel.bin"
     vocab_path = "./model/roberta_wwm_vocab.txt"  # roberta模型字典的位置
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     def __init__(self):
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        print("当前设备使用:", self.device)
+
         # 加载字典
         self.word2idx = load_chinese_base_vocab(self.vocab_path, simplfied=False)
         self.tokenizer = Tokenizer(self.word2idx)
@@ -93,7 +97,7 @@ class Classifier:
         self.bert_model.load_all_params(model_path=self.cls_model, device=self.device)
 
         # 预测一次方便后续加速
-        self.predict("Hello world.")
+        self.predict("Hello Meow")
 
     def predict(self, newsTextOri):
         newsTextList = newsCut(newsTextOri)
@@ -117,7 +121,7 @@ class Classifier:
             resCount = resCountList[i]
             if resCount > maxCount:
                 res = i
-                resCount = maxCount
+                maxCount = resCount
                 maxNum = 1
             elif resCount == maxCount:
                 maxNum += 1
