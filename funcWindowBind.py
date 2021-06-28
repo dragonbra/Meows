@@ -4,7 +4,7 @@ import pandas as pd
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-from news import Ui_MainWindow
+from mainWindowLayout import Ui_MainWindow
 import sys
 import os
 import tqdm
@@ -25,6 +25,9 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.db = dataBaseUtils.DataBase()
         self.defaultFilePath = "./example/"
         self.LOGOPATH = "./data/logo.jpg"
+
+        # mainWindow
+        self.setWindowIcon(QtGui.QIcon("./data/icon.ico"))
 
         # singlePredict Widget's Functions
         self.singleFileButton.clicked.connect(self.singleGetNewsFromFile)
@@ -47,6 +50,8 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.searchDBTable.setColumnWidth(2, 200)
         self.searchDBTable.setColumnWidth(3, 400)
         self.searchButton.clicked.connect(self.searchDBtoTable)
+        self.searchClearButton.clicked.connect(self.searchTableClear)
+        self.searchF1Button.clicked.connect(self.searchCalF1)
 
         # wordCloud Widget's Function
         self.wordDrawButton.clicked.connect(self.wordCloudDraw)
@@ -111,14 +116,15 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     newsTitle = self.newsTitleList[index]
                     newsContent = self.newsContentList[index]
                     self.multiNewsInsertTableWidget(index, channelName, newsTitle, newsContent)
+                print(filePath, "has been loaded!")
 
             except Exception as e:
                 print(e)
                 pass
-        print(filePath, "has been loaded!")
-        print(str(self.channelNameList[0]))
 
     def multiNewsPredict(self):
+        self.multiResultsTable.setRowCount(1)
+        self.multiResultsTable.clearContents()
         if self.multiNewsSize == 0:
             return
         self.multiLoadingLine.setRange(0, self.multiNewsSize - 1)
@@ -189,6 +195,55 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 colorStr = "#ff6565"
         self.searchDBTable.item(index, 0).setBackground(QtGui.QColor(colorStr))
         # QApplication.processEvents()
+
+    def searchTableClear(self):
+        self.searchDBTable.setRowCount(1)
+        self.searchDBTable.clearContents()
+
+    def searchCalF1(self):
+        targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
+
+        f1ScoreResList = [0 for i in range(10)]
+        tp = [0 for i in range(10)]
+        tn = [0 for i in range(10)]
+        fp = [0 for i in range(10)]
+        fn = [0 for i in range(10)]
+        precision = [0 for i in range(10)]
+        recall = [0 for i in range(10)]
+        dataList = self.db.dataQuery()
+        dataSize = len(dataList)
+        for index in range(dataSize):
+            dataRow = dataList[index]
+            predictChannel = dataRow[1]
+            channelName = dataRow[2]
+            if channelName == "(空)" or len(channelName) == 0:
+                continue
+            else:
+                if predictChannel == channelName:
+                    tp[targetDict[predictChannel]] += 1
+                else:
+                    fn[targetDict[channelName]] += 1
+                    fp[targetDict[predictChannel]] += 1
+
+        f1ScoreRes = 0
+        f1ScoreNum = 0
+        try:
+            for index in range(10):
+                if tp[index] + fp[index] == 0 or tp[index] + fn[index] == 0:
+                    continue
+                precision[index] = tp[index] / (tp[index] + fp[index])
+                recall[index] = tp[index] / (tp[index] + fn[index])
+                f1ScoreResList[index] = 2 * precision[index] * recall[index] / (precision[index] + recall[index])
+                f1ScoreNum += 1
+                f1ScoreRes += f1ScoreResList[index]
+        except Exception as e:
+            print(e)
+            pass
+        print(f1ScoreNum, f1ScoreRes)
+        if f1ScoreNum:
+            f1ScoreRes /= f1ScoreNum
+        self.searchF1Result.setText("%.2f" % f1ScoreRes)
+
 
     def searchDBtoTable(self):
         self.searchDBTable.setRowCount(1)
