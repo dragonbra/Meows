@@ -7,7 +7,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindowLayout import Ui_MainWindow
 import sys
 import os
-import tqdm
 import dataProcUtils
 import dataBaseUtils
 from dataProcUtils import Classifier
