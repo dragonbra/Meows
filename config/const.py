@@ -3,7 +3,8 @@ import os
 
 class Const:
     # root dir
-    PROJECT_PATH = 'D:\\GitHub\\NewsClassifier'
+    # PROJECT_PATH = 'D:\\GitHub\\NewsClassifier'
+    PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
 
     # about database
     DATABASE_NAME = 'newsData.db'
