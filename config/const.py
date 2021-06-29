@@ -7,8 +7,8 @@ class Const:
     PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
 
     # about database
-    DATABASE_NAME = 'newsData.db'
-    TABLE_NAME = 'newsClassified'
+    DATABASE_NAME = 'Classified_News.db'
+    TABLE_NAME = 'news'
     DATABASE_PATH = PROJECT_PATH + '\\resources\\database\\' + DATABASE_NAME
 
     # about model
@@ -18,7 +18,7 @@ class Const:
     MODEL_DICT_PATH = PROJECT_PATH + '\\resources\\model\\' + MODEL_DICT_NAME
 
     # about examples
-    DEFAULT_FILE_PATH = PROJECT_PATH + '\\examples\\'
+    DEFAULT_FILE_PATH = PROJECT_PATH + '\\resources\\example\\'
 
     # about images
     LOGO_IMG_PATH = PROJECT_PATH + '\\resources\\images\\logo\\Meows.png'

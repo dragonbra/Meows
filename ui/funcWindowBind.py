@@ -2,12 +2,12 @@ import time
 import sys
 import os
 import pandas as pd
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication
 from config import Const
 from ui.mainwindow import Ui_MainWindow
-from utils import dataProcUtils
-from utils import dataBaseUtils
+from utils import dataProcUtil
+from utils import dataBaseUtil
 from utils.classifyUtil import Classifier
 
 
@@ -16,7 +16,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.newsDB = dataBaseUtils.DataBase()
+        self.newsDB = dataBaseUtil.DataBase()
         self.DEFAULT_FILE_PATH = Const.DEFAULT_FILE_PATH
         self.LOGO_IMG_PATH = Const.LOGO_IMG_PATH
         self.LOGO_ICON_PATH = Const.LOGO_ICON_PATH
@@ -37,11 +37,11 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # multiPredict Widget's Function
         self.multiNewsSize = 0
-        self.multiNewsTable.setColumnWidth(0, 200)
-        self.multiNewsTable.setColumnWidth(1, 400)
         self.multiFileButton.clicked.connect(self.multiGetNewsFromFile)
         self.multiPredictButton.clicked.connect(self.multiNewsPredict)
         self.multiSaveButton.clicked.connect(self.multiNewsSave)
+        self.multiResultsTable.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        self.multiResultsTable.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
         # searchDB Widget's Function
         self.searchDBTable.setColumnWidth(0, 75)
@@ -73,12 +73,13 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.singleNewslineEdit.setText(title)
             self.singleNewsPaperEdit.setText(content)
         except Exception as e:
+            print(e)
             return
 
     def singleNewsPredict(self):
         newsTitle = self.singleNewslineEdit.text()
         newsContent = self.singleNewsPaperEdit.toPlainText()
-        newsTextOri = str.strip(dataProcUtils.newsMerge(newsTitle, newsContent))
+        newsTextOri = str.strip(dataProcUtil.newsMerge(newsTitle, newsContent))
 
         if len(newsTextOri) == 0:
             self.singleResultBroswer.setText("请输入新闻")
@@ -108,7 +109,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             pass
         else:
             try:
-                self.channelNameList, self.newsTitleList, self.newsContentList = dataProcUtils.readCorpus(filePath)
+                self.channelNameList, self.newsTitleList, self.newsContentList = dataProcUtil.readCorpus(filePath)
                 self.multiNewsSize = len(self.newsTitleList)
                 for index in range(self.multiNewsSize):
                     channelName = self.channelNameList[index]
@@ -133,7 +134,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 channelName = "(空)"
             newsTitle = self.multiNewsTable.item(index, 0).text()
             newsContent = self.multiNewsTable.item(index, 1).text()
-            newsTextOri = str.strip(dataProcUtils.newsMerge(newsTitle, newsContent))
+            newsTextOri = str.strip(dataProcUtil.newsMerge(newsTitle, newsContent))
 
             if index != 0:
                 self.multiResultsTable.insertRow(index)
@@ -146,6 +147,8 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.multiResultsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(predictChannel))
                 self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
                 self.newsDB.dataInsert(predictChannel, channelName, newsTitle, newsContent)
+            self.multiResultsTable.item(index, 0).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+            self.multiResultsTable.item(index, 1).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
             self.multiNewsTable.selectRow(index)
             self.multiResultsTable.selectRow(index)

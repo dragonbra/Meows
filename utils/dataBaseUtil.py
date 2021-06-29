@@ -7,12 +7,13 @@ class DataBase:
     def __init__(self, DATABASE_PATH=Const.DATABASE_PATH, TABLE_NAME=Const.TABLE_NAME):
         self.DATABASE_PATH = DATABASE_PATH
         self.TABLE_NAME = TABLE_NAME
+        self.dataBaseInit()
         self.DATA_ROWS = self.getDATA_ROWS()
 
     def getDATA_ROWS(self):
         dbConn = sqlite3.connect(self.DATABASE_PATH)
         dbCursor = dbConn.cursor()
-        DATA_ROWS = dbCursor.execute("SELECT count(*) FROM newsClassified;").fetchone()[0]
+        DATA_ROWS = dbCursor.execute("SELECT count(*) FROM " + self.TABLE_NAME + ";").fetchone()[0]
         dbConn.close()
         return DATA_ROWS
 
@@ -20,7 +21,7 @@ class DataBase:
         dbConn = sqlite3.connect(self.DATABASE_PATH)
         dbCursor = dbConn.cursor()
         createTableSQL = '''
-                        CREATE TABLE IF NOT EXISTS `''' + self.TABLE_NAME + ''''` (
+                        CREATE TABLE IF NOT EXISTS `''' + self.TABLE_NAME + '''` (
                         `id` int(11) NOT NULL,
                         `predictChannel` varchar(255) DEFAULT NULL,
                         `channelName` varchar(255) DEFAULT NULL,
@@ -39,7 +40,7 @@ class DataBase:
 
         try:
             self.getDATA_ROWS()
-            rowInsert = "INSERT INTO newsClassified (id, predictChannel, channelName, title, content) \
+            rowInsert = "INSERT INTO " + self.TABLE_NAME + " (id, predictChannel, channelName, title, content) \
                         VALUES (" + str(self.DATA_ROWS + 1) + ", '" + predictChannel + "', '" + channelName + "', '" + title + "', '" + content + "')"
             dbCursor.execute(rowInsert)
             print("第 " + str(self.DATA_ROWS + 1) + " 条新闻已入库！", predictChannel + ": " + title)
@@ -74,5 +75,3 @@ class DataBase:
 
 if __name__ == '__main__':
     db = DataBase()
-    print(len(db.dataQuery()))
-    db.getDATA_ROWS()

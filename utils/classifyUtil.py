@@ -2,7 +2,7 @@ import torch
 from bert_seq2seq.utils import load_bert
 from bert_seq2seq.tokenizer import Tokenizer, load_chinese_base_vocab
 from config import Const
-from utils import dataProcUtils
+from utils import dataProcUtil
 
 
 class Classifier:
@@ -34,7 +34,7 @@ class Classifier:
         self.predict("Hello Meow")
 
     def predict(self, newsTextOri):
-        newsTextList = dataProcUtils.newsCut(newsTextOri)
+        newsTextList = dataProcUtil.newsCut(newsTextOri)
         other = 9
         resCountList = [0 for i in range(10)]
 

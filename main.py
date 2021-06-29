@@ -1,5 +1,5 @@
 import sys
-from utils.funcWindowBind import FuncWindow
+from ui.funcWindowBind import FuncWindow
 from PyQt5 import QtWidgets
 
 if __name__ == '__main__':
