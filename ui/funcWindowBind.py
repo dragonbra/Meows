@@ -93,6 +93,16 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Insert news into table widget in multiNewsWidget
         if index != 0:
             self.multiNewsTable.insertRow(index)
+            self.multiResultsTable.insertRow(index)
+
+        if str(channelName) == 'nan':
+            self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem("(空)"))
+        else:
+            self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
+        self.multiResultsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(' '))
+        self.multiResultsTable.item(index, 0).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.multiResultsTable.item(index, 1).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+
         self.multiNewsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(str(newsTitle)))
         self.multiNewsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(newsContent)))
         # QApplication.processEvents()
@@ -109,12 +119,12 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             pass
         else:
             try:
-                self.channelNameList, self.newsTitleList, self.newsContentList = dataProcUtil.readCorpus(filePath)
-                self.multiNewsSize = len(self.newsTitleList)
+                channelNameList, newsTitleList, newsContentList = dataProcUtil.readCorpus(filePath)
+                self.multiNewsSize = len(newsTitleList)
                 for index in range(self.multiNewsSize):
-                    channelName = self.channelNameList[index]
-                    newsTitle = self.newsTitleList[index]
-                    newsContent = self.newsContentList[index]
+                    channelName = channelNameList[index]
+                    newsTitle = newsTitleList[index]
+                    newsContent = newsContentList[index]
                     self.multiNewsInsertTableWidget(index, channelName, newsTitle, newsContent)
                 print(filePath, "has been loaded!")
 
@@ -123,32 +133,25 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 pass
 
     def multiNewsPredict(self):
-        self.multiResultsTable.setRowCount(1)
-        self.multiResultsTable.clearContents()
         if self.multiNewsSize == 0:
             return
         self.multiLoadingLine.setRange(0, self.multiNewsSize - 1)
         for index in range(self.multiNewsSize):
-            channelName = self.channelNameList[index]
-            if str(channelName) == "nan":
+            channelName = self.multiResultsTable.item(index, 1).text()
+            if str(channelName) == 'nan':
                 channelName = "(空)"
             newsTitle = self.multiNewsTable.item(index, 0).text()
             newsContent = self.multiNewsTable.item(index, 1).text()
             newsTextOri = str.strip(dataProcUtil.newsMerge(newsTitle, newsContent))
 
-            if index != 0:
-                self.multiResultsTable.insertRow(index)
-
             if len(newsTextOri) == 0:
                 self.multiResultsTable.setItem(index, 0, "(空)")
-                self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
             else:
                 predictChannel = self.classifier.predict(newsTextOri)
                 self.multiResultsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(predictChannel))
-                self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
                 self.newsDB.dataInsert(predictChannel, channelName, newsTitle, newsContent)
+
             self.multiResultsTable.item(index, 0).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
-            self.multiResultsTable.item(index, 1).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
             self.multiNewsTable.selectRow(index)
             self.multiResultsTable.selectRow(index)

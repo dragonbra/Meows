@@ -39,7 +39,7 @@ class DataBase:
         dbCursor = dbConn.cursor()
 
         try:
-            self.getDATA_ROWS()
+            self.DATA_ROWS = self.getDATA_ROWS()
             rowInsert = "INSERT INTO " + self.TABLE_NAME + " (id, predictChannel, channelName, title, content) \
                         VALUES (" + str(self.DATA_ROWS + 1) + ", '" + predictChannel + "', '" + channelName + "', '" + title + "', '" + content + "')"
             dbCursor.execute(rowInsert)

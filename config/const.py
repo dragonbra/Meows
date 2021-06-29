@@ -21,7 +21,7 @@ class Const:
     DEFAULT_FILE_PATH = PROJECT_PATH + '\\resources\\example\\'
 
     # about images
-    LOGO_IMG_PATH = PROJECT_PATH + '\\resources\\images\\logo\\Meows.png'
+    LOGO_IMG_PATH = PROJECT_PATH + '\\resources\\images\\logo\\Meows_Alter.png'
     LOGO_ICON_PATH = PROJECT_PATH + '\\resources\\images\\logo\\Meows.ico'
 
 
