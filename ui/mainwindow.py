@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainWindowLayout.ui'
+# Form implementation generated from reading ui file 'mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -828,4 +828,4 @@ class Ui_MainWindow(object):
 "<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">greetings from 4 a.m.~</p></body></html>"))
         self.introLogoLabel.setText(_translate("MainWindow", "LOGO"))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_5), _translate("MainWindow", "关于我们"))
-from matplotlibwidget import MatplotlibWidget
+from utils.matplotlibwidget import MatplotlibWidget

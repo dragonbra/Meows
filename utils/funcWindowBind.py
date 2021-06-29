@@ -1,36 +1,36 @@
 import time
-
-import pandas as pd
-from PyQt5 import QtWidgets, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow
-
-from mainWindowLayout import Ui_MainWindow
 import sys
 import os
-import dataProcUtils
-import dataBaseUtils
-from dataProcUtils import Classifier
+import pandas as pd
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import QApplication
+from config import Const
+from ui.mainwindow import Ui_MainWindow
+from utils import dataProcUtils
+from utils import dataBaseUtils
+from utils.classifyUtil import Classifier
 
 
-class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.newsDB = dataBaseUtils.DataBase()
+        self.DEFAULT_FILE_PATH = Const.DEFAULT_FILE_PATH
+        self.LOGO_IMG_PATH = Const.LOGO_IMG_PATH
+        self.LOGO_ICON_PATH = Const.LOGO_ICON_PATH
 
         st = time.time()
         self.classifier = Classifier()
         print("加载模型花费:%.2f" % (time.time() - st), "秒")
 
-        self.db = dataBaseUtils.DataBase()
-        self.defaultFilePath = "./example/"
-        self.LOGOPATH = "./data/logo.jpg"
-
         # mainWindow
-        self.setWindowIcon(QtGui.QIcon("./data/icon.ico"))
+        self.setWindowIcon(QtGui.QIcon(self.LOGO_ICON_PATH))
 
         # singlePredict Widget's Functions
         self.singleFileButton.clicked.connect(self.singleGetNewsFromFile)
-        logoImg = QtGui.QImage(self.LOGOPATH).scaled(self.singleLogoLabel.width(), self.singleLogoLabel.height())
+        logoImg = QtGui.QImage(self.LOGO_IMG_PATH).scaled(self.singleLogoLabel.width(), self.singleLogoLabel.height())
         self.singleLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
         self.predictButton.clicked.connect(self.singleNewsPredict)
         self.predictButton2.clicked.connect(self.singleNewsPredict)
@@ -59,11 +59,11 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.introLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
 
     def singleGetNewsFromFile(self):
-        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.defaultFilePath, "单新闻文件(*.txt)")
+        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.DEFAULT_FILE_PATH, "单新闻文件(*.txt)")
 
         try:
             file_name = os.path.basename(filePath)
-            self.defaultFilePath = os.path.dirname(filePath)
+            self.DEFAULT_FILE_PATH = os.path.dirname(filePath)
             title, suffix = os.path.splitext(file_name)
 
             file = open(filePath, "r", encoding="utf-8")
@@ -86,7 +86,7 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             predictChannel = self.classifier.predict(newsTextOri)
             self.singleResultBroswer.setText(predictChannel)
-            self.db.dataInsert(predictChannel=predictChannel, channelName="", title=newsTitle, content=newsContent)
+            self.newsDB.dataInsert(predictChannel=predictChannel, channelName="", title=newsTitle, content=newsContent)
 
     def multiNewsInsertTableWidget(self, index, channelName, newsTitle, newsContent):
         # Insert news into table widget in multiNewsWidget
@@ -102,7 +102,7 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.multiResultsTable.setRowCount(1)
         self.multiResultsTable.clearContents()
 
-        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.defaultFilePath,
+        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.DEFAULT_FILE_PATH,
                                                                    "多新闻文件(*.csv, *.xls, *.xlsx)")
         if len(filePath) == 0:
             pass
@@ -145,7 +145,7 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 predictChannel = self.classifier.predict(newsTextOri)
                 self.multiResultsTable.setItem(index, 0, QtWidgets.QTableWidgetItem(predictChannel))
                 self.multiResultsTable.setItem(index, 1, QtWidgets.QTableWidgetItem(str(channelName)))
-                self.db.dataInsert(predictChannel, channelName, newsTitle, newsContent)
+                self.newsDB.dataInsert(predictChannel, channelName, newsTitle, newsContent)
 
             self.multiNewsTable.selectRow(index)
             self.multiResultsTable.selectRow(index)
@@ -153,7 +153,7 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             QApplication.processEvents()
 
     def multiNewsSave(self):
-        filePath, fileType = QtWidgets.QFileDialog.getSaveFileName(self, "导出结果", self.defaultFilePath + "result.csv",
+        filePath, fileType = QtWidgets.QFileDialog.getSaveFileName(self, "导出结果", self.DEFAULT_FILE_PATH + "result.csv",
                                                                    ".csv文件(*.csv)")
         try:
             newsTitleList = []
@@ -175,6 +175,7 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             print(filePath, "Succeeded!")
 
         except Exception as e:
+            print(e)
             pass
 
     def searchDBInsertTableWidget(self, index, predictChannel, channelName, newsTitle, newsContent):
@@ -202,14 +203,14 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def searchCalF1(self):
         targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
 
-        f1ScoreResList = [0 for i in range(10)]
-        tp = [0 for i in range(10)]
-        tn = [0 for i in range(10)]
-        fp = [0 for i in range(10)]
-        fn = [0 for i in range(10)]
-        precision = [0 for i in range(10)]
-        recall = [0 for i in range(10)]
-        dataList = self.db.dataQuery()
+        f1ScoreResList = [0 for _ in range(10)]
+        tp = [0 for _ in range(10)]
+        tn = [0 for _ in range(10)]
+        fp = [0 for _ in range(10)]
+        fn = [0 for _ in range(10)]
+        precision = [0 for _ in range(10)]
+        recall = [0 for _ in range(10)]
+        dataList = self.newsDB.dataQuery()
         dataSize = len(dataList)
         for index in range(dataSize):
             dataRow = dataList[index]
@@ -243,13 +244,12 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             f1ScoreRes /= f1ScoreNum
         self.searchF1Result.setText("%.2f" % f1ScoreRes)
 
-
     def searchDBtoTable(self):
         self.searchDBTable.setRowCount(1)
         self.searchDBTable.clearContents()
 
         keyword = self.searchLineEdit.text()
-        dataList = self.db.dataQuery(keyword)
+        dataList = self.newsDB.dataQuery(keyword)
         dataListSize = len(dataList)
 
         for index in range(dataListSize):
@@ -314,6 +314,6 @@ class funcWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    window = funcWindow()
+    window = FuncWindow()
     window.show()
     sys.exit(app.exec_())
