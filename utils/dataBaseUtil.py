@@ -43,11 +43,12 @@ class DataBase:
             rowInsert = "INSERT INTO " + self.TABLE_NAME + " (id, predictChannel, channelName, title, content) \
                         VALUES (" + str(self.DATA_ROWS + 1) + ", '" + predictChannel + "', '" + channelName + "', '" + title + "', '" + content + "')"
             dbCursor.execute(rowInsert)
-            print("第 " + str(self.DATA_ROWS + 1) + " 条新闻已入库！", predictChannel + ": " + title)
+            # print("第 " + str(self.DATA_ROWS + 1) + " 条新闻已入库！", predictChannel + ": " + title)
             dbConn.commit()
 
         except Exception as e:
-            print("该新闻入库失败，原因是:", e)
+            # print("该新闻入库失败，原因是:", e)
+            pass
 
         dbConn.close()
 

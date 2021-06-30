@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(912, 669)
+        MainWindow.resize(912, 667)
         MainWindow.setAnimated(True)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -30,16 +30,15 @@ class Ui_MainWindow(object):
 "QTabBar::tab{\n"
 "    color:white;\n"
 "    background:rgb(0, 170, 255);\n"
-"    min-width:150px;\n"
+"    min-width:175px;\n"
 "    min-height:70px;\n"
-"    font:13pt \'微软雅黑\';\n"
+"    font:12pt \'微软雅黑\';\n"
 "}\n"
 "QTabBar::tab:hover{\n"
 "    color:rgb(0, 170, 255);\n"
 "    background:rgb(255, 255, 255, 100);\n"
 "}\n"
 "QTabBar::tab:selected{\n"
-"    border-color:rgb(0, 170, 255);\n"
 "    background:white;\n"
 "    color:rgb(0, 170, 255);\n"
 "}")
@@ -62,6 +61,7 @@ class Ui_MainWindow(object):
         self.gridLayout_11.setSpacing(10)
         self.gridLayout_11.setObjectName("gridLayout_11")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setSpacing(10)
@@ -106,7 +106,8 @@ class Ui_MainWindow(object):
         self.singleNewslineEdit.setObjectName("singleNewslineEdit")
         self.horizontalLayout_6.addWidget(self.singleNewslineEdit)
         self.singleFileButton = QtWidgets.QPushButton(self.widget_1)
-        self.singleFileButton.setMaximumSize(QtCore.QSize(100, 40))
+        self.singleFileButton.setMinimumSize(QtCore.QSize(150, 0))
+        self.singleFileButton.setMaximumSize(QtCore.QSize(200, 40))
         self.singleFileButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -132,6 +133,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)
         self.gridLayout_11.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
@@ -167,8 +169,8 @@ class Ui_MainWindow(object):
         self.gridLayout_11.addLayout(self.verticalLayout_4, 1, 0, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.clearButton = QtWidgets.QPushButton(self.widget_1)
-        self.clearButton.setStyleSheet("QPushButton {\n"
+        self.singleClearButton = QtWidgets.QPushButton(self.widget_1)
+        self.singleClearButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
 "    border-style: outset;\n"
@@ -185,10 +187,10 @@ class Ui_MainWindow(object):
 "    color:rgb(0, 170, 255);\n"
 "    border-style: inset;\n"
 "}")
-        self.clearButton.setObjectName("clearButton")
-        self.horizontalLayout.addWidget(self.clearButton)
-        self.exitButton = QtWidgets.QPushButton(self.widget_1)
-        self.exitButton.setStyleSheet("QPushButton {\n"
+        self.singleClearButton.setObjectName("singleClearButton")
+        self.horizontalLayout.addWidget(self.singleClearButton)
+        self.singleCheckButton = QtWidgets.QPushButton(self.widget_1)
+        self.singleCheckButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
 "    border-style: outset;\n"
@@ -205,8 +207,8 @@ class Ui_MainWindow(object):
 "    color:rgb(0, 170, 255);\n"
 "    border-style: inset;\n"
 "}")
-        self.exitButton.setObjectName("exitButton")
-        self.horizontalLayout.addWidget(self.exitButton)
+        self.singleCheckButton.setObjectName("singleCheckButton")
+        self.horizontalLayout.addWidget(self.singleCheckButton)
         self.predictButton = QtWidgets.QPushButton(self.widget_1)
         self.predictButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
@@ -252,11 +254,12 @@ class Ui_MainWindow(object):
         self.predictButton2.setObjectName("predictButton2")
         self.horizontalLayout_9.addWidget(self.predictButton2)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.label_5 = QtWidgets.QLabel(self.widget_1)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
@@ -272,19 +275,32 @@ class Ui_MainWindow(object):
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem2)
         self.verticalLayout_5.addLayout(self.horizontalLayout_8)
-        self.label_3 = QtWidgets.QLabel(self.widget_1)
-        self.label_3.setMinimumSize(QtCore.QSize(256, 256))
-        self.label_3.setStyleSheet("background-color: rgb(255, 170, 0)")
-        self.label_3.setText("")
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout_5.addWidget(self.label_3)
+        self.singlePredictResultLabel = QtWidgets.QLabel(self.widget_1)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.singlePredictResultLabel.sizePolicy().hasHeightForWidth())
+        self.singlePredictResultLabel.setSizePolicy(sizePolicy)
+        self.singlePredictResultLabel.setMinimumSize(QtCore.QSize(0, 0))
+        self.singlePredictResultLabel.setStyleSheet("background-color: white;\n"
+"border-width: 2px;\n"
+"border-color: #3D74BB;\n"
+"border-style: solid;\n"
+"font: 25 24pt \"微软雅黑 Light\";\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
+        self.singlePredictResultLabel.setText("")
+        self.singlePredictResultLabel.setObjectName("singlePredictResultLabel")
+        self.verticalLayout_5.addWidget(self.singlePredictResultLabel)
         self.singleResultBroswer = QtWidgets.QTextBrowser(self.widget_1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.singleResultBroswer.sizePolicy().hasHeightForWidth())
         self.singleResultBroswer.setSizePolicy(sizePolicy)
-        self.singleResultBroswer.setMinimumSize(QtCore.QSize(256, 73))
+        self.singleResultBroswer.setMinimumSize(QtCore.QSize(0, 0))
         self.singleResultBroswer.setMaximumSize(QtCore.QSize(16777210, 73))
         self.singleResultBroswer.setStyleSheet("background-color: white;\n"
 "border-width: 2px;\n"
@@ -641,7 +657,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.searchF1Result.sizePolicy().hasHeightForWidth())
         self.searchF1Result.setSizePolicy(sizePolicy)
-        self.searchF1Result.setMaximumSize(QtCore.QSize(400, 50))
+        self.searchF1Result.setMaximumSize(QtCore.QSize(100, 50))
         self.searchF1Result.setStyleSheet("background-color: white;\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
@@ -678,8 +694,33 @@ class Ui_MainWindow(object):
 "}")
         self.searchF1Button.setObjectName("searchF1Button")
         self.horizontalLayout_4.addWidget(self.searchF1Button)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem3 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem3)
+        self.searchF1Button_2 = QtWidgets.QPushButton(self.widget_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.searchF1Button_2.sizePolicy().hasHeightForWidth())
+        self.searchF1Button_2.setSizePolicy(sizePolicy)
+        self.searchF1Button_2.setMinimumSize(QtCore.QSize(100, 0))
+        self.searchF1Button_2.setMaximumSize(QtCore.QSize(100, 50))
+        self.searchF1Button_2.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.searchF1Button_2.setObjectName("searchF1Button_2")
+        self.horizontalLayout_4.addWidget(self.searchF1Button_2)
         self.horizontalLayout_4.setStretch(0, 20)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.searchDBTable = QtWidgets.QTableWidget(self.widget_3)
@@ -977,15 +1018,38 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.mainTabWidget.setCurrentIndex(3)
-        self.wordCloudTabWidget.setCurrentIndex(1)
+        self.mainTabWidget.setCurrentIndex(0)
+        self.wordCloudTabWidget.setCurrentIndex(0)
         self.searchClearButton.clicked.connect(self.searchLineEdit.clear)
         self.searchClearButton.clicked.connect(self.searchF1Result.clear)
-        self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
-        self.clearButton.clicked.connect(self.singleNewslineEdit.clear)
-        self.exitButton.clicked.connect(MainWindow.close)
-        self.clearButton.clicked.connect(self.singleResultBroswer.clear)
+        self.singleClearButton.clicked.connect(self.singleNewsPaperEdit.clear)
+        self.singleClearButton.clicked.connect(self.singleNewslineEdit.clear)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.mainTabWidget, self.singleNewslineEdit)
+        MainWindow.setTabOrder(self.singleNewslineEdit, self.singleNewsPaperEdit)
+        MainWindow.setTabOrder(self.singleNewsPaperEdit, self.singleFileButton)
+        MainWindow.setTabOrder(self.singleFileButton, self.singleClearButton)
+        MainWindow.setTabOrder(self.singleClearButton, self.singleCheckButton)
+        MainWindow.setTabOrder(self.singleCheckButton, self.predictButton)
+        MainWindow.setTabOrder(self.predictButton, self.predictButton2)
+        MainWindow.setTabOrder(self.predictButton2, self.singleResultBroswer)
+        MainWindow.setTabOrder(self.singleResultBroswer, self.multiNewsTable)
+        MainWindow.setTabOrder(self.multiNewsTable, self.multiResultsTable)
+        MainWindow.setTabOrder(self.multiResultsTable, self.multiFileButton)
+        MainWindow.setTabOrder(self.multiFileButton, self.multiPredictButton)
+        MainWindow.setTabOrder(self.multiPredictButton, self.multiSaveButton)
+        MainWindow.setTabOrder(self.multiSaveButton, self.searchLineEdit)
+        MainWindow.setTabOrder(self.searchLineEdit, self.searchButton)
+        MainWindow.setTabOrder(self.searchButton, self.searchClearButton)
+        MainWindow.setTabOrder(self.searchClearButton, self.searchF1Result)
+        MainWindow.setTabOrder(self.searchF1Result, self.searchF1Button)
+        MainWindow.setTabOrder(self.searchF1Button, self.searchDBTable)
+        MainWindow.setTabOrder(self.searchDBTable, self.wordCloudSrc)
+        MainWindow.setTabOrder(self.wordCloudSrc, self.wordCloudMask)
+        MainWindow.setTabOrder(self.wordCloudMask, self.wordCouldMaskSelectButton)
+        MainWindow.setTabOrder(self.wordCouldMaskSelectButton, self.wordDrawButton)
+        MainWindow.setTabOrder(self.wordDrawButton, self.wordCloudTabWidget)
+        MainWindow.setTabOrder(self.wordCloudTabWidget, self.introTextBrowser)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -993,8 +1057,8 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "新闻标题"))
         self.singleFileButton.setText(_translate("MainWindow", "从文件导入"))
         self.label_2.setText(_translate("MainWindow", "新闻内容"))
-        self.clearButton.setText(_translate("MainWindow", "清除全部内容"))
-        self.exitButton.setText(_translate("MainWindow", "查看分类信息"))
+        self.singleClearButton.setText(_translate("MainWindow", "清除全部内容"))
+        self.singleCheckButton.setText(_translate("MainWindow", "查看分类信息"))
         self.predictButton.setText(_translate("MainWindow", "新闻文本预测"))
         self.predictButton2.setText(_translate("MainWindow", "->"))
         self.label_5.setText(_translate("MainWindow", "预测结果"))
@@ -1029,6 +1093,7 @@ class Ui_MainWindow(object):
         self.searchButton.setText(_translate("MainWindow", "搜索"))
         self.searchClearButton.setText(_translate("MainWindow", "清空"))
         self.searchF1Button.setText(_translate("MainWindow", "f1Score"))
+        self.searchF1Button_2.setText(_translate("MainWindow", "查看分类"))
         item = self.searchDBTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.searchDBTable.horizontalHeaderItem(0)
@@ -1039,7 +1104,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "新闻标题"))
         item = self.searchDBTable.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "新闻内容"))
-        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据分析"))
         self.wordCloudSrc.setItemText(0, _translate("MainWindow", "财经"))
         self.wordCloudSrc.setItemText(1, _translate("MainWindow", "房产"))
         self.wordCloudSrc.setItemText(2, _translate("MainWindow", "教育"))
@@ -1054,7 +1119,7 @@ class Ui_MainWindow(object):
         self.wordDrawButton.setText(_translate("MainWindow", "绘制"))
         self.wordCloudTabWidget.setTabText(self.wordCloudTabWidget.indexOf(self.WordCloudTab), _translate("MainWindow", "词云"))
         self.wordCloudTabWidget.setTabText(self.wordCloudTabWidget.indexOf(self.WordCountTab), _translate("MainWindow", "统计"))
-        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_4), _translate("MainWindow", "数据分析"))
+        self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_4), _translate("MainWindow", "热力词云"))
         self.introTextBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

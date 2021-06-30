@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 
 def newsCut(text, length=500):
@@ -39,8 +40,12 @@ def readCorpus(filePath):
     newsContentList = []
 
     try:
-        # dataFile = pd.read_excel(filePath, header=None)
-        dataFile = pd.read_csv(filePath, header=None)
+        fileDir, fileWithExt = os.path.split(filePath)
+        fileName, fileExt = os.path.splitext(fileWithExt)
+        if fileExt == '.csv':
+            dataFile = pd.read_csv(filePath, header=None)
+        elif fileExt == '.xls' or fileExt == '.xlsx':
+            dataFile = pd.read_excel(filePath, header=None)
         dataTable = dataFile.values
         for dataRow in dataTable:
             # dataRow[0] = content

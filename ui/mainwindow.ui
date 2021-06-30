@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>912</width>
-    <height>669</height>
+    <height>667</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,16 +35,15 @@ QTabWidget::tab-bar{
 QTabBar::tab{
 	color:white;
 	background:rgb(0, 170, 255);
-	min-width:150px;
+	min-width:175px;
 	min-height:70px;
-	font:13pt '微软雅黑';
+	font:12pt '微软雅黑';
 }
 QTabBar::tab:hover{
 	color:rgb(0, 170, 255);
 	background:rgb(255, 255, 255, 100);
 }
 QTabBar::tab:selected{
-	border-color:rgb(0, 170, 255);
 	background:white;
 	color:rgb(0, 170, 255);
 }</string>
@@ -53,7 +52,7 @@ QTabBar::tab:selected{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="usesScrollButtons">
        <bool>false</bool>
@@ -85,6 +84,9 @@ QTabBar::tab:selected{
              </property>
              <item row="0" column="0">
               <layout class="QVBoxLayout" name="verticalLayout_2">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_5">
                  <property name="spacing">
@@ -169,9 +171,15 @@ border-style: solid;
                  </item>
                  <item>
                   <widget class="QPushButton" name="singleFileButton">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
-                     <width>100</width>
+                     <width>200</width>
                      <height>40</height>
                     </size>
                    </property>
@@ -208,6 +216,9 @@ QPushButton::pressed {
              </item>
              <item row="1" column="0">
               <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_7">
                  <item>
@@ -267,7 +278,7 @@ QPushButton::pressed {
              <item row="2" column="0" colspan="2">
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
-                <widget class="QPushButton" name="clearButton">
+                <widget class="QPushButton" name="singleClearButton">
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
 	color:white;
@@ -293,7 +304,7 @@ QPushButton::pressed {
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="exitButton">
+                <widget class="QPushButton" name="singleCheckButton">
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
 	color:white;
@@ -382,12 +393,15 @@ QPushButton::pressed {
                  </item>
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_8">
                      <item>
                       <widget class="QLabel" name="label_5">
                        <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
@@ -421,15 +435,29 @@ QPushButton::pressed {
                     </layout>
                    </item>
                    <item>
-                    <widget class="QLabel" name="label_3">
+                    <widget class="QLabel" name="singlePredictResultLabel">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <property name="minimumSize">
                       <size>
-                       <width>256</width>
-                       <height>256</height>
+                       <width>0</width>
+                       <height>0</height>
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(255, 170, 0)</string>
+                      <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;
+font: 25 24pt &quot;微软雅黑 Light&quot;;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
                      </property>
                      <property name="text">
                       <string/>
@@ -446,8 +474,8 @@ QPushButton::pressed {
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>256</width>
-                       <height>73</height>
+                       <width>0</width>
+                       <height>0</height>
                       </size>
                      </property>
                      <property name="maximumSize">
@@ -842,7 +870,7 @@ QPushButton::pressed {
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>数据查看</string>
+        <string>数据分析</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
@@ -854,7 +882,7 @@ QPushButton::pressed {
               <number>12</number>
              </property>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="20,0,0,0,0,0">
+              <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="20,0,0,0,0,0,0">
                <property name="spacing">
                 <number>12</number>
                </property>
@@ -991,7 +1019,7 @@ QPushButton::pressed {
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>400</width>
+                   <width>100</width>
                    <height>50</height>
                   </size>
                  </property>
@@ -1057,11 +1085,53 @@ QPushButton::pressed {
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>40</width>
+                   <width>100</width>
                    <height>20</height>
                   </size>
                  </property>
                 </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="searchF1Button_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>查看分类</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -1178,7 +1248,7 @@ border-left-width:0;
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
-        <string>数据分析</string>
+        <string>热力词云</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_9">
         <item row="1" column="0">
@@ -1425,7 +1495,7 @@ QTabBar::tab:selected{
 }</string>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="WordCloudTab">
                 <attribute name="title">
@@ -1597,6 +1667,34 @@ p, li { white-space: pre-wrap; }
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>mainTabWidget</tabstop>
+  <tabstop>singleNewslineEdit</tabstop>
+  <tabstop>singleNewsPaperEdit</tabstop>
+  <tabstop>singleFileButton</tabstop>
+  <tabstop>singleClearButton</tabstop>
+  <tabstop>singleCheckButton</tabstop>
+  <tabstop>predictButton</tabstop>
+  <tabstop>predictButton2</tabstop>
+  <tabstop>singleResultBroswer</tabstop>
+  <tabstop>multiNewsTable</tabstop>
+  <tabstop>multiResultsTable</tabstop>
+  <tabstop>multiFileButton</tabstop>
+  <tabstop>multiPredictButton</tabstop>
+  <tabstop>multiSaveButton</tabstop>
+  <tabstop>searchLineEdit</tabstop>
+  <tabstop>searchButton</tabstop>
+  <tabstop>searchClearButton</tabstop>
+  <tabstop>searchF1Result</tabstop>
+  <tabstop>searchF1Button</tabstop>
+  <tabstop>searchDBTable</tabstop>
+  <tabstop>wordCloudSrc</tabstop>
+  <tabstop>wordCloudMask</tabstop>
+  <tabstop>wordCouldMaskSelectButton</tabstop>
+  <tabstop>wordDrawButton</tabstop>
+  <tabstop>wordCloudTabWidget</tabstop>
+  <tabstop>introTextBrowser</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -1606,11 +1704,11 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>562</x>
+     <x>434</x>
      <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>398</x>
+     <x>270</x>
      <y>142</y>
     </hint>
    </hints>
@@ -1622,17 +1720,17 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>562</x>
+     <x>434</x>
      <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>718</x>
+     <x>546</x>
      <y>142</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>clearButton</sender>
+   <sender>singleClearButton</sender>
    <signal>clicked()</signal>
    <receiver>singleNewsPaperEdit</receiver>
    <slot>clear()</slot>
@@ -1648,7 +1746,7 @@ p, li { white-space: pre-wrap; }
    </hints>
   </connection>
   <connection>
-   <sender>clearButton</sender>
+   <sender>singleClearButton</sender>
    <signal>clicked()</signal>
    <receiver>singleNewslineEdit</receiver>
    <slot>clear()</slot>
@@ -1660,38 +1758,6 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>135</x>
      <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>exitButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>572</x>
-     <y>601</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>914</x>
-     <y>551</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>clearButton</sender>
-   <signal>clicked()</signal>
-   <receiver>singleResultBroswer</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>254</x>
-     <y>601</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>750</x>
-     <y>354</y>
     </hint>
    </hints>
   </connection>
