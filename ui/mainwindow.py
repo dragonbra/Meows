@@ -82,26 +82,6 @@ class Ui_MainWindow(object):
 "}")
         self.clearButton.setObjectName("clearButton")
         self.horizontalLayout.addWidget(self.clearButton)
-        self.predictButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.predictButton.setStyleSheet("QPushButton {\n"
-"    color:white;\n"
-"    background-color:rgb(0, 170, 255);\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    min-height:3em;\n"
-"    min-width: 10em;\n"
-"    padding: 6px;\n"
-"}\n"
-"QPushButton::pressed {\n"
-"    background-color: white;\n"
-"    color:rgb(0, 170, 255);\n"
-"    border-style: inset;\n"
-"}")
-        self.predictButton.setObjectName("predictButton")
-        self.horizontalLayout.addWidget(self.predictButton)
         self.exitButton = QtWidgets.QPushButton(self.layoutWidget)
         self.exitButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
@@ -122,6 +102,26 @@ class Ui_MainWindow(object):
 "}")
         self.exitButton.setObjectName("exitButton")
         self.horizontalLayout.addWidget(self.exitButton)
+        self.predictButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.predictButton.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    min-height:3em;\n"
+"    min-width: 10em;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.predictButton.setObjectName("predictButton")
+        self.horizontalLayout.addWidget(self.predictButton)
         self.singleLogoLabel = QtWidgets.QLabel(self.widget_1)
         self.singleLogoLabel.setGeometry(QtCore.QRect(660, 20, 161, 151))
         self.singleLogoLabel.setStyleSheet("background-color:rgb(255, 170, 0)")
@@ -146,7 +146,7 @@ class Ui_MainWindow(object):
         self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.label.setObjectName("label")
         self.singleFileButton = QtWidgets.QPushButton(self.widget_1)
-        self.singleFileButton.setGeometry(QtCore.QRect(400, 50, 91, 30))
+        self.singleFileButton.setGeometry(QtCore.QRect(380, 40, 91, 30))
         self.singleFileButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -657,56 +657,85 @@ class Ui_MainWindow(object):
         self.gridLayout_9.setObjectName("gridLayout_9")
         self.widget = QtWidgets.QWidget(self.tab_4)
         self.widget.setObjectName("widget")
-        self.gridLayout_11 = QtWidgets.QGridLayout(self.widget)
-        self.gridLayout_11.setObjectName("gridLayout_11")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.gridLayout_10 = QtWidgets.QGridLayout()
+        self.gridLayout_10 = QtWidgets.QGridLayout(self.widget)
         self.gridLayout_10.setObjectName("gridLayout_10")
-        self.label_3 = QtWidgets.QLabel(self.widget)
-        self.label_3.setStyleSheet("QLabel{\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"    font: 14px;\n"
-"}")
-        self.label_3.setObjectName("label_3")
-        self.gridLayout_10.addWidget(self.label_3, 0, 0, 1, 1)
-        self.wordCloudBox = QtWidgets.QComboBox(self.widget)
-        self.wordCloudBox.setObjectName("wordCloudBox")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.wordCloudBox.addItem("")
-        self.gridLayout_10.addWidget(self.wordCloudBox, 0, 1, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.widget)
-        self.label_4.setStyleSheet("QLabel{\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"    font: 14px;\n"
-"}")
-        self.label_4.setObjectName("label_4")
-        self.gridLayout_10.addWidget(self.label_4, 1, 0, 1, 1)
-        self.wordSizeBox = QtWidgets.QComboBox(self.widget)
-        self.wordSizeBox.setObjectName("wordSizeBox")
-        self.wordSizeBox.addItem("")
-        self.wordSizeBox.addItem("")
-        self.wordSizeBox.addItem("")
-        self.wordSizeBox.addItem("")
-        self.gridLayout_10.addWidget(self.wordSizeBox, 1, 1, 1, 1)
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setContentsMargins(12, -1, -1, -1)
+        self.horizontalLayout_3.setSpacing(12)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.wordCloudSrc = QtWidgets.QComboBox(self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wordCloudSrc.sizePolicy().hasHeightForWidth())
+        self.wordCloudSrc.setSizePolicy(sizePolicy)
+        self.wordCloudSrc.setMinimumSize(QtCore.QSize(70, 50))
+        self.wordCloudSrc.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.wordCloudSrc.setStyleSheet("QComboBox{\n"
+"    align: center;\n"
+"    font: 25 12pt \"微软雅黑 Light\";\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"    font: 14px;\n"
+"}")
+        self.wordCloudSrc.setObjectName("wordCloudSrc")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.wordCloudSrc.addItem("")
+        self.horizontalLayout_3.addWidget(self.wordCloudSrc)
+        self.wordCloudMask = QtWidgets.QLineEdit(self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wordCloudMask.sizePolicy().hasHeightForWidth())
+        self.wordCloudMask.setSizePolicy(sizePolicy)
+        self.wordCloudMask.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.wordCloudMask.setObjectName("wordCloudMask")
+        self.horizontalLayout_3.addWidget(self.wordCloudMask)
+        self.wordCouldMaskSelectButton = QtWidgets.QPushButton(self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wordCouldMaskSelectButton.sizePolicy().hasHeightForWidth())
+        self.wordCouldMaskSelectButton.setSizePolicy(sizePolicy)
+        self.wordCouldMaskSelectButton.setMinimumSize(QtCore.QSize(100, 0))
+        self.wordCouldMaskSelectButton.setMaximumSize(QtCore.QSize(100, 50))
+        self.wordCouldMaskSelectButton.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.wordCouldMaskSelectButton.setObjectName("wordCouldMaskSelectButton")
+        self.horizontalLayout_3.addWidget(self.wordCouldMaskSelectButton)
         self.wordDrawButton = QtWidgets.QPushButton(self.widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wordDrawButton.sizePolicy().hasHeightForWidth())
+        self.wordDrawButton.setSizePolicy(sizePolicy)
+        self.wordDrawButton.setMinimumSize(QtCore.QSize(100, 0))
+        self.wordDrawButton.setMaximumSize(QtCore.QSize(100, 50))
         self.wordDrawButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -724,26 +753,9 @@ class Ui_MainWindow(object):
 "}")
         self.wordDrawButton.setObjectName("wordDrawButton")
         self.horizontalLayout_3.addWidget(self.wordDrawButton)
-        self.wordSaveButton = QtWidgets.QPushButton(self.widget)
-        self.wordSaveButton.setStyleSheet("QPushButton {\n"
-"    color:white;\n"
-"    background-color:rgb(0, 170, 255);\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    padding: 6px;\n"
-"}\n"
-"QPushButton::pressed {\n"
-"    background-color: white;\n"
-"    color:rgb(0, 170, 255);\n"
-"    border-style: inset;\n"
-"}")
-        self.wordSaveButton.setObjectName("wordSaveButton")
-        self.horizontalLayout_3.addWidget(self.wordSaveButton)
-        self.gridLayout_10.addLayout(self.horizontalLayout_3, 2, 0, 1, 2)
-        self.horizontalLayout_5.addLayout(self.gridLayout_10)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_3)
         self.wordCloudTabWidget = QtWidgets.QTabWidget(self.widget)
         self.wordCloudTabWidget.setStyleSheet("QTabWidget::pane{\n"
 "}\n"
@@ -769,21 +781,30 @@ class Ui_MainWindow(object):
         self.wordCloudTabWidget.setObjectName("wordCloudTabWidget")
         self.WordCloudTab = QtWidgets.QWidget()
         self.WordCloudTab.setObjectName("WordCloudTab")
+        self.gridLayout_23 = QtWidgets.QGridLayout(self.WordCloudTab)
+        self.gridLayout_23.setObjectName("gridLayout_23")
         self.WordCloudWidget = MatplotlibWidget(self.WordCloudTab)
-        self.WordCloudWidget.setGeometry(QtCore.QRect(0, 0, 561, 491))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.WordCloudWidget.sizePolicy().hasHeightForWidth())
+        self.WordCloudWidget.setSizePolicy(sizePolicy)
         self.WordCloudWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.WordCloudWidget.setObjectName("WordCloudWidget")
+        self.gridLayout_23.addWidget(self.WordCloudWidget, 0, 0, 1, 1)
         self.wordCloudTabWidget.addTab(self.WordCloudTab, "")
         self.WordCountTab = QtWidgets.QWidget()
         self.WordCountTab.setObjectName("WordCountTab")
+        self.gridLayout_24 = QtWidgets.QGridLayout(self.WordCountTab)
+        self.gridLayout_24.setObjectName("gridLayout_24")
         self.WordCountWidget = MatplotlibWidget(self.WordCountTab)
-        self.WordCountWidget.setGeometry(QtCore.QRect(0, 0, 561, 491))
         self.WordCountWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.WordCountWidget.setObjectName("WordCountWidget")
+        self.gridLayout_24.addWidget(self.WordCountWidget, 0, 0, 1, 1)
         self.wordCloudTabWidget.addTab(self.WordCountTab, "")
-        self.horizontalLayout_5.addWidget(self.wordCloudTabWidget)
-        self.gridLayout_11.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
-        self.gridLayout_9.addWidget(self.widget, 0, 0, 1, 1)
+        self.verticalLayout_3.addWidget(self.wordCloudTabWidget)
+        self.gridLayout_10.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
+        self.gridLayout_9.addWidget(self.widget, 1, 0, 1, 1)
         self.mainTabWidget.addTab(self.tab_4, "")
         self.tab_5 = QtWidgets.QWidget()
         self.tab_5.setObjectName("tab_5")
@@ -812,8 +833,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.mainTabWidget.setCurrentIndex(2)
-        self.wordCloudTabWidget.setCurrentIndex(1)
+        self.mainTabWidget.setCurrentIndex(0)
+        self.wordCloudTabWidget.setCurrentIndex(0)
         self.searchClearButton.clicked.connect(self.searchLineEdit.clear)
         self.searchClearButton.clicked.connect(self.searchF1Result.clear)
         self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
@@ -826,8 +847,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Meows - 一个优雅的新闻文本【分类预测&数据分析&词云生成】软件"))
         self.clearButton.setText(_translate("MainWindow", "清除全部内容"))
+        self.exitButton.setText(_translate("MainWindow", "查看分类信息"))
         self.predictButton.setText(_translate("MainWindow", "新闻文本预测"))
-        self.exitButton.setText(_translate("MainWindow", "退出程序"))
         self.singleLogoLabel.setText(_translate("MainWindow", "LOGO"))
         self.label.setText(_translate("MainWindow", "新闻标题"))
         self.singleFileButton.setText(_translate("MainWindow", "从文件导入"))
@@ -876,25 +897,18 @@ class Ui_MainWindow(object):
         item = self.searchDBTable.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "新闻内容"))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_3), _translate("MainWindow", "数据查看"))
-        self.label_3.setText(_translate("MainWindow", "选择词源"))
-        self.wordCloudBox.setItemText(0, _translate("MainWindow", "所有"))
-        self.wordCloudBox.setItemText(1, _translate("MainWindow", "财经"))
-        self.wordCloudBox.setItemText(2, _translate("MainWindow", "房产"))
-        self.wordCloudBox.setItemText(3, _translate("MainWindow", "教育"))
-        self.wordCloudBox.setItemText(4, _translate("MainWindow", "科技"))
-        self.wordCloudBox.setItemText(5, _translate("MainWindow", "军事"))
-        self.wordCloudBox.setItemText(6, _translate("MainWindow", "汽车"))
-        self.wordCloudBox.setItemText(7, _translate("MainWindow", "体育"))
-        self.wordCloudBox.setItemText(8, _translate("MainWindow", "游戏"))
-        self.wordCloudBox.setItemText(9, _translate("MainWindow", "娱乐"))
-        self.wordCloudBox.setItemText(10, _translate("MainWindow", "其他"))
-        self.label_4.setText(_translate("MainWindow", "选择形状"))
-        self.wordSizeBox.setItemText(0, _translate("MainWindow", "皮卡丘"))
-        self.wordSizeBox.setItemText(1, _translate("MainWindow", "猫"))
-        self.wordSizeBox.setItemText(2, _translate("MainWindow", "可达鸭"))
-        self.wordSizeBox.setItemText(3, _translate("MainWindow", "伊布"))
+        self.wordCloudSrc.setItemText(0, _translate("MainWindow", "财经"))
+        self.wordCloudSrc.setItemText(1, _translate("MainWindow", "房产"))
+        self.wordCloudSrc.setItemText(2, _translate("MainWindow", "教育"))
+        self.wordCloudSrc.setItemText(3, _translate("MainWindow", "科技"))
+        self.wordCloudSrc.setItemText(4, _translate("MainWindow", "军事"))
+        self.wordCloudSrc.setItemText(5, _translate("MainWindow", "汽车"))
+        self.wordCloudSrc.setItemText(6, _translate("MainWindow", "体育"))
+        self.wordCloudSrc.setItemText(7, _translate("MainWindow", "游戏"))
+        self.wordCloudSrc.setItemText(8, _translate("MainWindow", "娱乐"))
+        self.wordCloudSrc.setItemText(9, _translate("MainWindow", "其他"))
+        self.wordCouldMaskSelectButton.setText(_translate("MainWindow", "选择蒙版"))
         self.wordDrawButton.setText(_translate("MainWindow", "绘制"))
-        self.wordSaveButton.setText(_translate("MainWindow", "保存"))
         self.wordCloudTabWidget.setTabText(self.wordCloudTabWidget.indexOf(self.WordCloudTab), _translate("MainWindow", "词云"))
         self.wordCloudTabWidget.setTabText(self.wordCloudTabWidget.indexOf(self.WordCountTab), _translate("MainWindow", "统计"))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_4), _translate("MainWindow", "数据分析"))

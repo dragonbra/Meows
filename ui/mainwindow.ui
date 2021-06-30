@@ -53,7 +53,7 @@ QTabBar::tab:selected{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="usesScrollButtons">
        <bool>false</bool>
@@ -114,6 +114,32 @@ QPushButton::pressed {
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="exitButton">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+              </property>
+              <property name="text">
+               <string>查看分类信息</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="predictButton">
               <property name="styleSheet">
                <string notr="true">QPushButton {
@@ -136,32 +162,6 @@ QPushButton::pressed {
               </property>
               <property name="text">
                <string>新闻文本预测</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="exitButton">
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-	min-height:3em;
-    min-width: 10em;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-              </property>
-              <property name="text">
-               <string>退出程序</string>
               </property>
              </widget>
             </item>
@@ -229,8 +229,8 @@ QPushButton::pressed {
           <widget class="QPushButton" name="singleFileButton">
            <property name="geometry">
             <rect>
-             <x>400</x>
-             <y>50</y>
+             <x>380</x>
+             <y>40</y>
              <width>91</width>
              <height>30</height>
             </rect>
@@ -1053,17 +1053,40 @@ border-left-width:0;
         <string>数据分析</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QWidget" name="widget" native="true">
-          <layout class="QGridLayout" name="gridLayout_11">
+          <layout class="QGridLayout" name="gridLayout_10">
            <item row="0" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <layout class="QGridLayout" name="gridLayout_10">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_3">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>12</number>
+               </property>
+               <item>
+                <widget class="QComboBox" name="wordCloudSrc">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>70</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">QLabel{
+                  <string notr="true">QComboBox{
+	align: center;
+	font: 25 12pt &quot;微软雅黑 Light&quot;;
 	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
@@ -1071,18 +1094,6 @@ border-left-width:0;
 	font: 14px;
 }</string>
                  </property>
-                 <property name="text">
-                  <string>选择词源</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QComboBox" name="wordCloudBox">
-                 <item>
-                  <property name="text">
-                   <string>所有</string>
-                  </property>
-                 </item>
                  <item>
                   <property name="text">
                    <string>财经</string>
@@ -1135,97 +1146,118 @@ border-left-width:0;
                  </item>
                 </widget>
                </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_4">
+               <item>
+                <widget class="QLineEdit" name="wordCloudMask">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>300</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="wordCouldMaskSelectButton">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>50</height>
+                  </size>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color:#3D74BB;
-	border: 2px solid blue;
-    border-radius: 4px;
-    padding: 2px;
-	font: 14px;
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
 }</string>
                  </property>
                  <property name="text">
-                  <string>选择形状</string>
+                  <string>选择蒙版</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
-                <widget class="QComboBox" name="wordSizeBox">
-                 <item>
-                  <property name="text">
-                   <string>皮卡丘</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>猫</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>可达鸭</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>伊布</string>
-                  </property>
-                 </item>
+               <item>
+                <widget class="QPushButton" name="wordDrawButton">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>绘制</string>
+                 </property>
                 </widget>
                </item>
-               <item row="2" column="0" colspan="2">
-                <layout class="QHBoxLayout" name="horizontalLayout_3">
-                 <item>
-                  <widget class="QPushButton" name="wordDrawButton">
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>绘制</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="wordSaveButton">
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>保存</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </item>
@@ -1255,43 +1287,41 @@ QTabBar::tab:selected{
 }</string>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="WordCloudTab">
                 <attribute name="title">
                  <string>词云</string>
                 </attribute>
-                <widget class="MatplotlibWidget" name="WordCloudWidget" native="true">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>561</width>
-                   <height>491</height>
-                  </rect>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(255, 255, 255);</string>
-                 </property>
-                </widget>
+                <layout class="QGridLayout" name="gridLayout_23">
+                 <item row="0" column="0">
+                  <widget class="MatplotlibWidget" name="WordCloudWidget" native="true">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 255, 255);</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
                <widget class="QWidget" name="WordCountTab">
                 <attribute name="title">
                  <string>统计</string>
                 </attribute>
-                <widget class="MatplotlibWidget" name="WordCountWidget" native="true">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>561</width>
-                   <height>491</height>
-                  </rect>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(255, 255, 255);</string>
-                 </property>
-                </widget>
+                <layout class="QGridLayout" name="gridLayout_24">
+                 <item row="0" column="0">
+                  <widget class="MatplotlibWidget" name="WordCountWidget" native="true">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 255, 255);</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </widget>
              </item>
@@ -1379,12 +1409,12 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>600</x>
-     <y>119</y>
+     <x>562</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>465</x>
-     <y>119</y>
+     <x>398</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -1395,12 +1425,12 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>619</x>
-     <y>129</y>
+     <x>562</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>800</x>
-     <y>119</y>
+     <x>718</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -1427,8 +1457,8 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>144</x>
-     <y>518</y>
+     <x>154</x>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
      <x>135</x>
@@ -1443,8 +1473,8 @@ p, li { white-space: pre-wrap; }
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>810</x>
-     <y>536</y>
+     <x>572</x>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
      <x>914</x>
@@ -1459,8 +1489,8 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>244</x>
-     <y>535</y>
+     <x>254</x>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
      <x>750</x>

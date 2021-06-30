@@ -62,6 +62,16 @@ class DataBase:
         dbConn.close()
         return dataList
 
+    def dataQueryInChannelName(self, keyword=""):
+        dbConn = sqlite3.connect(self.DATABASE_PATH)
+        dbCursor = dbConn.cursor()
+
+        dataQuery = "SELECT * FROM " + self.TABLE_NAME + " WHERE channelName LIKE '%" + keyword + "%';"
+        dataList = dbCursor.execute(dataQuery).fetchall()
+
+        dbConn.close()
+        return dataList
+
     def dataClear(self):
         dbConn = sqlite3.connect(self.DATABASE_PATH)
         dbCursor = dbConn.cursor()
@@ -75,3 +85,4 @@ class DataBase:
 
 if __name__ == '__main__':
     db = DataBase()
+    db.dataClear()

@@ -20,6 +20,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.DEFAULT_FILE_PATH = Const.DEFAULT_FILE_PATH
         self.LOGO_IMG_PATH = Const.LOGO_IMG_PATH
         self.LOGO_ICON_PATH = Const.LOGO_ICON_PATH
+        self.MASK_IMG_PATH = Const.MASK_IMG_PATH
 
         st = time.time()
         self.classifier = Classifier()
@@ -54,6 +55,10 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # wordCloud Widget's Function
         self.wordDrawButton.clicked.connect(self.wordCloudDraw)
+        path, file = os.path.split(self.MASK_IMG_PATH)
+        fileName, fileFmt = os.path.splitext(file)
+        self.wordCloudMask.setText(fileName)
+        self.wordCouldMaskSelectButton.clicked.connect(self.wordCloudMaskSelect)
 
         # intro Widget's Function
         self.introLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
@@ -114,7 +119,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.multiResultsTable.clearContents()
 
         filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.DEFAULT_FILE_PATH,
-                                                                   "多新闻文件(*.csv, *.xls, *.xlsx)")
+                                                                   "多新闻文件(*.csv *.xlsx *.xls)")
         if len(filePath) == 0:
             pass
         else:
@@ -177,8 +182,8 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
             output_excel = {'content': newsContentList, 'channelName': channelNameList, 'title': newsTitleList}
             output = pd.DataFrame(output_excel)
-            output.to_csv(filePath, index=False, encoding="gb18030", header=None)
-            print(filePath, "Succeeded!")
+            output.to_csv(filePath, index=False, encoding="utf_8_sig", header=None)
+            print(filePath, " has been saved successfully!")
 
         except Exception as e:
             print(e)
@@ -245,7 +250,9 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(e)
             pass
-        print(f1ScoreNum, f1ScoreRes)
+        for _ in range(10):
+            print(_, f1ScoreResList[_])
+
         if f1ScoreNum:
             f1ScoreRes /= f1ScoreNum
         self.searchF1Result.setText("%.2f" % f1ScoreRes)
@@ -265,6 +272,16 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             newsTitle = dataRow[3]
             newsContent = dataRow[4]
             self.searchDBInsertTableWidget(index, predictChannel, channelName, newsTitle, newsContent)
+
+    def wordCloudMaskSelect(self):
+        filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择蒙版', self.MASK_IMG_PATH,
+                                                                   "图片文件(*.png *.jpg *.jpeg)")
+        if len(filePath) == 0:
+            return
+        self.MASK_IMG_PATH = filePath
+        path, file = os.path.split(self.MASK_IMG_PATH)
+        fileName, fileFmt = os.path.splitext(file)
+        self.wordCloudMask.setText(fileName)
 
     def wordCloudinit(self):
         self.tc = True
@@ -295,12 +312,13 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 ('swf', self.swf)]
 
         self.para = dict(list)  # 将列表转化为字典
-        print(len(self.para))
+        # print(len(self.para))
 
     def wordCloudDraw(self):
         self.wordCloudinit()
-        self.txtfile = "./月光.txt"
-        self.imgfile = "./wordSizeImages/皮卡丘.png"
+        self.txtfile = self.wordCloudSrc.currentText()
+        print(self.txtfile)
+        self.imgfile = self.MASK_IMG_PATH
 
         if self.swf == 1:  # 如果按照词频来绘制
             try:
@@ -311,7 +329,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 return
 
         # self.mpl  是MyMplCanvas() 对象
-        print(self.para)
+        # print(self.para)
 
         self.WordCloudWidget.mpl.wordcloud_plot(self.txtfile, self.imgfile, self.para)
         self.wordCloudTabWidget.setCurrentIndex(0)

@@ -12,7 +12,7 @@ class Const:
     DATABASE_PATH = PROJECT_PATH + '\\resources\\database\\' + DATABASE_NAME
 
     # about model
-    MODEL_NAME = 'ClassifyModel.bin'
+    MODEL_NAME = 'model_4.bin'
     MODEL_DICT_NAME = 'roberta_wwm_vocab.txt'
     MODEL_PATH = PROJECT_PATH + '\\resources\\model\\' + MODEL_NAME
     MODEL_DICT_PATH = PROJECT_PATH + '\\resources\\model\\' + MODEL_DICT_NAME
@@ -23,6 +23,7 @@ class Const:
     # about images
     LOGO_IMG_PATH = PROJECT_PATH + '\\resources\\images\\logo\\Meows_Alter.png'
     LOGO_ICON_PATH = PROJECT_PATH + '\\resources\\images\\logo\\Meows.ico'
+    MASK_IMG_PATH = PROJECT_PATH + '\\resources\\images\\mask\\皮卡丘.png'
 
 
 class ConstDictionary:

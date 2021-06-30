@@ -39,7 +39,8 @@ def readCorpus(filePath):
     newsContentList = []
 
     try:
-        dataFile = pd.read_excel(filePath, header=None)
+        # dataFile = pd.read_excel(filePath, header=None)
+        dataFile = pd.read_csv(filePath, header=None)
         dataTable = dataFile.values
         for dataRow in dataTable:
             # dataRow[0] = content
@@ -57,7 +58,6 @@ def readCorpus(filePath):
             except Exception as e:
                 print(e)
                 continue
-
     except Exception as e:
         print(e)
         pass

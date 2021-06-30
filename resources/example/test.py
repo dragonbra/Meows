@@ -1,30 +1,33 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-import time
+import pandas as pd
 
-class MyWindow(QtWidgets.QPushButton):
+if __name__ == '__main__':
+    channelNameList = []
+    newsTitleList = []
+    newsContentList = []
+    try:
+        dataFile = pd.read_csv('D:\\GitHub\\NewsClassifier\\resources\\example\\traindata.csv', error_bad_lines=False)
+        dataTable = dataFile.values
+        for dataRow in dataTable:
+            # dataRow = dataTable[_]
+            # dataRow[0] = content
+            # dataRow[1] = channelName
+            # dataRow[2] = title
+            try:
+                newsContent = dataRow[1]
+                channelName = dataRow[0]
+                newsTitle = newsContent[0:20]
 
-    def __init__(self):
-        QtWidgets.QPushButton.__init__(self)
-        self.setText("关闭窗口")
-        self.clicked.connect(QtWidgets.qApp.quit)
+                newsContentList.append(newsContent)
+                channelNameList.append(channelName)
+                newsTitleList.append(newsTitle)
 
-    def load_data(self, sp):
-        for i in range(1, 11):              #模拟主程序加载过程
-            time.sleep(2)                   # 加载数据
-            sp.showMessage("加载... {0}%".format(i * 10), QtCore.Qt.AlignHCenter |QtCore.Qt.AlignBottom, QtCore.Qt.black)
-            QtWidgets.qApp.processEvents()  # 允许主进程处理事件
+            except Exception as e:
+                print(e)
+                continue
+    except Exception as e:
+        print(e)
+        pass
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    splash = QtWidgets.QSplashScreen(QtGui.QPixmap("img.jpg"))
-    splash.showMessage("加载... 0%", QtCore.Qt.AlignHCenter | QtCore.Qt.AlignBottom, QtCore.Qt.black)
-    splash.show()                           # 显示启动界面
-    QtWidgets.qApp.processEvents()          # 处理主进程事件
-    window = MyWindow()
-    window.setWindowTitle("QSplashScreen类使用")
-    window.resize(300, 30)
-    window.load_data(splash)                # 加载数据
-    window.show()
-    splash.finish(window)                   # 隐藏启动界面
+    output_excel = {'content': newsContentList, 'channelName': channelNameList, 'title': newsTitleList}
+    output = pd.DataFrame(output_excel)
+    output.to_csv('./data.csv', index=False, encoding="utf_8_sig", header=None)

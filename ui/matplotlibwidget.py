@@ -1,22 +1,17 @@
-import sys
 import os.path
-import random
-import matplotlib
-from PyQt5 import QtCore
-import PyQt5.sip
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QSizePolicy, QWidget
-from numpy import arange, sin, pi
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
+import sys
 
+import imageio
 import jieba
 import jieba.posseg as psg
-from wordcloud import wordcloud, ImageColorGenerator
-import imageio
+import matplotlib.pyplot as plt
 import numpy as np
-
+from PyQt5.QtWidgets import QApplication, QVBoxLayout, QSizePolicy, QWidget
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+from numpy import arange, sin, pi
+from wordcloud import wordcloud, ImageColorGenerator
+from utils.dataBaseUtil import DataBase
 
 # matplotlib.use("Qt5Agg")
 
@@ -43,12 +38,14 @@ class barchart():
         return word_sort  # 得到词频列表
 
     def wordfreqsum(self, txtfile):
-        # txtfile = "./text/我的孤独是一座花园.txt"
-        (filepath, tempfilename) = os.path.split(txtfile)
-        (filename, extension) = os.path.splitext(tempfilename)
-
-        self.title = filename
-        txt = open(txtfile, encoding='UTF-8').read()
+        self.title = txtfile
+        # TODO
+        # 这个代码太丑了，循环调用反复读入txt，改成数据库内容，先打补丁。。
+        # txt = open(txtfile, encoding='UTF-8').read()
+        dataList = DataBase().dataQueryInChannelName(txtfile)
+        txt = ""
+        for dataRow in dataList:
+            txt += dataRow[3]
         wf = self.wordfreq(txt)
 
         # 提取前十个频率
@@ -56,11 +53,14 @@ class barchart():
 
         self.wfreq = dict(wf)  # 创建一个字典对象dict(wf)
 
+        top10 = dict()
         self.labels = []
         self.nums = []
         for i in range(0, 10):
             self.nums.append(wf[i][1])
             self.labels.append(wf[i][0])
+            top10[wf[i][1]] = wf[i][0]
+        print(top10)
 
 
 class MyMplCanvas(FigureCanvas):
@@ -74,7 +74,7 @@ class MyMplCanvas(FigureCanvas):
         # self.fig, self.axes = plt.subplots(1, 1)
         # self.fig.figsize=(900,760)
 
-        self.fig = plt.figure(figsize=(7.8, 7.6), dpi=100)
+        self.fig = plt.figure()
         self.fig.set_tight_layout(True)
 
         self.axes = self.fig.add_subplot(111)
@@ -109,7 +109,7 @@ class MyMplCanvas(FigureCanvas):
         self.axes.set_title('词频前十名')
         self.axes.set_xticks(x)
         self.axes.set_xticklabels(labels)
-        self.axes.legend()
+        # self.axes.legend()
         self.fig.tight_layout()
 
         self.draw()
@@ -118,16 +118,14 @@ class MyMplCanvas(FigureCanvas):
         # txtfile = "./月光.txt"
 
         self.bct = barchart()
-        print("456")
         self.bct.wordfreqsum(txtfile)
         # 取参数
         labels = self.bct.labels
         nums = self.bct.nums
         title = self.bct.title
         self.wfreq = self.bct.wfreq  # 词频字典
-        print("22222")
         self.plotchart(labels, nums, title)
-        print(self.wfreq)
+        # print(self.wfreq)
         # 当函数调用完，self.bct 对象就被清除了吗,为什么这个参数没有共享，似乎因为他们来自不同的对象
         # 虽然是同一个类属性，但是由不同对象创建
         # self.statistics.mpl.wordfreqplot(self.txtfile)
@@ -139,7 +137,12 @@ class MyMplCanvas(FigureCanvas):
         self.bct.wordfreqsum(txtfile)
         self.wfreq = self.bct.wfreq  # 词频字典
 
-        txt = open(txtfile, encoding='UTF-8').read()
+        # txt = open(txtfile, encoding='UTF-8').read
+        dataList = DataBase().dataQueryInChannelName(txtfile)
+        txt = ""
+        for dataRow in dataList:
+            txt += dataRow[3]
+
         txtlist = jieba.lcut(txt)
         string = " ".join(txtlist)
         para['stopwords'] = jieba.lcut(para['stopwords'])
@@ -164,7 +167,7 @@ class MyMplCanvas(FigureCanvas):
             self.wc.generate(string)  # 先生成对象，然后考虑着色
         else:
 
-            print(self.wfreq)
+            # print(self.wfreq)
             self.wc.generate_from_frequencies(self.wfreq)
 
         # 清除原来的图像
@@ -179,7 +182,7 @@ class MyMplCanvas(FigureCanvas):
 
         self.draw()
 
-    def bgplot(self):
+    def bg_plot(self):
         bg = "./result/狐狸.png"
         background = imageio.imread(bg)
         self.axes.imshow(background)
