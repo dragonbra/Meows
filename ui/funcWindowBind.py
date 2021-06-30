@@ -31,8 +31,8 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # singlePredict Widget's Functions
         self.singleFileButton.clicked.connect(self.singleGetNewsFromFile)
-        logoImg = QtGui.QImage(self.LOGO_IMG_PATH).scaled(self.singleLogoLabel.width(), self.singleLogoLabel.height())
-        self.singleLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
+        #logoImg = QtGui.QImage(self.LOGO_IMG_PATH).scaled(self.singleLogoLabel.width(), self.singleLogoLabel.height())
+        #self.singleLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
         self.predictButton.clicked.connect(self.singleNewsPredict)
         self.predictButton2.clicked.connect(self.singleNewsPredict)
 
@@ -61,7 +61,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.wordCouldMaskSelectButton.clicked.connect(self.wordCloudMaskSelect)
 
         # intro Widget's Function
-        self.introLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
+        #self.introLogoLabel.setPixmap(QtGui.QPixmap.fromImage(logoImg))
 
     def singleGetNewsFromFile(self):
         filePath, fileType = QtWidgets.QFileDialog.getOpenFileName(self, '选择文件', self.DEFAULT_FILE_PATH, "单新闻文件(*.txt)")

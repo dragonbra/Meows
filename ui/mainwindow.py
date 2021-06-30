@@ -56,13 +56,118 @@ class Ui_MainWindow(object):
         self.widget_1 = QtWidgets.QWidget(self.tab_1)
         self.widget_1.setStyleSheet("")
         self.widget_1.setObjectName("widget_1")
-        self.layoutWidget = QtWidgets.QWidget(self.widget_1)
-        self.layoutWidget.setGeometry(QtCore.QRect(10, 440, 821, 91))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_12 = QtWidgets.QGridLayout(self.widget_1)
+        self.gridLayout_12.setObjectName("gridLayout_12")
+        self.gridLayout_11 = QtWidgets.QGridLayout()
+        self.gridLayout_11.setSpacing(10)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setSpacing(10)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label = QtWidgets.QLabel(self.widget_1)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setMinimumSize(QtCore.QSize(62, 0))
+        self.label.setTabletTracking(False)
+        self.label.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.label.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"    ScaledContents: true;\n"
+"}")
+        self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.label.setObjectName("label")
+        self.horizontalLayout_5.addWidget(self.label)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.singleNewslineEdit = QtWidgets.QLineEdit(self.widget_1)
+        self.singleNewslineEdit.setMinimumSize(QtCore.QSize(0, 40))
+        self.singleNewslineEdit.setStyleSheet("background-color: white;\n"
+"border-width: 2px;\n"
+"border-color: #3D74BB;\n"
+"border-style: solid;\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
+        self.singleNewslineEdit.setObjectName("singleNewslineEdit")
+        self.horizontalLayout_6.addWidget(self.singleNewslineEdit)
+        self.singleFileButton = QtWidgets.QPushButton(self.widget_1)
+        self.singleFileButton.setMaximumSize(QtCore.QSize(100, 40))
+        self.singleFileButton.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    padding: 6px;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.singleFileButton.setObjectName("singleFileButton")
+        self.horizontalLayout_6.addWidget(self.singleFileButton)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_6)
+        self.gridLayout_11.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.label_2 = QtWidgets.QLabel(self.widget_1)
+        self.label_2.setStyleSheet("QLabel{\n"
+"    color:#3D74BB;\n"
+"    border: 2px solid blue;\n"
+"    border-radius: 4px;\n"
+"    padding: 2px;\n"
+"\n"
+"}")
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_7.addWidget(self.label_2)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem1)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_7)
+        self.singleNewsPaperEdit = QtWidgets.QTextEdit(self.widget_1)
+        self.singleNewsPaperEdit.setStyleSheet("QTextEdit {\n"
+"    background-color: white;\n"
+"    border-width: 2px;\n"
+"    border-color: #3D74BB;\n"
+"    border-style: solid;\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"}")
+        self.singleNewsPaperEdit.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
+        self.singleNewsPaperEdit.setObjectName("singleNewsPaperEdit")
+        self.verticalLayout_4.addWidget(self.singleNewsPaperEdit)
+        self.gridLayout_11.addLayout(self.verticalLayout_4, 1, 0, 1, 1)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.clearButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.clearButton = QtWidgets.QPushButton(self.widget_1)
         self.clearButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -82,7 +187,7 @@ class Ui_MainWindow(object):
 "}")
         self.clearButton.setObjectName("clearButton")
         self.horizontalLayout.addWidget(self.clearButton)
-        self.exitButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.exitButton = QtWidgets.QPushButton(self.widget_1)
         self.exitButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -102,7 +207,7 @@ class Ui_MainWindow(object):
 "}")
         self.exitButton.setObjectName("exitButton")
         self.horizontalLayout.addWidget(self.exitButton)
-        self.predictButton = QtWidgets.QPushButton(self.layoutWidget)
+        self.predictButton = QtWidgets.QPushButton(self.widget_1)
         self.predictButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -122,82 +227,13 @@ class Ui_MainWindow(object):
 "}")
         self.predictButton.setObjectName("predictButton")
         self.horizontalLayout.addWidget(self.predictButton)
-        self.singleLogoLabel = QtWidgets.QLabel(self.widget_1)
-        self.singleLogoLabel.setGeometry(QtCore.QRect(660, 20, 161, 151))
-        self.singleLogoLabel.setStyleSheet("background-color:rgb(255, 170, 0)")
-        self.singleLogoLabel.setObjectName("singleLogoLabel")
-        self.label = QtWidgets.QLabel(self.widget_1)
-        self.label.setGeometry(QtCore.QRect(10, 20, 76, 23))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setMinimumSize(QtCore.QSize(62, 0))
-        self.label.setTabletTracking(False)
-        self.label.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.label.setStyleSheet("QLabel{\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"    ScaledContents: true;\n"
-"}")
-        self.label.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.label.setObjectName("label")
-        self.singleFileButton = QtWidgets.QPushButton(self.widget_1)
-        self.singleFileButton.setGeometry(QtCore.QRect(380, 40, 91, 30))
-        self.singleFileButton.setStyleSheet("QPushButton {\n"
-"    color:white;\n"
-"    background-color:rgb(0, 170, 255);\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    padding: 6px;\n"
-"}\n"
-"QPushButton::pressed {\n"
-"    background-color: white;\n"
-"    color:rgb(0, 170, 255);\n"
-"    border-style: inset;\n"
-"}")
-        self.singleFileButton.setObjectName("singleFileButton")
-        self.singleNewslineEdit = QtWidgets.QLineEdit(self.widget_1)
-        self.singleNewslineEdit.setGeometry(QtCore.QRect(10, 40, 331, 31))
-        self.singleNewslineEdit.setStyleSheet("background-color: white;\n"
-"border-width: 2px;\n"
-"border-color: #3D74BB;\n"
-"border-style: solid;")
-        self.singleNewslineEdit.setObjectName("singleNewslineEdit")
-        self.singleNewsPaperEdit = QtWidgets.QTextEdit(self.widget_1)
-        self.singleNewsPaperEdit.setGeometry(QtCore.QRect(10, 110, 461, 311))
-        self.singleNewsPaperEdit.setStyleSheet("QTextEdit {\n"
-"    background-color: white;\n"
-"    border-width: 2px;\n"
-"    border-color: #3D74BB;\n"
-"    border-style: solid;\n"
-"}")
-        self.singleNewsPaperEdit.setLineWrapMode(QtWidgets.QTextEdit.WidgetWidth)
-        self.singleNewsPaperEdit.setObjectName("singleNewsPaperEdit")
-        self.label_2 = QtWidgets.QLabel(self.widget_1)
-        self.label_2.setGeometry(QtCore.QRect(10, 90, 76, 23))
-        self.label_2.setStyleSheet("QLabel{\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"}")
-        self.label_2.setObjectName("label_2")
-        self.singleResultBroswer = QtWidgets.QTextBrowser(self.widget_1)
-        self.singleResultBroswer.setGeometry(QtCore.QRect(570, 230, 256, 192))
-        self.singleResultBroswer.setStyleSheet("background-color: white;\n"
-"border-width: 2px;\n"
-"border-color: #3D74BB;\n"
-"border-style: solid;")
-        self.singleResultBroswer.setObjectName("singleResultBroswer")
+        self.gridLayout_11.addLayout(self.horizontalLayout, 2, 0, 1, 2)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.predictButton2 = QtWidgets.QPushButton(self.widget_1)
-        self.predictButton2.setGeometry(QtCore.QRect(480, 290, 71, 61))
+        self.predictButton2.setMaximumSize(QtCore.QSize(50, 50))
         self.predictButton2.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
 "    background-color:rgb(0, 170, 255);\n"
@@ -214,8 +250,17 @@ class Ui_MainWindow(object):
 "    border-style: inset;\n"
 "}")
         self.predictButton2.setObjectName("predictButton2")
+        self.horizontalLayout_9.addWidget(self.predictButton2)
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.label_5 = QtWidgets.QLabel(self.widget_1)
-        self.label_5.setGeometry(QtCore.QRect(570, 210, 76, 23))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
+        self.label_5.setSizePolicy(sizePolicy)
         self.label_5.setStyleSheet("QLabel{\n"
 "    color:#3D74BB;\n"
 "    border: 2px solid blue;\n"
@@ -223,6 +268,43 @@ class Ui_MainWindow(object):
 "    padding: 2px;\n"
 "}")
         self.label_5.setObjectName("label_5")
+        self.horizontalLayout_8.addWidget(self.label_5)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem2)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_8)
+        self.label_3 = QtWidgets.QLabel(self.widget_1)
+        self.label_3.setMinimumSize(QtCore.QSize(256, 256))
+        self.label_3.setStyleSheet("background-color: rgb(255, 170, 0)")
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_5.addWidget(self.label_3)
+        self.singleResultBroswer = QtWidgets.QTextBrowser(self.widget_1)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.singleResultBroswer.sizePolicy().hasHeightForWidth())
+        self.singleResultBroswer.setSizePolicy(sizePolicy)
+        self.singleResultBroswer.setMinimumSize(QtCore.QSize(256, 73))
+        self.singleResultBroswer.setMaximumSize(QtCore.QSize(16777210, 73))
+        self.singleResultBroswer.setStyleSheet("background-color: white;\n"
+"border-width: 2px;\n"
+"border-color: #3D74BB;\n"
+"border-style: solid;\n"
+"font: 25 24pt \"微软雅黑 Light\";\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
+        self.singleResultBroswer.setObjectName("singleResultBroswer")
+        self.verticalLayout_5.addWidget(self.singleResultBroswer)
+        self.horizontalLayout_9.addLayout(self.verticalLayout_5)
+        self.horizontalLayout_9.setStretch(0, 10)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_9)
+        self.verticalLayout_6.setStretch(0, 10)
+        self.gridLayout_11.addLayout(self.verticalLayout_6, 1, 1, 1, 1)
+        self.gridLayout_11.setColumnStretch(0, 10)
+        self.gridLayout_11.setColumnStretch(1, 6)
+        self.gridLayout_12.addLayout(self.gridLayout_11, 0, 0, 1, 1)
         self.gridLayout_7.addWidget(self.widget_1, 0, 0, 1, 1)
         self.mainTabWidget.addTab(self.tab_1, "")
         self.tab_2 = QtWidgets.QWidget()
@@ -255,6 +337,11 @@ class Ui_MainWindow(object):
 "    border-width: 2px;\n"
 "    border-color: #3D74BB;\n"
 "    border-style: solid;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;\n"
 "}\n"
 "\n"
 "/*选中item*/\n"
@@ -306,6 +393,7 @@ class Ui_MainWindow(object):
         self.multiNewsTable.verticalHeader().setDefaultSectionSize(50)
         self.gridLayout.addWidget(self.multiNewsTable, 0, 0, 1, 1)
         self.multiLoadingLine = QtWidgets.QProgressBar(self.widget_4)
+        self.multiLoadingLine.setMinimumSize(QtCore.QSize(0, 30))
         self.multiLoadingLine.setStyleSheet("QProgressBar{\n"
 "   border: 2px solid #2196F3;/*边框以及边框颜色*/\n"
 "    border-radius: 5px;\n"
@@ -340,6 +428,11 @@ class Ui_MainWindow(object):
 "    border-width: 2px;\n"
 "    border-color: #3D74BB;\n"
 "    border-style: solid;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;\n"
 "}\n"
 "\n"
 "/*选中item*/\n"
@@ -484,7 +577,12 @@ class Ui_MainWindow(object):
         self.searchLineEdit.setStyleSheet("background-color: white;\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
-"border-style: solid;")
+"border-style: solid;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
         self.searchLineEdit.setObjectName("searchLineEdit")
         self.horizontalLayout_4.addWidget(self.searchLineEdit)
         self.searchButton = QtWidgets.QPushButton(self.widget_3)
@@ -547,7 +645,12 @@ class Ui_MainWindow(object):
         self.searchF1Result.setStyleSheet("background-color: white;\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
-"border-style: solid;")
+"border-style: solid;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
         self.searchF1Result.setObjectName("searchF1Result")
         self.horizontalLayout_4.addWidget(self.searchF1Result)
         self.searchF1Button = QtWidgets.QPushButton(self.widget_3)
@@ -575,8 +678,8 @@ class Ui_MainWindow(object):
 "}")
         self.searchF1Button.setObjectName("searchF1Button")
         self.horizontalLayout_4.addWidget(self.searchF1Button)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem3)
         self.horizontalLayout_4.setStretch(0, 20)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.searchDBTable = QtWidgets.QTableWidget(self.widget_3)
@@ -589,6 +692,11 @@ class Ui_MainWindow(object):
 "    border-width: 2px;\n"
 "    border-color: #3D74BB;\n"
 "    border-style: solid;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;\n"
 "}\n"
 "\n"
 "/*选中item*/\n"
@@ -701,6 +809,14 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.wordCloudMask.sizePolicy().hasHeightForWidth())
         self.wordCloudMask.setSizePolicy(sizePolicy)
         self.wordCloudMask.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.wordCloudMask.setStyleSheet("background-color: white;\n"
+"    border-width: 2px;\n"
+"    border-color: #3D74BB;\n"
+"    border-style: solid;\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
         self.wordCloudMask.setObjectName("wordCloudMask")
         self.horizontalLayout_3.addWidget(self.wordCloudMask)
         self.wordCouldMaskSelectButton = QtWidgets.QPushButton(self.widget)
@@ -753,8 +869,8 @@ class Ui_MainWindow(object):
 "}")
         self.wordDrawButton.setObjectName("wordDrawButton")
         self.horizontalLayout_3.addWidget(self.wordDrawButton)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem1)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
         self.wordCloudTabWidget = QtWidgets.QTabWidget(self.widget)
         self.wordCloudTabWidget.setStyleSheet("QTabWidget::pane{\n"
@@ -789,7 +905,12 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.WordCloudWidget.sizePolicy().hasHeightForWidth())
         self.WordCloudWidget.setSizePolicy(sizePolicy)
-        self.WordCloudWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.WordCloudWidget.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
         self.WordCloudWidget.setObjectName("WordCloudWidget")
         self.gridLayout_23.addWidget(self.WordCloudWidget, 0, 0, 1, 1)
         self.wordCloudTabWidget.addTab(self.WordCloudTab, "")
@@ -798,7 +919,12 @@ class Ui_MainWindow(object):
         self.gridLayout_24 = QtWidgets.QGridLayout(self.WordCountTab)
         self.gridLayout_24.setObjectName("gridLayout_24")
         self.WordCountWidget = MatplotlibWidget(self.WordCountTab)
-        self.WordCountWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.WordCountWidget.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
         self.WordCountWidget.setObjectName("WordCountWidget")
         self.gridLayout_24.addWidget(self.WordCountWidget, 0, 0, 1, 1)
         self.wordCloudTabWidget.addTab(self.WordCountTab, "")
@@ -812,18 +938,36 @@ class Ui_MainWindow(object):
         self.gridLayout_8.setObjectName("gridLayout_8")
         self.widget_2 = QtWidgets.QWidget(self.tab_5)
         self.widget_2.setObjectName("widget_2")
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.widget_2)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.gridLayout_13 = QtWidgets.QGridLayout()
+        self.gridLayout_13.setObjectName("gridLayout_13")
         self.introTextBrowser = QtWidgets.QTextBrowser(self.widget_2)
-        self.introTextBrowser.setGeometry(QtCore.QRect(20, 30, 611, 161))
+        self.introTextBrowser.setMinimumSize(QtCore.QSize(600, 161))
+        self.introTextBrowser.setMaximumSize(QtCore.QSize(16777215, 161))
         self.introTextBrowser.setStyleSheet("background-color: white;\n"
 "font: 25 16pt \"微软雅黑 Light\";\n"
 "border-width: 2px;\n"
 "border-color: #3D74BB;\n"
-"border-style: solid;")
+"border-style: solid;\n"
+"\n"
+"    border-top-right-radius: 8px;\n"
+"    border-top-left-radius: 8px;\n"
+"    border-bottom-left-radius: 8px;\n"
+"    border-bottom-right-radius: 8px;")
         self.introTextBrowser.setObjectName("introTextBrowser")
+        self.gridLayout_13.addWidget(self.introTextBrowser, 0, 0, 1, 1)
         self.introLogoLabel = QtWidgets.QLabel(self.widget_2)
-        self.introLogoLabel.setGeometry(QtCore.QRect(670, 30, 161, 161))
+        self.introLogoLabel.setMinimumSize(QtCore.QSize(161, 161))
+        self.introLogoLabel.setMaximumSize(QtCore.QSize(16777215, 161))
         self.introLogoLabel.setStyleSheet("background-color: rgb(255, 170, 0)")
         self.introLogoLabel.setObjectName("introLogoLabel")
+        self.gridLayout_13.addWidget(self.introLogoLabel, 0, 1, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_13.addItem(spacerItem5, 0, 2, 1, 1)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_13.addItem(spacerItem6, 1, 0, 1, 1)
+        self.gridLayout_14.addLayout(self.gridLayout_13, 0, 0, 1, 1)
         self.gridLayout_8.addWidget(self.widget_2, 0, 0, 1, 1)
         self.mainTabWidget.addTab(self.tab_5, "")
         self.gridLayout_4.addWidget(self.mainTabWidget, 0, 0, 1, 1)
@@ -833,8 +977,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.mainTabWidget.setCurrentIndex(0)
-        self.wordCloudTabWidget.setCurrentIndex(0)
+        self.mainTabWidget.setCurrentIndex(3)
+        self.wordCloudTabWidget.setCurrentIndex(1)
         self.searchClearButton.clicked.connect(self.searchLineEdit.clear)
         self.searchClearButton.clicked.connect(self.searchF1Result.clear)
         self.clearButton.clicked.connect(self.singleNewsPaperEdit.clear)
@@ -846,20 +990,19 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Meows - 一个优雅的新闻文本【分类预测&数据分析&词云生成】软件"))
-        self.clearButton.setText(_translate("MainWindow", "清除全部内容"))
-        self.exitButton.setText(_translate("MainWindow", "查看分类信息"))
-        self.predictButton.setText(_translate("MainWindow", "新闻文本预测"))
-        self.singleLogoLabel.setText(_translate("MainWindow", "LOGO"))
         self.label.setText(_translate("MainWindow", "新闻标题"))
         self.singleFileButton.setText(_translate("MainWindow", "从文件导入"))
         self.label_2.setText(_translate("MainWindow", "新闻内容"))
+        self.clearButton.setText(_translate("MainWindow", "清除全部内容"))
+        self.exitButton.setText(_translate("MainWindow", "查看分类信息"))
+        self.predictButton.setText(_translate("MainWindow", "新闻文本预测"))
+        self.predictButton2.setText(_translate("MainWindow", "->"))
+        self.label_5.setText(_translate("MainWindow", "预测结果"))
         self.singleResultBroswer.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">请输入新闻</p></body></html>"))
-        self.predictButton2.setText(_translate("MainWindow", "->"))
-        self.label_5.setText(_translate("MainWindow", "预测结果"))
+"</style></head><body style=\" font-family:\'微软雅黑 Light\'; font-size:24pt; font-weight:24; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">请输入新闻</p></body></html>"))
         self.mainTabWidget.setTabText(self.mainTabWidget.indexOf(self.tab_1), _translate("MainWindow", "单条预测"))
         item = self.multiNewsTable.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))

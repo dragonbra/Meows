@@ -53,7 +53,7 @@ QTabBar::tab:selected{
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="usesScrollButtons">
        <bool>false</bool>
@@ -77,166 +77,106 @@ QTabBar::tab:selected{
           <property name="styleSheet">
            <string notr="true"/>
           </property>
-          <widget class="QWidget" name="layoutWidget">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>440</y>
-             <width>821</width>
-             <height>91</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QPushButton" name="clearButton">
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-	min-height:3em;
-    min-width: 10em;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-              </property>
-              <property name="text">
-               <string>清除全部内容</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="exitButton">
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-	min-height:3em;
-    min-width: 10em;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-              </property>
-              <property name="text">
-               <string>查看分类信息</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="predictButton">
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-	min-height:3em;
-    min-width: 10em;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-              </property>
-              <property name="text">
-               <string>新闻文本预测</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QLabel" name="singleLogoLabel">
-           <property name="geometry">
-            <rect>
-             <x>660</x>
-             <y>20</y>
-             <width>161</width>
-             <height>151</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:rgb(255, 170, 0)</string>
-           </property>
-           <property name="text">
-            <string>LOGO</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>76</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>62</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="tabletTracking">
-            <bool>false</bool>
-           </property>
-           <property name="contextMenuPolicy">
-            <enum>Qt::DefaultContextMenu</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout_11" columnstretch="10,6">
+             <property name="spacing">
+              <number>10</number>
+             </property>
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <property name="spacing">
+                  <number>10</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>62</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="tabletTracking">
+                    <bool>false</bool>
+                   </property>
+                   <property name="contextMenuPolicy">
+                    <enum>Qt::DefaultContextMenu</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
 	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
 	ScaledContents: true;
 }</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="text">
-            <string>新闻标题</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="singleFileButton">
-           <property name="geometry">
-            <rect>
-             <x>380</x>
-             <y>40</y>
-             <width>91</width>
-             <height>30</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="text">
+                    <string>新闻标题</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <item>
+                  <widget class="QLineEdit" name="singleNewslineEdit">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;
+
+	font: 12pt &quot;微软雅黑&quot;;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="singleFileButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
 	color:white;
     background-color:rgb(0, 170, 255);
     border-style: outset;
@@ -245,109 +185,181 @@ QPushButton::pressed {
     border-color: beige;
     font: bold 14px;
     padding: 6px;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 QPushButton::pressed {
     background-color: white;
 	color:rgb(0, 170, 255);
     border-style: inset;
 }</string>
-           </property>
-           <property name="text">
-            <string>从文件导入</string>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="singleNewslineEdit">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>40</y>
-             <width>331</width>
-             <height>31</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: white;
-border-width: 2px;
-border-color: #3D74BB;
-border-style: solid;</string>
-           </property>
-          </widget>
-          <widget class="QTextEdit" name="singleNewsPaperEdit">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>110</y>
-             <width>461</width>
-             <height>311</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QTextEdit {
+                   </property>
+                   <property name="text">
+                    <string>从文件导入</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="label_2">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel{
+	color:#3D74BB;
+	border: 2px solid blue;
+    border-radius: 4px;
+    padding: 2px;
+
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>新闻内容</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QTextEdit" name="singleNewsPaperEdit">
+                 <property name="styleSheet">
+                  <string notr="true">QTextEdit {
 	background-color: white;
 	border-width: 2px;
 	border-color: #3D74BB;
 	border-style: solid;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+
+	font: 12pt &quot;微软雅黑&quot;;
 }</string>
-           </property>
-           <property name="lineWrapMode">
-            <enum>QTextEdit::WidgetWidth</enum>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_2">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>90</y>
-             <width>76</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-	color:#3D74BB;
-	border: 2px solid blue;
-    border-radius: 4px;
-    padding: 2px;
+                 </property>
+                 <property name="lineWrapMode">
+                  <enum>QTextEdit::WidgetWidth</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0" colspan="2">
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QPushButton" name="clearButton">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
 }</string>
-           </property>
-           <property name="text">
-            <string>新闻内容</string>
-           </property>
-          </widget>
-          <widget class="QTextBrowser" name="singleResultBroswer">
-           <property name="geometry">
-            <rect>
-             <x>570</x>
-             <y>230</y>
-             <width>256</width>
-             <height>192</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: white;
-border-width: 2px;
-border-color: #3D74BB;
-border-style: solid;</string>
-           </property>
-           <property name="html">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;请输入新闻&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-          <widget class="QPushButton" name="predictButton2">
-           <property name="geometry">
-            <rect>
-             <x>480</x>
-             <y>290</y>
-             <width>71</width>
-             <height>61</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+                 </property>
+                 <property name="text">
+                  <string>清除全部内容</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="exitButton">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>查看分类信息</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="predictButton">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>新闻文本预测</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_6" stretch="10">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="10,0">
+                 <item>
+                  <widget class="QPushButton" name="predictButton2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
 	color:white;
     background-color:rgb(0, 170, 255);
     border-style: outset;
@@ -362,32 +374,117 @@ QPushButton::pressed {
 	color:rgb(0, 170, 255);
     border-style: inset;
 }</string>
-           </property>
-           <property name="text">
-            <string>-&gt;</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_5">
-           <property name="geometry">
-            <rect>
-             <x>570</x>
-             <y>210</y>
-             <width>76</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{
+                   </property>
+                   <property name="text">
+                    <string>-&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                     <item>
+                      <widget class="QLabel" name="label_5">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
 	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
 }</string>
-           </property>
-           <property name="text">
-            <string>预测结果</string>
-           </property>
-          </widget>
+                       </property>
+                       <property name="text">
+                        <string>预测结果</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_3">
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>256</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 170, 0)</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QTextBrowser" name="singleResultBroswer">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>256</width>
+                       <height>73</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777210</width>
+                       <height>73</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: white;
+border-width: 2px;
+border-color: #3D74BB;
+border-style: solid;
+font: 25 24pt &quot;微软雅黑 Light&quot;;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
+                     </property>
+                     <property name="html">
+                      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'微软雅黑 Light'; font-size:24pt; font-weight:24; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;请输入新闻&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -436,6 +533,11 @@ QTableWidget{
 	border-width: 2px;
 	border-color: #3D74BB;
 	border-style: solid;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 /*选中item*/
@@ -516,6 +618,12 @@ QHeaderView::section{
              </item>
              <item row="1" column="0" colspan="2">
               <widget class="QProgressBar" name="multiLoadingLine">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QProgressBar{
    border: 2px solid #2196F3;/*边框以及边框颜色*/
@@ -559,6 +667,11 @@ QTableWidget{
 	border-width: 2px;
 	border-color: #3D74BB;
 	border-style: solid;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 /*选中item*/
@@ -775,7 +888,12 @@ QPushButton::pressed {
                   <string notr="true">background-color: white;
 border-width: 2px;
 border-color: #3D74BB;
-border-style: solid;</string>
+border-style: solid;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
                  </property>
                 </widget>
                </item>
@@ -881,7 +999,12 @@ QPushButton::pressed {
                   <string notr="true">background-color: white;
 border-width: 2px;
 border-color: #3D74BB;
-border-style: solid;</string>
+border-style: solid;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
                  </property>
                 </widget>
                </item>
@@ -954,6 +1077,11 @@ QTableWidget{
 	border-width: 2px;
 	border-color: #3D74BB;
 	border-style: solid;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 /*选中item*/
@@ -1160,6 +1288,16 @@ border-left-width:0;
                    <height>16777215</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: white;
+	border-width: 2px;
+	border-color: #3D74BB;
+	border-style: solid;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -1287,7 +1425,7 @@ QTabBar::tab:selected{
 }</string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="WordCloudTab">
                 <attribute name="title">
@@ -1303,7 +1441,12 @@ QTabBar::tab:selected{
                     </sizepolicy>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 255, 255);</string>
+                    <string notr="true">background-color: rgb(255, 255, 255);
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
                    </property>
                   </widget>
                  </item>
@@ -1317,7 +1460,12 @@ QTabBar::tab:selected{
                  <item row="0" column="0">
                   <widget class="MatplotlibWidget" name="WordCountWidget" native="true">
                    <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 255, 255);</string>
+                    <string notr="true">background-color: rgb(255, 255, 255);
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
                    </property>
                   </widget>
                  </item>
@@ -1339,24 +1487,37 @@ QTabBar::tab:selected{
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
          <widget class="QWidget" name="widget_2" native="true">
-          <widget class="QTextBrowser" name="introTextBrowser">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>30</y>
-             <width>611</width>
-             <height>161</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: white;
+          <layout class="QGridLayout" name="gridLayout_14">
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout_13">
+             <item row="0" column="0">
+              <widget class="QTextBrowser" name="introTextBrowser">
+               <property name="minimumSize">
+                <size>
+                 <width>600</width>
+                 <height>161</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>161</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: white;
 font: 25 16pt &quot;微软雅黑 Light&quot;;
 border-width: 2px;
 border-color: #3D74BB;
-border-style: solid;</string>
-           </property>
-           <property name="html">
-            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+border-style: solid;
+
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;</string>
+               </property>
+               <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'微软雅黑 Light'; font-size:16pt; font-weight:24; font-style:normal;&quot;&gt;
@@ -1364,24 +1525,60 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;又是元气满满的一天呢！&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Meow001&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;greetings from 4 a.m.~&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="introLogoLabel">
-           <property name="geometry">
-            <rect>
-             <x>670</x>
-             <y>30</y>
-             <width>161</width>
-             <height>161</height>
-            </rect>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(255, 170, 0)</string>
-           </property>
-           <property name="text">
-            <string>LOGO</string>
-           </property>
-          </widget>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="introLogoLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>161</width>
+                 <height>161</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>161</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 170, 0)</string>
+               </property>
+               <property name="text">
+                <string>LOGO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="0">
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
