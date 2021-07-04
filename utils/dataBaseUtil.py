@@ -64,6 +64,17 @@ class DataBase:
         dbConn.close()
         return dataList
 
+    def dataQueryWrongResult(self, keyword=""):
+        dbConn = sqlite3.connect(self.DATABASE_PATH)
+        dbCursor = dbConn.cursor()
+
+        dataQuery = "SELECT * FROM " + self.TABLE_NAME + " WHERE predictChannel <> channelName AND channelName in " \
+                    "('财经', '房产', '教育', '科技', '军事', '汽车', '体育', '游戏', '娱乐', '其他')"
+        dataList = dbCursor.execute(dataQuery).fetchall()
+
+        dbConn.close()
+        return dataList
+
     def dataQueryInChannelName(self, keyword=""):
         dbConn = sqlite3.connect(self.DATABASE_PATH)
         dbCursor = dbConn.cursor()

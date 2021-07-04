@@ -304,32 +304,6 @@ QPushButton::pressed {
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="singleCheckButton">
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
-	color:white;
-    background-color:rgb(0, 170, 255);
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-	min-height:3em;
-    min-width: 10em;
-    padding: 6px;
-}
-QPushButton::pressed {
-    background-color: white;
-	color:rgb(0, 170, 255);
-    border-style: inset;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>数据统计</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QPushButton" name="singlePredictButton">
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
@@ -352,6 +326,32 @@ QPushButton::pressed {
                  </property>
                  <property name="text">
                   <string>新闻文本预测</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="singleQuitButton">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	color:white;
+    background-color:rgb(0, 170, 255);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+	min-height:3em;
+    min-width: 10em;
+    padding: 6px;
+}
+QPushButton::pressed {
+    background-color: white;
+	color:rgb(0, 170, 255);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>数据统计</string>
                  </property>
                 </widget>
                </item>
@@ -1687,7 +1687,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>singleNewsPaperEdit</tabstop>
   <tabstop>singleFileButton</tabstop>
   <tabstop>singleClearButton</tabstop>
-  <tabstop>singleCheckButton</tabstop>
   <tabstop>singlePredictButton</tabstop>
   <tabstop>singlePredictButton2</tabstop>
   <tabstop>singleResultBroswer</tabstop>
@@ -1717,12 +1716,12 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>434</x>
-     <y>142</y>
+     <x>119</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>270</x>
-     <y>142</y>
+     <x>28</x>
+     <y>98</y>
     </hint>
    </hints>
   </connection>
@@ -1733,12 +1732,12 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>434</x>
-     <y>142</y>
+     <x>119</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>546</x>
-     <y>142</y>
+     <x>60</x>
+     <y>98</y>
     </hint>
    </hints>
   </connection>
@@ -1771,6 +1770,22 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>135</x>
      <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>singleQuitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>829</x>
+     <y>585</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>908</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>

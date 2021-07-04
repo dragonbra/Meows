@@ -135,7 +135,6 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.singleFileButton.clicked.connect(self.singleGetNewsFromFile)
         self.singlePredictButton.clicked.connect(self.singleNewsPredict)
         self.singlePredictButton2.clicked.connect(self.singleNewsPredict)
-        self.singleCheckButton.clicked.connect(self.showCheckDiaglog)
 
         # multiPredict Widget's Function
         self.multiNewsSize = 0
@@ -390,14 +389,17 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         if f1ScoreNum:
             f1ScoreRes /= f1ScoreNum
-        self.searchF1Result.setText("%.2f" % f1ScoreRes)
+        self.searchF1Result.setText("%.3f" % f1ScoreRes)
 
     def searchDBtoTable(self):
         self.searchDBTable.setRowCount(1)
         self.searchDBTable.clearContents()
 
         keyword = self.searchLineEdit.text()
-        dataList = self.newsDB.dataQuery(keyword)
+        if keyword == "错误":
+            dataList = self.newsDB.dataQueryWrongResult()
+        else:
+            dataList = self.newsDB.dataQuery(keyword)
         dataListSize = len(dataList)
 
         for index in range(dataListSize):

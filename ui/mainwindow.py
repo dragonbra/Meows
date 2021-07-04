@@ -189,26 +189,6 @@ class Ui_MainWindow(object):
 "}")
         self.singleClearButton.setObjectName("singleClearButton")
         self.horizontalLayout.addWidget(self.singleClearButton)
-        self.singleCheckButton = QtWidgets.QPushButton(self.widget_1)
-        self.singleCheckButton.setStyleSheet("QPushButton {\n"
-"    color:white;\n"
-"    background-color:rgb(0, 170, 255);\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    min-height:3em;\n"
-"    min-width: 10em;\n"
-"    padding: 6px;\n"
-"}\n"
-"QPushButton::pressed {\n"
-"    background-color: white;\n"
-"    color:rgb(0, 170, 255);\n"
-"    border-style: inset;\n"
-"}")
-        self.singleCheckButton.setObjectName("singleCheckButton")
-        self.horizontalLayout.addWidget(self.singleCheckButton)
         self.singlePredictButton = QtWidgets.QPushButton(self.widget_1)
         self.singlePredictButton.setStyleSheet("QPushButton {\n"
 "    color:white;\n"
@@ -229,6 +209,26 @@ class Ui_MainWindow(object):
 "}")
         self.singlePredictButton.setObjectName("singlePredictButton")
         self.horizontalLayout.addWidget(self.singlePredictButton)
+        self.singleQuitButton = QtWidgets.QPushButton(self.widget_1)
+        self.singleQuitButton.setStyleSheet("QPushButton {\n"
+"    color:white;\n"
+"    background-color:rgb(0, 170, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 10px;\n"
+"    border-color: beige;\n"
+"    font: bold 14px;\n"
+"    min-height:3em;\n"
+"    min-width: 10em;\n"
+"    padding: 6px;\n"
+"}\n"
+"QPushButton::pressed {\n"
+"    background-color: white;\n"
+"    color:rgb(0, 170, 255);\n"
+"    border-style: inset;\n"
+"}")
+        self.singleQuitButton.setObjectName("singleQuitButton")
+        self.horizontalLayout.addWidget(self.singleQuitButton)
         self.gridLayout_11.addLayout(self.horizontalLayout, 2, 0, 1, 2)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -1035,13 +1035,13 @@ class Ui_MainWindow(object):
         self.searchClearButton.clicked.connect(self.searchF1Result.clear)
         self.singleClearButton.clicked.connect(self.singleNewsPaperEdit.clear)
         self.singleClearButton.clicked.connect(self.singleNewslineEdit.clear)
+        self.singleQuitButton.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.mainTabWidget, self.singleNewslineEdit)
         MainWindow.setTabOrder(self.singleNewslineEdit, self.singleNewsPaperEdit)
         MainWindow.setTabOrder(self.singleNewsPaperEdit, self.singleFileButton)
         MainWindow.setTabOrder(self.singleFileButton, self.singleClearButton)
-        MainWindow.setTabOrder(self.singleClearButton, self.singleCheckButton)
-        MainWindow.setTabOrder(self.singleCheckButton, self.singlePredictButton)
+        MainWindow.setTabOrder(self.singleClearButton, self.singlePredictButton)
         MainWindow.setTabOrder(self.singlePredictButton, self.singlePredictButton2)
         MainWindow.setTabOrder(self.singlePredictButton2, self.singleResultBroswer)
         MainWindow.setTabOrder(self.singleResultBroswer, self.multiNewsTable)
@@ -1068,8 +1068,8 @@ class Ui_MainWindow(object):
         self.singleFileButton.setText(_translate("MainWindow", "从文件导入"))
         self.label_2.setText(_translate("MainWindow", "新闻内容"))
         self.singleClearButton.setText(_translate("MainWindow", "清除全部内容"))
-        self.singleCheckButton.setText(_translate("MainWindow", "数据统计"))
         self.singlePredictButton.setText(_translate("MainWindow", "新闻文本预测"))
+        self.singleQuitButton.setText(_translate("MainWindow", "数据统计"))
         self.singlePredictButton2.setText(_translate("MainWindow", "->"))
         self.label_5.setText(_translate("MainWindow", "预测结果"))
         self.singleResultBroswer.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

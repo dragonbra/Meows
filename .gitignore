@@ -1,2 +1,7 @@
 *.bin
 *.db
+idea
+venv
+/**/__pycache/
+/__pycache__/
+.gitignore
