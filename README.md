@@ -2,19 +2,23 @@
 
 ## 界面截图
 
-![单条预测](./NewsClassifier/resources/sample/单条预测.png)
+![单条预测](./resources/sample/单条预测.png)
 
-![单条预测-游戏](./NewsClassifier/resources/sample/单条预测-游戏.png)
 
-![数据统计-游戏](./NewsClassifier/resources/sample/数据统计-游戏.png)
 
-![多条预测](./NewsClassifier/resources/sample/多条预测.png)
+![单条预测-游戏](./resources/sample/单条预测-游戏.png)
 
-![数据分析](./NewsClassifier/resources/sample/数据分析.png)
+![数据统计-游戏](./resources/sample/数据统计-游戏.png)
 
-![热力词云](./NewsClassifier/resources/sample/热力词云.png)
+![多条预测](./resources/sample/多条预测.png)
 
-![关于我们](./NewsClassifier/resources/sample/关于我们.png)
+![数据分析](./resources/sample/数据分析.png)
+
+
+
+![热力词云](./resources/sample/热力词云.png)
+
+![关于我们](./resources/sample/关于我们.png)
 
 ## 使用说明
 
