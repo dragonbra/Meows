@@ -1,14 +1,100 @@
 import time
 import sys
 import os
+
 import pandas as pd
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication
 from config import Const
 from ui.mainwindow import Ui_MainWindow
+from ui.classlistdialog import Ui_CheckDialog
 from utils import dataProcUtil
 from utils import dataBaseUtil
 from utils.classifyUtil import Classifier
+
+
+class FuncCheckDialog(QtWidgets.QDialog, Ui_CheckDialog):
+    """
+    对话框类
+    """
+
+    def __init__(self, parent=None):
+        super(FuncCheckDialog, self).__init__(parent)
+        self.setupUi(self)
+
+        # 设置初始属性
+        self.newsDB = dataBaseUtil.DataBase()
+        self.checkF1ScoreInit()
+        self.LOGO_ICON_PATH = Const.LOGO_ICON_PATH
+        self.CHANNEL_IMG_DIR = Const.CHANNEL_IMG_DIR
+
+        # 设置对话框
+        self.setWindowIcon(QtGui.QIcon(self.LOGO_ICON_PATH))
+        self.setWindowFlags(QtCore.Qt.WindowMaximizeButtonHint | QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowCloseButtonHint)  # 去掉问号，只保留关闭
+        self.setWindowModality(QtCore.Qt.ApplicationModal)  # 设置窗口为模态，用户只有关闭弹窗后，才能关闭主界面
+        self.checkClassPicLabel.setScaledContents(True)
+        self.checkClassPicLabel. \
+            setPixmap(QtGui.QPixmap.
+                      fromImage(QtGui.QImage(self.CHANNEL_IMG_DIR + '其他' + '.png')))
+
+        self.checkSearchButton.clicked.connect(self.checkSearch)
+
+    def checkF1ScoreInit(self):
+        self.targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
+        self.f1ScoreResList = [0 for _ in range(10)]
+        self.ClassCnt = [0 for _ in range(10)]
+        self.tp = [0 for _ in range(10)]
+        self.tn = [0 for _ in range(10)]
+        self.fp = [0 for _ in range(10)]
+        self.fn = [0 for _ in range(10)]
+        self.precision = [0 for _ in range(10)]
+        self.recall = [0 for _ in range(10)]
+        dataList = self.newsDB.dataQuery()
+        dataSize = len(dataList)
+        for index in range(dataSize):
+            dataRow = dataList[index]
+            predictChannel = dataRow[1]
+            channelName = dataRow[2]
+            if channelName not in self.targetDict:
+                continue
+            else:
+                self.ClassCnt[self.targetDict[channelName]] += 1
+                if predictChannel == channelName:
+                    self.tp[self.targetDict[predictChannel]] += 1
+                else:
+                    self.fn[self.targetDict[channelName]] += 1
+                    self.fp[self.targetDict[predictChannel]] += 1
+        f1ScoreRes = 0
+        f1ScoreNum = 0
+        try:
+            for index in range(10):
+                if self.tp[index] + self.fp[index] == 0 or self.tp[index] + self.fn[index] == 0:
+                    continue
+                self.precision[index] = self.tp[index] / (self.tp[index] + self.fp[index])
+                self.recall[index] = self.tp[index] / (self.tp[index] + self.fn[index])
+                self.f1ScoreResList[index] = 2 * self.precision[index] * self.recall[index] / (self.precision[index] +
+                                                                                               self.recall[index])
+                f1ScoreNum += 1
+                f1ScoreRes += self.f1ScoreResList[index]
+        except Exception as e:
+            print(e)
+            pass
+
+    def checkSearch(self):
+        checkClass = self.checkClassSelectBox.currentText()
+        self.checkClassPicLabel. \
+            setPixmap(QtGui.QPixmap.
+                      fromImage(QtGui.QImage(self.CHANNEL_IMG_DIR + checkClass + '.png')))
+        checkInfo = "当前分类: " + checkClass + "\n\n"
+        checkInfo += "该类F1_Score为" + "%.3f" % self.f1ScoreResList[self.targetDict[checkClass]] + "\n\n"
+        checkInfo += "该类准确率(Precision)为" + "%.3f" % self.precision[self.targetDict[checkClass]] + "\n"
+        checkInfo += "该类召回率(Recall)为" + "%.3f" % self.recall[self.targetDict[checkClass]] + "\n\n"
+        checkInfo += "原分类为" + checkClass + "的新闻有 " + str(self.ClassCnt[self.targetDict[checkClass]]) + " 条" + "\n"
+        checkInfo += "预测正确(TP / TN)有 " + str(self.tp[self.targetDict[checkClass]]) + " 条" + "\n"
+        checkInfo += "预测为该类但错误(FP)有" + str(self.fp[self.targetDict[checkClass]]) + "条" + "\n"
+        checkInfo += "错误预测为其他类(FN)有" + str(self.fn[self.targetDict[checkClass]]) + "条" + "\n\n"
+
+        self.checkInfoBrowser.setText(checkInfo)
 
 
 class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -16,6 +102,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        # initialize
         self.newsDB = dataBaseUtil.DataBase()
         self.DEFAULT_FILE_PATH = Const.DEFAULT_FILE_PATH
         self.DEFAULT_SINGLE_FILE_PATH = self.DEFAULT_FILE_PATH + '单条新闻\\'
@@ -46,8 +133,9 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             setPixmap(QtGui.QPixmap.
                       fromImage(QtGui.QImage(self.CHANNEL_IMG_DIR + '其他' + '.png')))
         self.singleFileButton.clicked.connect(self.singleGetNewsFromFile)
-        self.predictButton.clicked.connect(self.singleNewsPredict)
-        self.predictButton2.clicked.connect(self.singleNewsPredict)
+        self.singlePredictButton.clicked.connect(self.singleNewsPredict)
+        self.singlePredictButton2.clicked.connect(self.singleNewsPredict)
+        self.singleCheckButton.clicked.connect(self.showCheckDiaglog)
 
         # multiPredict Widget's Function
         self.multiNewsSize = 0
@@ -71,13 +159,18 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         path, file = os.path.split(self.MASK_IMG_PATH)
         fileName, fileFmt = os.path.splitext(file)
         self.wordCloudMask.setText(fileName)
-        self.wordCouldMaskSelectButton.clicked.connect(self.wordCloudMaskSelect)
+        self.wordCloudMaskSelectButton.clicked.connect(self.wordCloudMaskSelect)
 
         # intro Widget's Function
         self.introLogoLabel.setPixmap(QtGui.QPixmap.
                                       fromImage(QtGui.QImage(self.LOGO_IMG_PATH).
                                                 scaled(self.introLogoLabel.width(),
                                                        self.introLogoLabel.height())))
+
+    def showCheckDiaglog(self):
+        checkDialog = FuncCheckDialog()
+        checkDialog.show()
+        checkDialog.exec()
 
     def singleClear(self):
         self.singlePredictResultLabel. \
@@ -123,7 +216,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                           fromImage(QtGui.QImage(self.CHANNEL_IMG_DIR + predictChannel + '.png')))
             self.singleResultBroswer.setText(predictChannel)
             self.singleResultBroswer.setAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
-            self.newsDB.dataInsert(predictChannel=predictChannel, channelName="", title=newsTitle, content=newsContent)
+            self.newsDB.dataInsert(predictChannel=predictChannel, channelName="（空）", title=newsTitle, content=newsContent)
 
     def multiNewsInsertTableWidget(self, index, channelName, newsTitle, newsContent):
         # Insert news into table widget in multiNewsWidget
@@ -252,6 +345,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.searchDBTable.clearContents()
 
     def searchCalF1(self):
+        target = ["财经", "房产", "教育", "科技", "军事", "汽车", "体育", "游戏", "娱乐", "其他"]
         targetDict = {"财经": 0, "房产": 1, "教育": 2, "科技": 3, "军事": 4, "汽车": 5, "体育": 6, "游戏": 7, "娱乐": 8, "其他": 9}
 
         f1ScoreResList = [0 for _ in range(10)]
@@ -267,7 +361,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             dataRow = dataList[index]
             predictChannel = dataRow[1]
             channelName = dataRow[2]
-            if channelName == "(空)" or len(channelName) == 0:
+            if channelName not in targetDict:
                 continue
             else:
                 if predictChannel == channelName:
@@ -291,7 +385,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             print(e)
             pass
         for _ in range(10):
-            print(_, f1ScoreResList[_])
+            print(target[_], f1ScoreResList[_])
 
         if f1ScoreNum:
             f1ScoreRes /= f1ScoreNum

@@ -325,12 +325,12 @@ QPushButton::pressed {
 }</string>
                  </property>
                  <property name="text">
-                  <string>查看分类信息</string>
+                  <string>数据统计</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="predictButton">
+                <widget class="QPushButton" name="singlePredictButton">
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
 	color:white;
@@ -362,7 +362,7 @@ QPushButton::pressed {
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="10,0">
                  <item>
-                  <widget class="QPushButton" name="predictButton2">
+                  <widget class="QPushButton" name="singlePredictButton2">
                    <property name="maximumSize">
                     <size>
                      <width>50</width>
@@ -1092,7 +1092,7 @@ QPushButton::pressed {
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="searchF1Button_2">
+                <widget class="QPushButton" name="searchCheckButton">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -1129,7 +1129,7 @@ QPushButton::pressed {
 }</string>
                  </property>
                  <property name="text">
-                  <string>查看分类</string>
+                  <string>数据统计</string>
                  </property>
                 </widget>
                </item>
@@ -1371,7 +1371,7 @@ border-left-width:0;
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="wordCouldMaskSelectButton">
+                <widget class="QPushButton" name="wordCloudMaskSelectButton">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -1674,8 +1674,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>singleFileButton</tabstop>
   <tabstop>singleClearButton</tabstop>
   <tabstop>singleCheckButton</tabstop>
-  <tabstop>predictButton</tabstop>
-  <tabstop>predictButton2</tabstop>
+  <tabstop>singlePredictButton</tabstop>
+  <tabstop>singlePredictButton2</tabstop>
   <tabstop>singleResultBroswer</tabstop>
   <tabstop>multiNewsTable</tabstop>
   <tabstop>multiResultsTable</tabstop>
@@ -1690,7 +1690,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>searchDBTable</tabstop>
   <tabstop>wordCloudSrc</tabstop>
   <tabstop>wordCloudMask</tabstop>
-  <tabstop>wordCouldMaskSelectButton</tabstop>
+  <tabstop>wordCloudMaskSelectButton</tabstop>
   <tabstop>wordDrawButton</tabstop>
   <tabstop>wordCloudTabWidget</tabstop>
   <tabstop>introTextBrowser</tabstop>

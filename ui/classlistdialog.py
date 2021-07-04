@@ -11,51 +11,71 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(507, 362)
-        self.gridLayout_2 = QtWidgets.QGridLayout(Dialog)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.gridLayout = QtWidgets.QGridLayout()
+class Ui_CheckDialog(object):
+    def setupUi(self, CheckDialog):
+        CheckDialog.setObjectName("CheckDialog")
+        CheckDialog.resize(639, 445)
+        self.gridLayout = QtWidgets.QGridLayout(CheckDialog)
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.comboBox = QtWidgets.QComboBox(Dialog)
-        self.comboBox.setStyleSheet("QComboBox{\n"
-"    align: center;\n"
-"    font: 25 12pt \"微软雅黑 Light\";\n"
-"    color:#3D74BB;\n"
-"    border: 2px solid blue;\n"
-"    border-radius: 4px;\n"
-"    padding: 2px;\n"
-"    font: 14px;\n"
-"}")
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.horizontalLayout.addWidget(self.comboBox)
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setMinimumSize(QtCore.QSize(30, 30))
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"    color:white;\n"
-"    background-color:rgb(0, 170, 255);\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    min-height:1em;\n"
-"    min-width: 1em;\n"
-"    padding: 6px;\n"
-"}\n"
-"QPushButton::pressed {\n"
-"    background-color: white;\n"
-"    color:rgb(0, 170, 255);\n"
-"    border-style: inset;\n"
-"}")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.checkClassSelectBox = QtWidgets.QComboBox(CheckDialog)
+        self.checkClassSelectBox.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkClassSelectBox.sizePolicy().hasHeightForWidth())
+        self.checkClassSelectBox.setSizePolicy(sizePolicy)
+        self.checkClassSelectBox.setMinimumSize(QtCore.QSize(70, 40))
+        self.checkClassSelectBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.checkClassSelectBox.setStyleSheet("QComboBox{\n"
+                                               "    align: center;\n"
+                                               "    font: 25 12pt \"微软雅黑 Light\";\n"
+                                               "    color:#3D74BB;\n"
+                                               "    border: 2px solid blue;\n"
+                                               "    border-radius: 4px;\n"
+                                               "    padding: 2px;\n"
+                                               "    font: 14px;\n"
+                                               "}")
+        self.checkClassSelectBox.setObjectName("checkClassSelectBox")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.checkClassSelectBox.addItem("")
+        self.horizontalLayout.addWidget(self.checkClassSelectBox)
+        self.checkSearchButton = QtWidgets.QPushButton(CheckDialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkSearchButton.sizePolicy().hasHeightForWidth())
+        self.checkSearchButton.setSizePolicy(sizePolicy)
+        self.checkSearchButton.setMinimumSize(QtCore.QSize(30, 30))
+        self.checkSearchButton.setMaximumSize(QtCore.QSize(70, 16777215))
+        self.checkSearchButton.setStyleSheet("QPushButton {\n"
+                                             "    color:white;\n"
+                                             "    background-color:rgb(0, 170, 255);\n"
+                                             "    border-style: outset;\n"
+                                             "    border-width: 2px;\n"
+                                             "    border-radius: 10px;\n"
+                                             "    border-color: beige;\n"
+                                             "    font: bold 14px;\n"
+                                             "    min-height:1em;\n"
+                                             "    min-width: 1em;\n"
+                                             "    padding: 6px;\n"
+                                             "}\n"
+                                             "QPushButton::pressed {\n"
+                                             "    background-color: white;\n"
+                                             "    color:rgb(0, 170, 255);\n"
+                                             "    border-style: inset;\n"
+                                             "}")
+        self.checkSearchButton.setObjectName("checkSearchButton")
+        self.horizontalLayout.addWidget(self.checkSearchButton)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
@@ -63,64 +83,79 @@ class Ui_Dialog(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    color:white;\n"
-"    background-color:rgb(0, 170, 255);\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    min-height:1em;\n"
-"    min-width: 1em;\n"
-"    padding: 6px;\n"
-"}\n"
-"QPushButton::pressed {\n"
-"    background-color: white;\n"
-"    color:rgb(0, 170, 255);\n"
-"    border-style: inset;\n"
-"}")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout_2.addWidget(self.pushButton_2)
+        self.checkQuitButton = QtWidgets.QPushButton(CheckDialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkQuitButton.sizePolicy().hasHeightForWidth())
+        self.checkQuitButton.setSizePolicy(sizePolicy)
+        self.checkQuitButton.setMinimumSize(QtCore.QSize(30, 30))
+        self.checkQuitButton.setMaximumSize(QtCore.QSize(70, 16777215))
+        self.checkQuitButton.setStyleSheet("QPushButton {\n"
+                                           "    color:white;\n"
+                                           "    background-color:rgb(0, 170, 255);\n"
+                                           "    border-style: outset;\n"
+                                           "    border-width: 2px;\n"
+                                           "    border-radius: 10px;\n"
+                                           "    border-color: beige;\n"
+                                           "    font: bold 14px;\n"
+                                           "    min-height:1em;\n"
+                                           "    min-width: 1em;\n"
+                                           "    padding: 6px;\n"
+                                           "}\n"
+                                           "QPushButton::pressed {\n"
+                                           "    background-color: white;\n"
+                                           "    color:rgb(0, 170, 255);\n"
+                                           "    border-style: inset;\n"
+                                           "}")
+        self.checkQuitButton.setObjectName("checkQuitButton")
+        self.horizontalLayout_2.addWidget(self.checkQuitButton)
         self.gridLayout.addLayout(self.horizontalLayout_2, 0, 1, 1, 1)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setStyleSheet("background-color: rgb(0, 255, 255)")
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
-        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser.setStyleSheet("QTextEdit {\n"
-"    background-color: white;\n"
-"    border-width: 2px;\n"
-"    border-color: #3D74BB;\n"
-"    border-style: solid;\n"
-"    border-top-right-radius: 8px;\n"
-"    border-top-left-radius: 8px;\n"
-"    border-bottom-left-radius: 8px;\n"
-"    border-bottom-right-radius: 8px;\n"
-"\n"
-"    font: 12pt \"微软雅黑\";\n"
-"}")
-        self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout.addWidget(self.textBrowser, 1, 1, 1, 1)
+        self.checkClassPicLabel = QtWidgets.QLabel(CheckDialog)
+        self.checkClassPicLabel.setStyleSheet("background-color: rgb(255, 255, 255)")
+        self.checkClassPicLabel.setText("")
+        self.checkClassPicLabel.setObjectName("checkClassPicLabel")
+        self.gridLayout.addWidget(self.checkClassPicLabel, 1, 0, 1, 1)
+        self.checkInfoBrowser = QtWidgets.QTextBrowser(CheckDialog)
+        self.checkInfoBrowser.setStyleSheet("QTextEdit {\n"
+                                            "    background-color: white;\n"
+                                            "    border-width: 2px;\n"
+                                            "    border-color: #3D74BB;\n"
+                                            "    border-style: solid;\n"
+                                            "    border-top-right-radius: 8px;\n"
+                                            "    border-top-left-radius: 8px;\n"
+                                            "    border-bottom-left-radius: 8px;\n"
+                                            "    border-bottom-right-radius: 8px;\n"
+                                            "\n"
+                                            "    font: 8pt \"微软雅黑\";\n"
+                                            "}")
+        self.checkInfoBrowser.setObjectName("checkInfoBrowser")
+        self.gridLayout.addWidget(self.checkInfoBrowser, 1, 1, 1, 1)
         self.gridLayout.setColumnStretch(0, 10)
         self.gridLayout.setColumnStretch(1, 6)
-        self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(CheckDialog)
+        self.checkQuitButton.clicked.connect(CheckDialog.close)
+        QtCore.QMetaObject.connectSlotsByName(CheckDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, CheckDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.comboBox.setItemText(0, _translate("Dialog", "财经"))
-        self.comboBox.setItemText(1, _translate("Dialog", "教育"))
-        self.pushButton.setText(_translate("Dialog", "确定"))
-        self.pushButton_2.setText(_translate("Dialog", "返回"))
-        self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'微软雅黑\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">请选择分类</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        CheckDialog.setWindowTitle(_translate("CheckDialog", "分类信息"))
+        self.checkClassSelectBox.setItemText(0, _translate("CheckDialog", "财经"))
+        self.checkClassSelectBox.setItemText(1, _translate("CheckDialog", "房产"))
+        self.checkClassSelectBox.setItemText(2, _translate("CheckDialog", "教育"))
+        self.checkClassSelectBox.setItemText(3, _translate("CheckDialog", "科技"))
+        self.checkClassSelectBox.setItemText(4, _translate("CheckDialog", "军事"))
+        self.checkClassSelectBox.setItemText(5, _translate("CheckDialog", "汽车"))
+        self.checkClassSelectBox.setItemText(6, _translate("CheckDialog", "体育"))
+        self.checkClassSelectBox.setItemText(7, _translate("CheckDialog", "游戏"))
+        self.checkClassSelectBox.setItemText(8, _translate("CheckDialog", "娱乐"))
+        self.checkClassSelectBox.setItemText(9, _translate("CheckDialog", "其他"))
+        self.checkSearchButton.setText(_translate("CheckDialog", "确定"))
+        self.checkQuitButton.setText(_translate("CheckDialog", "返回"))
+        self.checkInfoBrowser.setHtml(_translate("CheckDialog",
+                                                 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                 "p, li { white-space: pre-wrap; }\n"
+                                                 "</style></head><body style=\" font-family:\'微软雅黑\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+                                                 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">请选择分类</p></body></html>"))

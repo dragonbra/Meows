@@ -56,8 +56,9 @@ class DataBase:
         dbConn = sqlite3.connect(self.DATABASE_PATH)
         dbCursor = dbConn.cursor()
 
-        dataQuery = "SELECT * FROM " + self.TABLE_NAME + " WHERE predictChannel LIKE '%" + keyword + "%' OR channelName LIKE '%" + keyword + "%' \
-                     OR title LIKE '%" + keyword + "%' OR content LIKE '%" + keyword + "%'"
+        dataQuery = "SELECT * FROM " + self.TABLE_NAME + " WHERE predictChannel LIKE '%" + keyword + "%' \
+                     OR channelName LIKE '%" + keyword + "%' \
+                     OR title LIKE '%" + keyword + "%'"
         dataList = dbCursor.execute(dataQuery).fetchall()
 
         dbConn.close()
