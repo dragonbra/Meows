@@ -153,6 +153,7 @@ class FuncWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.searchButton.clicked.connect(self.searchDBtoTable)
         self.searchClearButton.clicked.connect(self.searchTableClear)
         self.searchF1Button.clicked.connect(self.searchCalF1)
+        self.searchCheckButton.clicked.connect(self.showCheckDiaglog)
 
         # wordCloud Widget's Function
         self.wordDrawButton.clicked.connect(self.wordCloudDraw)

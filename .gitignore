@@ -1,3 +1,2 @@
-
-resources/model/ClassifyModel.bin
 *.bin
+*.db
