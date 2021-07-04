@@ -2,23 +2,21 @@
 
 ## 界面截图
 
-![单条预测](./resources/sample/单条预测.png)
+<img src="./resources/sample/单条预测.png" alt="单条预测" style="width:500px;" />
+
+<img src="./resources/sample/单条预测-游戏.png" alt="单条预测-游戏" style="width:500px;" />
+
+<img src="./resources/sample/数据统计-游戏.png" alt="数据统计-游戏" style="width:500px;" />
+
+<img src="./resources/sample/多条预测.png" alt="多条预测" style="width:500px;" />
+
+<img src="./resources/sample/数据分析.png" alt="数据分析" style="width:500px;" />
 
 
 
-![单条预测-游戏](./resources/sample/单条预测-游戏.png)
+<img src="./resources/sample/热力词云.png" alt="热力词云" style="width:500px;" />
 
-![数据统计-游戏](./resources/sample/数据统计-游戏.png)
-
-![多条预测](./resources/sample/多条预测.png)
-
-![数据分析](./resources/sample/数据分析.png)
-
-
-
-![热力词云](./resources/sample/热力词云.png)
-
-![关于我们](./resources/sample/关于我们.png)
+<img src="./resources/sample/关于我们.png" alt="关于我们" style="width:500px;" />
 
 ## 使用说明
 
