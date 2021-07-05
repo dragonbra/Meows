@@ -12,7 +12,7 @@ class Const:
     DATABASE_PATH = PROJECT_PATH + '\\resources\\database\\' + DATABASE_NAME
 
     # about model
-    MODEL_NAME = 'model_13.bin'
+    MODEL_NAME = 'model_4.bin'
     MODEL_DICT_NAME = 'roberta_wwm_vocab.txt'
     MODEL_PATH = PROJECT_PATH + '\\resources\\model\\' + MODEL_NAME
     MODEL_DICT_PATH = PROJECT_PATH + '\\resources\\model\\' + MODEL_DICT_NAME
