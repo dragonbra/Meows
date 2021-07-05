@@ -76,20 +76,13 @@ QTabBar::tab:selected{
           <property name="styleSheet">
            <string notr="true"/>
           </property>
-<<<<<<< Updated upstream
           <layout class="QGridLayout" name="gridLayout_12">
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_11" columnstretch="10,6">
-=======
-          <layout class="QGridLayout" name="gridLayout_13">
-           <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout_12" columnstretch="5,0">
->>>>>>> Stashed changes
              <property name="spacing">
               <number>10</number>
              </property>
              <item row="0" column="0">
-<<<<<<< Updated upstream
               <layout class="QVBoxLayout" name="verticalLayout_2">
                <property name="spacing">
                 <number>0</number>
@@ -99,14 +92,6 @@ QTabBar::tab:selected{
                  <property name="spacing">
                   <number>10</number>
                  </property>
-=======
-              <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
-               <property name="spacing">
-                <number>10</number>
-               </property>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
->>>>>>> Stashed changes
                  <item>
                   <widget class="QLabel" name="label">
                    <property name="sizePolicy">
@@ -121,15 +106,6 @@ QTabBar::tab:selected{
                      <height>0</height>
                     </size>
                    </property>
-<<<<<<< Updated upstream
-=======
-                   <property name="maximumSize">
-                    <size>
-                     <width>80</width>
-                     <height>40</height>
-                    </size>
-                   </property>
->>>>>>> Stashed changes
                    <property name="tabletTracking">
                     <bool>false</bool>
                    </property>
@@ -154,11 +130,7 @@ QTabBar::tab:selected{
                   </widget>
                  </item>
                  <item>
-<<<<<<< Updated upstream
                   <spacer name="horizontalSpacer_2">
-=======
-                  <spacer name="horizontalSpacer_3">
->>>>>>> Stashed changes
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -176,17 +148,10 @@ QTabBar::tab:selected{
                 <layout class="QHBoxLayout" name="horizontalLayout_6">
                  <item>
                   <widget class="QLineEdit" name="singleNewslineEdit">
-<<<<<<< Updated upstream
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
                      <height>40</height>
-=======
-                   <property name="maximumSize">
-                    <size>
-                     <width>600</width>
-                     <height>60</height>
->>>>>>> Stashed changes
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -194,7 +159,6 @@ QTabBar::tab:selected{
 border-width: 2px;
 border-color: #3D74BB;
 border-style: solid;
-<<<<<<< Updated upstream
 
 	font: 12pt &quot;微软雅黑&quot;;
 
@@ -202,18 +166,11 @@ border-style: solid;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;</string>
-=======
-font: 12pt &quot;黑体&quot;;</string>
-                   </property>
-                   <property name="text">
-                    <string/>
->>>>>>> Stashed changes
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="singleFileButton">
-<<<<<<< Updated upstream
                    <property name="minimumSize">
                     <size>
                      <width>150</width>
@@ -224,12 +181,6 @@ font: 12pt &quot;黑体&quot;;</string>
                     <size>
                      <width>200</width>
                      <height>40</height>
-=======
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>60</height>
->>>>>>> Stashed changes
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -259,28 +210,11 @@ QPushButton::pressed {
                    </property>
                   </widget>
                  </item>
-<<<<<<< Updated upstream
-=======
-                 <item>
-                  <spacer name="horizontalSpacer_2">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
->>>>>>> Stashed changes
                 </layout>
                </item>
               </layout>
              </item>
              <item row="1" column="0">
-<<<<<<< Updated upstream
               <layout class="QVBoxLayout" name="verticalLayout_4">
                <property name="spacing">
                 <number>0</number>
@@ -289,32 +223,13 @@ QPushButton::pressed {
                 <layout class="QHBoxLayout" name="horizontalLayout_7">
                  <item>
                   <widget class="QLabel" name="label_2">
-=======
-              <layout class="QVBoxLayout" name="verticalLayout_3">
-               <property name="spacing">
-                <number>10</number>
-               </property>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_8">
-                 <item>
-                  <widget class="QLabel" name="label_2">
-                   <property name="maximumSize">
-                    <size>
-                     <width>80</width>
-                     <height>40</height>
-                    </size>
-                   </property>
->>>>>>> Stashed changes
                    <property name="styleSheet">
                     <string notr="true">QLabel{
 	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 }</string>
                    </property>
                    <property name="text">
@@ -339,31 +254,18 @@ QPushButton::pressed {
                </item>
                <item>
                 <widget class="QTextEdit" name="singleNewsPaperEdit">
-<<<<<<< Updated upstream
-=======
-                 <property name="maximumSize">
-                  <size>
-                   <width>2000</width>
-                   <height>800</height>
-                  </size>
-                 </property>
->>>>>>> Stashed changes
                  <property name="styleSheet">
                   <string notr="true">QTextEdit {
 	background-color: white;
 	border-width: 2px;
 	border-color: #3D74BB;
 	border-style: solid;
-<<<<<<< Updated upstream
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 
 	font: 12pt &quot;微软雅黑&quot;;
-=======
-	font: 11pt &quot;宋体&quot;;
->>>>>>> Stashed changes
 }</string>
                  </property>
                  <property name="lineWrapMode">
@@ -376,11 +278,7 @@ QPushButton::pressed {
              <item row="2" column="0" colspan="2">
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
-<<<<<<< Updated upstream
                 <widget class="QPushButton" name="singleClearButton">
-=======
-                <widget class="QPushButton" name="clearButton">
->>>>>>> Stashed changes
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
 	color:white;
@@ -406,11 +304,7 @@ QPushButton::pressed {
                 </widget>
                </item>
                <item>
-<<<<<<< Updated upstream
                 <widget class="QPushButton" name="singlePredictButton">
-=======
-                <widget class="QPushButton" name="predictButton">
->>>>>>> Stashed changes
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
 	color:white;
@@ -436,11 +330,7 @@ QPushButton::pressed {
                 </widget>
                </item>
                <item>
-<<<<<<< Updated upstream
                 <widget class="QPushButton" name="singleQuitButton">
-=======
-                <widget class="QPushButton" name="exitButton">
->>>>>>> Stashed changes
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
 	color:white;
@@ -461,17 +351,12 @@ QPushButton::pressed {
 }</string>
                  </property>
                  <property name="text">
-<<<<<<< Updated upstream
                   <string>数据统计</string>
-=======
-                  <string>退出程序</string>
->>>>>>> Stashed changes
                  </property>
                 </widget>
                </item>
               </layout>
              </item>
-<<<<<<< Updated upstream
              <item row="1" column="1">
               <layout class="QVBoxLayout" name="verticalLayout_6" stretch="10">
                <item>
@@ -482,55 +367,6 @@ QPushButton::pressed {
                     <size>
                      <width>50</width>
                      <height>50</height>
-=======
-             <item row="0" column="1" rowspan="2">
-              <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
-               <property name="spacing">
-                <number>10</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="singleLogoLabel">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>200</width>
-                   <height>200</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>500</width>
-                   <height>300</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color:rgb(255, 170, 0)</string>
-                 </property>
-                 <property name="text">
-                  <string>LOGO</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="100,0">
-                 <property name="spacing">
-                  <number>10</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>5</number>
-                 </property>
-                 <item>
-                  <widget class="QPushButton" name="predictButton2">
-                   <property name="maximumSize">
-                    <size>
-                     <width>60</width>
-                     <height>40</height>
->>>>>>> Stashed changes
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -556,7 +392,6 @@ QPushButton::pressed {
                   </widget>
                  </item>
                  <item>
-<<<<<<< Updated upstream
                   <layout class="QVBoxLayout" name="verticalLayout_5">
                    <property name="spacing">
                     <number>0</number>
@@ -570,21 +405,6 @@ QPushButton::pressed {
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-=======
-                  <layout class="QVBoxLayout" name="verticalLayout_4" stretch="5,0">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_9">
-                     <item>
-                      <widget class="QLabel" name="label_5">
-                       <property name="maximumSize">
-                        <size>
-                         <width>80</width>
-                         <height>30</height>
-                        </size>
->>>>>>> Stashed changes
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel{
@@ -615,7 +435,6 @@ QPushButton::pressed {
                     </layout>
                    </item>
                    <item>
-<<<<<<< Updated upstream
                     <widget class="QLabel" name="singlePredictResultLabel">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -657,52 +476,31 @@ font: 25 24pt &quot;微软雅黑 Light&quot;;
                       <size>
                        <width>0</width>
                        <height>0</height>
-=======
-                    <widget class="QTextBrowser" name="singleResultBroswer">
-                     <property name="minimumSize">
-                      <size>
-                       <width>30</width>
-                       <height>30</height>
->>>>>>> Stashed changes
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-<<<<<<< Updated upstream
                        <width>16777210</width>
                        <height>73</height>
-=======
-                       <width>200</width>
-                       <height>200</height>
->>>>>>> Stashed changes
                       </size>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">background-color: white;
 border-width: 2px;
 border-color: #3D74BB;
-<<<<<<< Updated upstream
 border-style: solid;
 font: 25 24pt &quot;微软雅黑 Light&quot;;
 	border-top-right-radius: 8px;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;</string>
-=======
-border-style: solid;</string>
->>>>>>> Stashed changes
                      </property>
                      <property name="html">
                       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-<<<<<<< Updated upstream
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'微软雅黑 Light'; font-size:24pt; font-weight:24; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;请输入新闻&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-=======
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;请输入新闻&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
->>>>>>> Stashed changes
                      </property>
                     </widget>
                    </item>
@@ -1457,7 +1255,6 @@ border-left-width:0;
          <widget class="QWidget" name="widget" native="true">
           <layout class="QGridLayout" name="gridLayout_10" columnstretch="0,10">
            <item row="0" column="0">
-<<<<<<< Updated upstream
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="10,6">
@@ -1488,42 +1285,12 @@ border-left-width:0;
                   <string notr="true">QComboBox{
 	align: center;
 	font: 25 12pt &quot;微软雅黑 Light&quot;;
-=======
-            <layout class="QGridLayout" name="gridLayout_10">
-             <property name="spacing">
-              <number>10</number>
-             </property>
-             <item row="0" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0,10">
-               <property name="spacing">
-                <number>10</number>
-               </property>
-               <property name="topMargin">
-                <number>100</number>
-               </property>
-               <property name="bottomMargin">
-                <number>200</number>
-               </property>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_5">
-                 <item>
-                  <widget class="QLabel" name="label_3">
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel{
->>>>>>> Stashed changes
 	color:#3D74BB;
 	border: 2px solid blue;
     border-radius: 4px;
     padding: 2px;
 	font: 14px;
 }</string>
-<<<<<<< Updated upstream
                  </property>
                  <item>
                   <property name="text">
@@ -1569,77 +1336,15 @@ border-left-width:0;
                   <property name="text">
                    <string>娱乐</string>
                   </property>
-=======
-                   </property>
-                   <property name="text">
-                    <string>选择词源</string>
-                   </property>
-                  </widget>
->>>>>>> Stashed changes
                  </item>
                  <item>
-                  <widget class="QComboBox" name="wordCloudBox">
-                   <item>
-                    <property name="text">
-                     <string>所有</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>财经</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>房产</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>教育</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>科技</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>军事</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>汽车</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>体育</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>游戏</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>娱乐</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>其他</string>
-                    </property>
-                   </item>
-                  </widget>
+                  <property name="text">
+                   <string>其他</string>
+                  </property>
                  </item>
-                </layout>
+                </widget>
                </item>
                <item>
-<<<<<<< Updated upstream
                 <widget class="QPushButton" name="wordDrawButton">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1661,63 +1366,6 @@ border-left-width:0;
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
-=======
-                <layout class="QHBoxLayout" name="horizontalLayout_11">
-                 <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel{
-	color:#3D74BB;
-	border: 2px solid blue;
-    border-radius: 4px;
-    padding: 2px;
-	font: 14px;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>选择形状</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="wordSizeBox">
-                   <item>
-                    <property name="text">
-                     <string>皮卡丘</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>猫</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>可达鸭</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>伊布</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_3">
-                 <item>
-                  <widget class="QPushButton" name="wordDrawButton">
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
->>>>>>> Stashed changes
 	color:white;
     background-color:rgb(0, 170, 255);
     border-style: outset;
@@ -1818,7 +1466,6 @@ QPushButton::pressed {
                </item>
               </layout>
              </item>
-<<<<<<< Updated upstream
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_7">
                <item>
@@ -1842,12 +1489,6 @@ QPushButton::pressed {
             <widget class="QTabWidget" name="wordCloudTabWidget">
              <property name="styleSheet">
               <string notr="true">QTabWidget::pane{
-=======
-             <item row="0" column="1">
-              <widget class="QTabWidget" name="wordCloudTabWidget">
-               <property name="styleSheet">
-                <string notr="true">QTabWidget::pane{
->>>>>>> Stashed changes
 }
 QTabWidget::tab-bar{
     alignment:left;
@@ -1868,7 +1509,6 @@ QTabBar::tab:selected{
 	background: white;
 	color: rgb(255, 170, 0);
 }</string>
-<<<<<<< Updated upstream
              </property>
              <property name="currentIndex">
               <number>1</number>
@@ -1918,49 +1558,6 @@ QTabBar::tab:selected{
               </layout>
              </widget>
             </widget>
-=======
-               </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <widget class="QWidget" name="WordCloudTab">
-                <attribute name="title">
-                 <string>词云</string>
-                </attribute>
-                <layout class="QGridLayout" name="gridLayout_14">
-                 <item row="0" column="0">
-                  <widget class="MatplotlibWidget" name="WordCloudWidget" native="true">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 255, 255);</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-               <widget class="QWidget" name="WordCountTab">
-                <attribute name="title">
-                 <string>统计</string>
-                </attribute>
-                <layout class="QGridLayout" name="gridLayout_15">
-                 <item row="0" column="0">
-                  <widget class="MatplotlibWidget" name="WordCountWidget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 255, 255);</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </widget>
-             </item>
-            </layout>
->>>>>>> Stashed changes
            </item>
           </layout>
          </widget>
@@ -1974,7 +1571,6 @@ QTabBar::tab:selected{
        <layout class="QGridLayout" name="gridLayout_8">
         <item row="0" column="0">
          <widget class="QWidget" name="widget_2" native="true">
-<<<<<<< Updated upstream
           <layout class="QGridLayout" name="gridLayout_14">
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_13">
@@ -2006,35 +1602,6 @@ border-style: solid;
                </property>
                <property name="html">
                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-=======
-          <widget class="QWidget" name="">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>30</y>
-             <width>780</width>
-             <height>194</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_12">
-            <item>
-             <widget class="QTextBrowser" name="introTextBrowser">
-              <property name="minimumSize">
-               <size>
-                <width>611</width>
-                <height>161</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: white;
-font: 25 16pt &quot;微软雅黑 Light&quot;;
-border-width: 2px;
-border-color: #3D74BB;
-border-style: solid;</string>
-              </property>
-              <property name="html">
-               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
->>>>>>> Stashed changes
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'微软雅黑 Light'; font-size:16pt; font-weight:24; font-style:normal;&quot;&gt;
@@ -2042,7 +1609,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;又是元气满满的一天呢！&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Meow001&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;greetings from 4 a.m.~&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-<<<<<<< Updated upstream
                </property>
               </widget>
              </item>
@@ -2097,29 +1663,6 @@ p, li { white-space: pre-wrap; }
             </layout>
            </item>
           </layout>
-=======
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="introLogoLabel">
-              <property name="minimumSize">
-               <size>
-                <width>161</width>
-                <height>161</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 170, 0)</string>
-              </property>
-              <property name="text">
-               <string>LOGO</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
->>>>>>> Stashed changes
          </widget>
         </item>
        </layout>
